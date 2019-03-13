@@ -1,0 +1,154 @@
+RDS and Redis
+
+
+Servies-search for rds-- 
+create database-mysql-only enable option eligible -> next->
+
+Settings->
+db identifier- eckart -> ekartidentifier
+username - anurag
+pass - yadavanurag
+
+Next->
+dbname - ekartdatabase
+Create Database- > 
+
+
+
+
+2. ElasticCache
+Redis->
+craete->
+Redis Setting->
+Create->
+
+
+
+#################################################
+
+1. Top level project is of project -> ecommerce
+2. Application resides inside project Eg. ecom
+3. .gitignore-- in gitignore we specify which files are never made to be pushed to github
+4. requirements.txt-- we specify all the required dependencies in requirements.txt
+	pip install -r requirements.txt
+
+
+What is inside app--->
+There is a folder named models-
+
+A. models
+1. Inside the models folder we store the models, each model corresponds to a table inside the database
+
+B. controllers
+1. Inside controllers we metain the buisness logic 
+
+## If inside the models there is a model account the account_controller is controller and account_manager is manager
+
+C. manager
+
+D. datastore 
+
+
+################
+1. A category has many sub-categories
+
+		Category(table)
+	ID 		Name
+	1		Electronics
+	2		Men
+
+
+		Subcatrogies
+	ID 		Name 		Category_ID
+	1		MOBILE		1
+	2 		Wallets		2
+
+Above suggests that changes should be in sub category model not in category model
+
+
+
+
+
+Class ProductSubcategory(Base):
+	__tablename__ = 'product_subcategories'
+	1--> 	product_category_id = db.Column(UUID, db.ForeignKey('product_categories.id'), nullable=False))
+	2-->	product_category = db.relationship('ProductCategory', backref=db.backref('product_subcategories'))
+
+1- allows to fetch the category_id from subcategory object
+2- allow to fetch list of subcategories from category object
+
+
+
+Relation
+1. A cart has many items
+2. Accounts has many carts
+
+
+## Find Host from Redis and RDS find endpoint
+
+
+
+############ How to integrate razor pay in ur project #####
+1. craete account
+2. setting api keys -> generate api key and api secret
+3. put these secret in config.py 
+4. In your requirements.txt file include razorpay
+
+
+
+##### Route
+A given particular route goes to which controller and which method is defined in routes.py 
+
+
+
+########## python inbuilt decorator --- staticmethod
+class student(object):
+	@staticmethod
+	def hello():
+		print("asd")
+student.hello()
+
+
+
+#######
+ps -ef | grep uwsgi
+#######
+
+
+
+#############
+Generator objects support the iterator protocol
+>> When a function contain yield it is known as generator
+>> When we call generator, function does not execute rather it returns iterator object
+>> Whenever we call next method, function exec upto the yield statement
+
+Vimp--- 
+When yield statement executes function exec is forzen
+but all local variables at that time are intact and whatever follows yield is returned.
+
+When next is called again, exec resumes from where it left off.
+
+
+
+
+####### 
+go to main folder
+FLASK_APP=ecom flask shell
+
+###### Form Creation
+Inside form element  action and method indicate where should form submission go.
+Most important thing in input field is name
+required ---- required input
+
+
+
+
+###### putting details post form
+account-dict
+
+try:
+	db.session.add(account)
+	db.session.commit()
+except Exception as e:
+	db.session.rollback()
+	raise e
