@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+
+<html class="default" dir="ltr" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta property="fb:app_id" content="530312767132745">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="Educative: Interactive Courses for Software Developers">
+
+    <meta name="twitter:site" content="@educativeinc">
+    <meta name="twitter:domain" content="educative.io">
+    <!-- <meta name="twitter:creator" content="@educativeinc" /> --><title>System Design Interviews: A step by step guide</title>
+    <meta property="og:title" content="System Design Interviews: A step by step guide">
+    <meta name="twitter:title" content="System Design Interviews: A step by step guide"><meta name="description" content="Level up your coding skills. No more passive learning. Interactive in-browser environments keep you engaged and test your progress as you go.">
+    <meta property="og:description" content="Level up your coding skills. No more passive learning. Interactive in-browser environments keep you engaged and test your progress as you go.">
+    <meta name="twitter:description" content="Level up your coding skills. No more passive learning. Interactive in-browser environments keep you engaged and test your progress as you go.">
+    <meta name="twitter:card" content="summary">
+    <meta property="og:url" content="https://www.educative.io/collection/page/5668639101419520/5649050225344512/5684049913839616">
+    
+
+    <meta property="recaptcha_sitekey" content="6Lep1oQUAAAAACIOdLJ38dpdpsOghDv8XGjkGOro">
+
+    <script type="application/ld+json">
+          {
+          "@context": "http://schema.org/",
+          "@type": "EducationalOrganization",
+          "url": "https://www.educative.io/collection/page/5668639101419520/5649050225344512/5684049913839616",
+          "logo": "https://www.educative.io/collection/page/5668639101419520/5649050225344512/5684049913839616imgs/logos/MainLogo.png"
+          }
+    </script>
+
+    <!-- Hotjar Tracking Code for www.educative.io -->
+    <script>
+        (function (h, o, t, j, a, r) {
+            h.hj = h.hj || function () { (h.hj.q = h.hj.q || []).push(arguments) };
+            h._hjSettings = { hjid: 1142875, hjsv: 6 };
+            a = o.getElementsByTagName('head')[0];
+            r = o.createElement('script'); r.async = 1;
+            r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
+    </script>
+
+    <!-- Facebook Pixel Code -->
+    <script>
+        !function (f, b, e, v, n, t, s) {
+            if (f.fbq) return; n = f.fbq = function () {
+                n.callMethod ?
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            }; if (!f._fbq) f._fbq = n;
+            n.push = n; n.loaded = !0; n.version = '2.0'; n.queue = []; t = b.createElement(e); t.async = !0;
+            t.src = v; s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s)
+        }(window,
+            document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '1637285686566701'); // Insert your pixel ID here.
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1637285686566701&ev=PageView&noscript=1"></noscript>
+    <!-- DO NOT MODIFY -->
+    <!-- End Facebook Pixel Code -->
+
+    <!-- Global site tag (gtag.js) - Google AdWords: 936783588 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-936783588"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'AW-936783588');
+    </script>
+
+    <script type="text/javascript">
+        window.heap = window.heap || [], heap.load = function (e, t) { window.heap.appid = e, window.heap.config = t = t || {}; var r = t.forceSSL || "https:" === document.location.protocol, a = document.createElement("script"); a.type = "text/javascript", a.async = !0, a.src = (r ? "https:" : "http:") + "//cdn.heapanalytics.com/js/heap-" + e + ".js"; var n = document.getElementsByTagName("script")[0]; n.parentNode.insertBefore(a, n); for (var o = function (e) { return function () { heap.push([e].concat(Array.prototype.slice.call(arguments, 0))) } }, p = ["addEventProperties", "addUserProperties", "clearEventProperties", "identify", "resetIdentity", "removeEventProperty", "setEventProperties", "track", "unsetEventProperty"], c = 0; c < p.length; c++)heap[p[c]] = o(p[c]) };
+        heap.load("1574334665");
+    </script>
+
+    <script type="text/javascript">
+        adroll_adv_id = "L7OPGWCEXFFL3GHA6EL632";
+        adroll_pix_id = "G5VNJSWZXJHV5FDWQ6EQK2";
+        /* OPTIONAL: provide email to improve user identification */
+        /* adroll_email = "username@example.com"; */
+        (function () {
+            var _onload = function () {
+                if (document.readyState && !/loaded|complete/.test(document.readyState)) { setTimeout(_onload, 10); return }
+                if (!window.__adroll_loaded) { __adroll_loaded = true; setTimeout(_onload, 50); return }
+                var scr = document.createElement("script");
+                var host = (("https:" == document.location.protocol) ? "https://s.adroll.com" : "http://a.adroll.com");
+                scr.setAttribute('async', 'true');
+                scr.type = "text/javascript";
+                scr.src = host + "/j/roundtrip.js";
+                ((document.getElementsByTagName('head') || [null])[0] ||
+                    document.getElementsByTagName('script')[0].parentNode).appendChild(scr);
+            };
+            if (window.addEventListener) { window.addEventListener('load', _onload, false); }
+            else { window.attachEvent('onload', _onload) }
+        }());
+    </script>
+    <link rel="preload" href="/fonts/avenir/AvenirNextLTPro-Regular.ttf" as="font" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/avenir/AvenirNextLTPro-Bold.ttf" as="font" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/avenir/AvenirNextLTPro-It.ttf" as="font" crossorigin="anonymous">
+<style>
+    @charset "UTF-8";@import url(//fonts.googleapis.com/css?family=Lato);@import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,400i,700,700i|Lato:100,100i,300,300i,400,400i,700,700i,900,900i|Open+Sans:300,300i,400,400i,700,700i);@-ms-viewport{width:device-width}img{max-width:100%}img{border:0}img{vertical-align:middle}body{opacity:1}html{-webkit-overflow-scrolling:touch}body,html{height:100%;overflow-x:hidden}body{font:400 14px Lato,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;line-height:1.5;background:#fff;color:#353535}#app-container{overflow-x:hidden}#app-container{height:100%}title{font-size:36px;margin:.3em 0;font-weight:600;color:#000}html{font-family:sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}body{margin:0}*,:after,:before{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}html{font-size:10px}body{font-family:Helvetica Neue,Helvetica,Arial,sans-serif;font-size:14px;line-height:1.42857143;color:#333;background-color:#fff}
+</style>
+<link href="/dist/gen/vendors~cached.efd1780ec78dcc2b6dd2.css" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="/dist/gen/vendors~cached.efd1780ec78dcc2b6dd2.css" rel="stylesheet"></noscript><link href="/dist/gen/vendors~educative.e11c3296e40271573110.css" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="/dist/gen/vendors~educative.e11c3296e40271573110.css" rel="stylesheet"></noscript><link href="/dist/gen/educative.cb86599151439f8035bc.css" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="/dist/gen/educative.cb86599151439f8035bc.css" rel="stylesheet"></noscript>
+<script>!function(n){"use strict";n.loadCSS||(n.loadCSS=function(){});var o=loadCSS.relpreload={};if(o.support=function(){var e;try{e=n.document.createElement("link").relList.supports("preload")}catch(t){e=!1}return function(){return e}}(),o.bindMediaToggle=function(t){var e=t.media||"all";function a(){t.addEventListener?t.removeEventListener("load",a):t.attachEvent&&t.detachEvent("onload",a),t.setAttribute("onload",null),t.media=e}t.addEventListener?t.addEventListener("load",a):t.attachEvent&&t.attachEvent("onload",a),setTimeout(function(){t.rel="stylesheet",t.media="only x"}),setTimeout(a,3e3)},o.poly=function(){if(!o.support())for(var t=n.document.getElementsByTagName("link"),e=0;e<t.length;e++){var a=t[e];"preload"!==a.rel||"style"!==a.getAttribute("as")||a.getAttribute("data-loadcss")||(a.setAttribute("data-loadcss",!0),o.bindMediaToggle(a))}},!o.support()){o.poly();var t=n.setInterval(o.poly,500);n.addEventListener?n.addEventListener("load",function(){o.poly(),n.clearInterval(t)}):n.attachEvent&&n.attachEvent("onload",function(){o.poly(),n.clearInterval(t)})}"undefined"!=typeof exports?exports.loadCSS=loadCSS:n.loadCSS=loadCSS}("undefined"!=typeof global?global:this);</script></head>
+
+<body class="fade-out" data-version="1.0.0">
+    <div id="pace-loader" class="pace-big"></div>
+    <div id="app-preloader"></div>
+    <div id="app-container"></div>
+
+    <!-- Twitter universal website tag code -->
+    <script>
+        !function (e, t, n, s, u, a) {
+            e.twq || (s = e.twq = function () {
+                s.exe ? s.exe.apply(s, arguments) : s.queue.push(arguments);
+            }, s.version = '1.1', s.queue = [], u = t.createElement(n), u.async = !0, u.src = '//static.ads-twitter.com/uwt.js',
+                a = t.getElementsByTagName(n)[0], a.parentNode.insertBefore(u, a))
+        }(window, document, 'script');
+        // Insert Twitter Pixel ID and Standard Event data below
+        twq('init', 'nz5z7');
+        twq('track', 'PageView');
+    </script>
+    <!-- End Twitter universal website tag code -->
+
+    <script type="text/javascript" async src="/js/polyfills/modernizr.min.js"></script><script src="https://www.google.com/recaptcha/api.js?render=6Lep1oQUAAAAACIOdLJ38dpdpsOghDv8XGjkGOro"></script>
+    
+
+<script type="text/javascript" src="/dist/gen/runtime.400cb442460df27f22f2.prod.js" async></script><script type="text/javascript" src="/dist/gen/vendors~cached.46fee17e13eb47a86264.prod.js" async></script><script type="text/javascript" src="/dist/gen/vendors~sentry.cca6c82055606fd12c51.prod.js" async></script><script type="text/javascript" src="/dist/gen/vendors~educative.f207097e3e6bf36ea5c4.prod.js" async></script><script type="text/javascript" src="/dist/gen/educative.a5b288e69c4c9aed3d13.prod.js" async></script></body>
+
+</html>
