@@ -7,6 +7,7 @@ alpha = False
 alphaNumeric = False
 custom = False
 branchCode = 'branch'
+roll = ''
 initialRoll = 'initial'
 finalRoll = 'final'
 url = 'http://172.16.1.3:8090/httpclient.html'
@@ -17,14 +18,14 @@ threads = 1
 
 
 def enterDetails():
-	global one,many,numeric,alpha,alphaNumeric,custom,branchCode,initialRoll,finalRoll,rollNumberList,length,threads
+	global one,many,numeric,alpha,alphaNumeric,custom,branchCode,roll,initialRoll,finalRoll,rollNumberList,length,threads
 
 	choice = input('\nChoose your choice------\n1. Try for single username?\n2. Try for range of username?\n>>> ')
 	choice = int(choice)
 
 	# details
 	if choice==1:
-		roll = input('\n\nEnter username------\n>>> ')
+		roll = input("\n\nEnter username------\n>>> ")
 		rollNumberList.append(roll)
 	else:
 		branchCode = input('\n\nEnter branch code------\n>>> ').lower()

@@ -100,7 +100,6 @@ class LinkedList:
   			if temp2.data in myset:
   				mylist.insertAtTail(temp2.data)
   			temp2 = temp2.nextElement
-  		mylist.printList()
   		return mylist
 
 
@@ -109,34 +108,34 @@ class LinkedList:
 
 
 
-lst1 = LinkedList()
-lst2 = LinkedList()
-print('List1')
-lst1.printList()
-print('List2')
-lst2.printList()
+# lst1 = LinkedList()
+# lst2 = LinkedList()
+# print('List1')
+# lst1.printList()
+# print('List2')
+# lst2.printList()
 
 
 
-lst1.insertAtTail(10)
-lst1.insertAtTail(20)
-lst1.insertAtTail(80)
-lst1.insertAtTail(80)
-lst1.insertAtTail(60)
+# lst1.insertAtTail(10)
+# lst1.insertAtTail(20)
+# lst1.insertAtTail(80)
+# lst1.insertAtTail(80)
+# lst1.insertAtTail(60)
 
-lst2.insertAtTail(15)
-lst2.insertAtTail(20)
-lst2.insertAtTail(30)
-lst2.insertAtTail(60)
-lst2.insertAtTail(45)
-lst2.insertAtTail(45)
-
-
-print('List1')
-lst1.printList()
-print('List2')
-lst2.printList()
+# lst2.insertAtTail(15)
+# lst2.insertAtTail(20)
+# lst2.insertAtTail(30)
+# lst2.insertAtTail(60)
+# lst2.insertAtTail(45)
+# lst2.insertAtTail(45)
 
 
+# print('List1')
+# lst1.printList()
+# print('List2')
+# lst2.printList()
 
-lst1.intersection(lst1,lst2)
+
+
+# lst1.intersection(lst1,lst2)
