@@ -1,0 +1,778 @@
+What is JS-
+	untyped
+	cross-platform
+	open source
+	light weight
+	computer programming lang
+
+
+
+
+Data Types-
+	number
+	string
+	boolean
+	null - not a null pointer, it is nothing, empty or value unknown
+	undefined - variable is declared but not assigned
+	object - collections of data
+	symbol - unique identifier for objects
+
+
+
+typeof(null) - object (error in javascript)
+
+
+3.
+Variable- named container of data
+
+<script type="text/javascript">
+	var money = 0.324;
+	var name = "shilpa bhabhi";
+</script>
+
+
+types based on scope-
+	1. local
+	2. global
+
+<script type="text/javascript">
+	
+	var globalvar = "anu";
+
+	function scope(){
+		var localvar = 'shankar';
+		document.write(localvar);
+	}
+</script>
+
+
+
+4.Operator
+
+a. arithmatic (%, ++, --)
+b. comparision
+c. logical (!, && , ||)
+d. assignment (+=, -=, %=, /=, *=)
+e. conditional (?x:y)
+
+
+5. function - a group of reusable code that can be called anywhere in program.
+
+<html>
+	<head>
+		<script type="text/javascript">
+			function concatenate(first, second){
+				return first+second;
+			}
+
+			function callme(firstname, secondname){
+				result = concatenate(firstname, secondname);
+				document.write(result);
+			}
+		<script>
+	</head>
+
+	<body>
+		<form>
+			<input type="button" onclick="callme("shiv", "shankar")" value="click me">
+		</form>
+	</body>
+</html>
+
+
+
+
+
+6. popup/dialog boxes
+	these dialog boxes are used to display info or take input from users.
+
+Types-
+a. alert dialog box
+b. confirmation dialog box
+c. prompt dialog box
+
+
+A. alert dialog box
+	for warning messages
+
+<html>
+	<head>
+		<script type="text/javascript">
+			function check(){
+				var age = document.getElementsByName("age")[0].value;
+				var name = document.getElemetsByName("name")[0].value;
+
+				if(Number(age)>20 && name.length>0){
+					document.getElementById('myForm').submit();
+				}else{
+					alert("Name should not by empty and age should by greater than 20");
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+		<form action="/register" method="POST" id="myForm">
+			<input type="number" name="age" required>
+			<input type="text" name="name" required>
+			<input type="buttom" onclick="check()" value="submit">
+		</form>
+	</body>
+</html>
+
+
+
+
+
+B. Confirmation dialog box
+	1. to take consent from user on any option, it displays dialog box with two buttons OK and Cancel
+	2. if click ok then returns true otherwise false
+
+
+<html>
+	<head>
+		<script type="text/javascript">
+			function check(){
+				var age = document.getElementsByName("age")[0].value;
+				var name = document.getElemetsByName("name")[0].value;
+
+				if(Number(age)>20 && name.length>0){
+					var val = confirm("do you want to submit the form no future changes can be done ?");
+					if(val==true){
+						document.getElementById('myForm').submit();
+					}
+					
+				}else{
+					alert("Name should not by empty and age should by greater than 20");
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+		<form action="/register" method="POST" id="myForm">
+			<input type="number" name="age" required>
+			<input type="text" name="name" required>
+			<input type="buttom" onclick="check()" value="submit">
+		</form>
+	</body>
+</html>
+
+
+C. Prompt dialog box
+	used to get input from user
+
+
+
+<html>
+	<head>
+		<script type="text/javascript">
+			function check(){
+				var age = Number(document.getElementsByName("age")[0].value);
+				var name = document.getElemetsByName("name")[0].value;
+
+				while(age<20){
+					age = prompt("Give age is less than 20 years please enter more ", "enter here");
+				}
+
+				document.getElementById("myForm").submit();
+			}
+		</script>
+	</head>
+
+	<body>
+		<form action="/register" method="POST" id="myForm">
+			<input type="number" name="age" required>
+			<input type="text" name="name" required>
+			<input type="buttom" onclick="check()" value="submit">
+		</form>
+	</body>
+</html>
+
+
+
+
+7. Javascript builtin
+	A.Objects
+	B.Functions
+
+A.Objects
+
+a.Number
+Methods-
+1. constructor() - return the function that created this object's instance.
+2. toExponential() - return the number in exponential form
+3. toFixed([digits]) - return a string representation for number that has exaxt number of digits after decimal places.
+4. toString()
+5. valueOf()
+6. toPrecision([precision]) - return how to many digits to display of a number.
+
+b.Boolean
+Methods-
+1. toSource() - returns a string representing the source code of the object
+Eg. 
+function book(title, price){
+	this.title = title;
+	this.price = price;
+}
+var newBook = book('anu', 2000);
+document.write(newBook.toSource())
+
+O/P - 
+"({title: "anu", price: 2000})"
+
+2. toString()
+3. valueOf()
+
+
+c. String
+1. charAt()
+2. charCodeAt() - return unicode
+3. concat(str1, str2,[,........, strN])
+4. indexOf('searchString')
+5. lastIndexOf('searchString')
+6. localeCompare('compareString')
+7. length()
+8. replace('string')
+9. split([str])
+10. substring(l, r)
+11. toLowerCase()
+12. toUpperCase()
+
+d. Array
+1. concat()
+2. forEach()
+3. indexOf(element)
+4. lastIndexOf(element)
+5. join(separator)
+6. pop()
+7. push()
+8. map()
+9. reverse()
+10. slice(begin [,end])
+11. sort()
+12. toString()
+13. shift()
+
+
+
+
+e. Date
+1. Date() -globalfunction, return today data and time
+2. getDate() -  date of month
+3. getDay() - return 0-sunday,1,2,3
+4. getFullYear()
+5. getHours() set
+6. getMinutes() set
+7. getSeconds() set
+8. getMiliseconds() set
+9. getMonth() set
+10. getTime() set
+
+f. math
+1. abs()
+2. acos()
+3. asin()
+4. atan()
+5. atan2()
+6. ceil()
+7. cos()
+8. max()
+9. log()
+10. min()
+11.pow()
+12. floor()
+13. sin()
+14. random()
+15. round()
+16. tan()
+17. toSource()
+
+
+
+
+8. Event Handling
+Event - JavaScript's interaction with the HTML is handled through the events that occurs when the user or browser manipulates with a page.
+
+Event handling of js--
+1. onclick()
+	<input type="button" onclick="myFunction()">
+2. onabort()
+	<img src="flowerImg.jpg" onabort="myFunction()">
+3. onfocus()
+	<input type="text" onfocus="myFun()">
+4. onchange()
+	<input type="text/number/date/file/month/radio/checkbox/color" onchange="myFun()">
+5. onblur()
+	<input type="text" onblur="myFun()">
+6. onreset()
+	<form onreset="myFun()">
+		<input type="text">
+		<input type="reset">
+	</form>
+7. onsubmit()
+	<form onsubmit="myFun()">
+		<input type="text">
+		<input type="submit">
+	</form>
+8. onload()
+	<body onload="myFun()">
+9. onunload()
+	<body unload="myFun()">
+10. onselect()
+	<input type="text" onselect="myFun()">
+11. onerror()
+	<img src="image.gif" onerror="myFun()">
+
+
+
+9. Form Validation
+	1. form validation by server is lengthy process
+	2. js provides ways to validate form data
+
+Types-
+1. Basic Validation
+2. Data Format validation
+
+1. Basic validation
+	loop check all the field are filled
+
+<html>
+	<head>
+		<script type="text/javascript">
+			function validate(){
+				var name = document.getElementsByName("fullname")[0].value;
+				var age = document.getElementsByName("age")[0].value;
+				var email = document.getElementsByName("email")[1].value;
+
+				if(age.length==0){
+					alert("please enter the age");
+					return false;
+				}
+				if(name.length==0){
+					alert("please enter the name");
+					return false;
+				}
+				if(email.length==0){
+					alert('please enter the email');
+					return false;
+				}
+	
+			}
+			function validateMyForm(){
+				if(validate()){
+					document.getElementById("myform").submit();
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+		<form action="/register" method="POST" onsubmit="validateMyForm()" id="myform">
+			<input type="text" name="fullname">
+			<input type="number" name="age">
+			<input type="email" name="fullname">
+			<input type="submit">
+		</form>
+	</body>
+</html>
+
+
+
+
+2. Data Format Validation---
+
+<html>
+	<head>
+		<script type="text/javascript">
+			function validate(){
+				var email = document.getElementsByName("email")[1].value;
+				i = email.indexOf("@");
+				j = email.indexOf(".");
+
+				if(i<0 || j<0 || (j-i)<2){
+					alert("Enter valid email addressssssss")
+					return false;
+				}
+			}
+			function validateMyForm(){
+				if(validate()){
+					document.getElementById("myform").submit();
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+		<form action="/register" method="POST" onsubmit="validateMyForm()" id="myform">
+			<input type="text" name="fullname">
+			<input type="number" name="age">
+			<input type="email" name="fullname">
+			<input type="submit">
+		</form>
+	</body>
+</html>
+
+
+
+
+
+
+###################################### 4th Unit
+			
+			################   JSP
+
+
+			
+
+Elements of JSP-
+1. Scriptlet
+	1. a scriptlet can contain any number of java lang stmt, variable, declaration, expression
+	2. <% code_fragment %>
+
+<html>
+	<head></head>
+	<body>
+		<p>Hi this is me</p>
+		<% out.println("your ip address is " + request.getRemoteAddr()); %>
+	</body>
+</html>
+
+2. JSP Decalarations
+	declare one or more variable or methods that can be used in JSP file
+
+<%! int i = 0; %>
+<%! int i=3,j=9,k=12; %>
+<%! circle = new Circle(2.0); %>
+
+3. JSP Expression
+	1. a jsp expression element contain a scripting language expression that is evaluated converted to string and inserted in jsp where present in jsp file
+	2. <%= expression %>
+
+<html>
+	<head></head>
+	<body>
+		<p> Today data is <%= (new java.util.Date()).toLocaleString()  %> </p>
+	</body>
+</html>
+
+4. JSP comments
+	1. JSP comments makes stmt that is ignored by the JSP container.
+	2. <%-- This is comment --%>
+
+
+
+
+######### JSP directives
+	1. Directives provides directions and instructions to the JSP container how to handle certain aspects the JSP processing.
+	2. <%@ directive attribute="value" %>
+
+Types-
+1. Page directive
+2. Include directive
+3. Taglib directive
+
+
+1. Page directive
+	1. Define page-dependent attributes, such as scripting lang, error page and buffering requirement.
+	2. instructions pertain to current jsp page.
+	3. May code anywhere in the JSP page but convention at to top.
+	4. <%@ page attribute="value" %>
+
+Attributes-
+1. import 
+<%@ page import="java.util.Date"%>
+2. language
+<%@ page language="java" %>
+3. contentType - define character encoding scheme.
+<%@ page contentType="text/html;charset=ISO-8859-1" %>
+4. errorPage - any jsp file declared with errorPage, when generates exceptions, can send the exceptions to another JSP file that is declated with isErrorPage. Is used to specify the address of another jsp file where isErrorPage is set to true.
+<%@ page errorPage="anu/shankar.jsp" %>
+5. isErrorPage - any jsp file declared with isErrorPage set to true is capable of receive exceptions from another jsp pages.
+<%@ page isErrorPage="true" %>
+
+
+2. Include Directive
+	1. is used to include a file during the translation phase.\
+	2. relative url
+	2. <%@ include file="/shilpa/bhabhi.jsp" %>
+
+3. taglib directive
+	1. jsp api allows to define custom jsp tags look like HTML  or XML tags and tag library is a set of user-defined tags that implement custom behaviour.
+	2. <%@ taglib uri="uri" prefi="prefixOfTag" %>
+
+
+<%@ taglib uri="http://shankar.com/customlib" prefix="mytag" %>
+<html>
+	<head>
+		<mytag:hello>
+	</head>
+</html>
+
+
+
+
+#### program to add two numbers in JSP
+
+<html>
+	<body>
+		<%! int a = 2, b=4,c; %>
+		<%= c = a+b %>
+	</body>
+</html>
+
+
+3. JSP Objects----
+	1. implicit objects
+	2. these are java objects that JSP container make availabe
+	3. JSP objects are also called pre-defined variables
+1. Request
+	1. This is javax.servlet.http.HttpServletRequest object associated with requets
+	2. each time client make request it created and to represent that request
+
+	Methods-
+		request.getContentLength()
+		request.getServerPort()
+		request.getRemoteAddr()
+		request.getProtocol()
+2. Response
+	1. javax.servlet.http.HttpSerletResponse
+	2. cookie, date stamps, http status code can be added
+
+	Methods-
+		response.addCookie(Cookie cookie)
+		response.addHeader(String name, String value)
+		response.flushBuffer()
+		response.sendError(int sc)
+		response.sendRedirect(String location)
+
+3. Session
+	1. javax.servlet.http.HttpSession
+	2. used to track client session btw client requests
+	3. can be set to off
+		<%@ page session="false">
+
+	Methods-
+		session.setAttribute(String name, Object value)
+		session.getAttribute(String name)
+		session.getId()
+		session.getCreationTIme()
+		session.invalidate()
+
+
+String uname=request.getParameter("inputname"); 
+out.print("Welcome "+ uname);
+session.setAttribute("sessname",uname);
+out.print("Welcome "+ uname);
+
+4. Application
+	1. object of javax.servlet.ServletContex
+	2. this object is representation of the JSP page in entire lifecycle
+	3. get created when jsp page intialized
+	4. jspDestroy() called when JSP page removed
+5. Page
+	1. actual reference to the instance of the page
+	2. synonym of "this"
+
+6. Page Context
+	1. javax.servlet.jsp.PageContext
+	2. used to represent the entire page
+	3. this object store references to req and res objects
+	4. used to derive application, config, session and out objects
+
+	Method-
+		pageContext.removeAttribute('attrName', PAGE_SCOPE)
+7. Config
+	1. java.servlet.ServletConfig
+	2. used to access paths and file locations
+
+	Method-
+	config.getServletName()
+
+8. Out
+
+9. Exception
+	1. used to represent the exceptions thrown by previous page
+	2. used to generate appropriate response to the error condition
+
+	Method-
+	1. getMessage()
+	2. toString()
+	3. printStackTrace()
+
+
+<%@ page errorPage = "ShowError.jsp" %>
+<html>
+   <head>
+      <title>Error Handling Example</title>
+   </head>
+   
+   <body>
+      <%
+         // Throw an exception to invoke the error page
+         int x = 1;
+         
+         if (x == 1) {
+            throw new RuntimeException("Error condition!!!");
+         }
+      %>
+   </body>
+</html>
+
+
+
+<%@ page isErrorPage = "true" %>
+
+<html>
+   <head>
+      <title>Show Error Page</title>
+   </head>
+   
+   <body>
+      <h1>Opps...</h1>
+      <p>Sorry, an error occurred.</p>
+      <p>Here is the exception stack trace: </p>
+      <pre><% exception.printStackTrace(response.getWriter()); %></pre>
+   </body>
+</html>
+
+
+Output-
+java.lang.RuntimeException: Error condition!!!
+......
+
+Opps...
+Sorry, an error occurred.
+
+Here is the exception stack trace:
+
+
+
+
+
+###### to add two numbers
+<html>
+<head>
+</head>
+<body>
+<form id="form" action="calculate.jsp" method="post">
+  Enter number:
+  <input id="number" type="text" name="number" />
+  <input id="submit" type="submit" value="Calculate Square Root" 
+  name="submit"/>
+</form>
+<p id="result"></p>
+</body>
+</html>
+
+
+
+
+<%@ page language="java">
+<%
+	int number = 0;
+	if(request.getParameter("number")==null){
+	  out.println("Enter a number!");
+	} else {
+	  
+	  number = Integer.parseInt(request.getParameter("number"));
+	
+	}
+%>
+
+<html>
+	<body>
+		<p>
+			<%   out.println("Square of "+ number + " is " 
+	  + number*number); %>
+		</p>
+	</body>
+</html>
+
+
+
+
+
+
+4. JSP action tags
+	1. used to control the flow btw pages
+	2. to use java bean
+
+
+1. <jsp:include>
+	1. used to use content of another jsp, html or servlet page
+	2. better of dynamic page
+
+Eg.
+File: index.jsp
+<h2>this is index page</h2>  
+<jsp:include page="printdate.jsp" />    
+<h2>end section of index page</h2>  
+
+
+File: printdate.jsp
+<% out.print("Today is:"+java.util.Calendar.getInstance().getTime()); %> 
+
+2. <jsp:forward>
+	forwards the request and response to another resource.
+	<jsp:forward page="relativeUR" /> 
+
+Eg.
+<html>  
+<body>  
+<h2>this is index page</h2>  
+  
+<jsp:forward page="printdate.jsp" />  
+</body>  
+</html>  
+
+printdate.jsp----
+<html>  
+<body>  
+<% out.print("Today is:"+java.util.Calendar.getInstance().getTime()); %>  
+</body>  
+</html>  
+
+3. <jsp:param>
+	child of puglin object
+	contain one or more actions to provide additionals parameters
+	<jsp:params>
+		<jsp:param name="val" value="val"/ >
+	</jsp:params>
+
+4. <jsp:plugin>
+	1.used to introduce java component into jsp
+	2.java component can be either applet or bean
+	3.<jsp:plugin type="applet/bean" code="objectcode" codebase="objectcodebase">
+		type -specifies either an object or a bean
+		Code -specifies class name of applet or bean
+		Code base -contains the base URL that contains files of classes
+
+5. <jsp:fallback>
+
+6. <jsp:usebean>
+	1. used to instantiate a bean class
+	2. if already created does not create the bean
+	3.
+<jsp:useBean id= "instanceName" scope= "page | request | session | application" class= "packageName.className" type= "packageName.className" >  
+</jsp:useBean>  
+
+
+	package anu.mypack;  
+	public class Calculator{  
+		public int cube(int n){return n*n*n;}  
+	}  
+
+
+	newFIle.jsp
+	<jsp:useBean id="obj" class="com.javatpoint.Calculator"/>  
+	<%  
+		int m=obj.cube(5);  
+		out.print("cube of 5 is "+m);  
+	%>  
+
+7. <jsp:setProperty>
+	used of developing web apps with
+	set property of java bean
+8. <jsp:getProperty>
+	get property of java bean

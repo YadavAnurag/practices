@@ -11,9 +11,7 @@ def justify(v, k):
 			w.append(v[i])
 			i += 1
 			line = ' '.join(w) 
-		#	print('line is ',line)
-		#print('Now')
-		#print('line len', len(line))
+
 		if len(line)>k:
 			w.pop()
 			i -= 1

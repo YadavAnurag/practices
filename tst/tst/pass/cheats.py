@@ -123,7 +123,7 @@ def passgen(low=0, high=0, n=0):
 			for j in range(low,high):
 				for k in range(low,high):
 					for l in range(low,high):
-						print(chr(i)+chr(j)+chr(k)+chr(l))
+						yield(chr(i)+chr(j)+chr(k)+chr(l))
 
 	if n==5:
 		for i in range(low,high):
@@ -131,7 +131,7 @@ def passgen(low=0, high=0, n=0):
 				for k in range(low,high):
 					for l in range(low,high):
 						for m in range(low,high):
-							print(chr(i)+chr(j)+chr(k)+chr(l)+chr(m))
+							yield(chr(i)+chr(j)+chr(k)+chr(l)+chr(m))
 
 	if n==6:
 		for i in range(low,high):
@@ -140,7 +140,7 @@ def passgen(low=0, high=0, n=0):
 					for l in range(low,high):
 						for m in range(low,high):
 							for n in range(low,high):
-								print(chr(i)+chr(j)+chr(k)+chr(l)+chr(m)+chr(n))
+								yield(chr(i)+chr(j)+chr(k)+chr(l)+chr(m)+chr(n))
 
 
 
