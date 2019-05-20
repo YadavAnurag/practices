@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html><head>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<title>Encrypting data with the Blowfish algorithm</title>
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="shortcut icon" href="https://static.designandreuse.com/IMAGES/favicon.ico">
+<link rel="alternate" type="application/rss+xml" title="All D and R Feeds" href="https://www.design-reuse.com/xml/1/1/all/rss.xml">
+<link rel="alternate" type="application/rss+xml" title="D and R Headline News" href="https://www.design-reuse.com/xml/1/1/news/rss.xml">
+<link rel="alternate" type="application/rss+xml" title="D and R Industry Articles" href="https://www.design-reuse.com/xml/1/1/articles/rss.xml">
+<link rel="alternate" type="application/rss+xml" title="D and R New Products" href="https://www.design-reuse.com/xml/1/1/products/rss.xml">
+<link rel="alternate" type="application/rss+xml" title="D and R Wanted IPs" href="https://www.design-reuse.com/xml/1/1/wanted/rss.xml">
+<link rel="alternate" type="application/rss+xml" title="D and R Industry Expert Blogs" href="https://www.design-reuse.com/xml/1/1/blogs/rss.xml">
+<meta name="description" content="Encrypting data with the Blowfish algorithm">
+<meta name="keywords" content="encrypting, data, with, the, blowfish, algorithm">
+	<meta property="og:type" content="website">
+			<meta property="og:image" content="https://www.design-reuse.com/img11/drlogo16.gif">
+			<meta property="og:title" content="Encrypting data with the Blowfish algorithm">
+			<meta property="og:url" content="https://www.design-reuse.com/articles/5922/encrypting-data-with-the-blowfish-algorithm.html">
+			<meta property="og:description" content="Encrypting data with the Blowfish algorithm">
+		
+	<meta property="og:site_name" content="Design And Reuse">
+<!--sphider_noindex--> 
+<meta http-equiv="Pragma" content="no-cache">
+<meta name="Expires" content="Fri, 01 Jan 1990 00:00:00 GMT">
+<meta name="Created" content="2003-07-15 01:00:00"><!--[if lte IE 8]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+
+<script src="https://www.design-reuse.com//jscript/respond.min.js"></script>
+<![endif]-->
+	<link rel="stylesheet" type="text/css" href="Encrypting%20data%20with%20the%20Blowfish%20algorithm_files/staticnews-20181116.css">
+
+</head>
+<body>
+<script async="" src="Encrypting%20data%20with%20the%20Blowfish%20algorithm_files/analytics.js"></script><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-118253-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<form>
+<input id="menu-toggle" class="menu-toggle" type="checkbox">
+<nav>
+	<div class="menu">
+	<ul>
+		<li><a href="https://www.design-reuse.com/">Home</a></li>
+		<li><a href="https://www.design-reuse.com/sip/">Search Silicon IP</a></li>
+		<li><a href="https://www.design-reuse.com/vip/">Search Verification IP</a></li>
+		<li><a href="https://www.design-reuse.com/news/">Latest News</a></li>
+		<li><a href="https://www.design-reuse.com/articles/">Industry Articles</a></li>
+		<li><a href="https://www.design-reuse.com/industryexpertblogs/">Industry Expert Blogs</a></li>
+		<li><a href="https://www.design-reuse.com/video/">Videos</a></li>
+		<li><a href="https://www.design-reuse.com/slides/">Slides</a></li>
+		<li><a href="https://www.design-reuse.com/ipsoc2018/">Events</a></li>
+ 
+	</ul>
+  </div> 
+</nav>
+<section id="contentfull">
+<div class="top-bar">
+  <label for="menu-toggle" id="toggle">≡ <span>Menu</span></label> 
+  
+  <a id="drlogoS" href="http://www.design-reuse.com/">Design And Reuse</a>
+
+<ul id="top-bar-subscribe" style="margin-right:15px; margin-top:5px">
+
+			<li class="d-inline">
+		<a class="login c7 sz11" href="https://www.design-reuse.com/login2.php?nexturl=https%3A%2F%2Fwww.design-reuse.com%2Farticles%2F5922%2Fencrypting-data-with-the-blowfish-algorithm.html">Login</a>
+		</li>
+		<li class="c5 sz11 d-inline">|</li>
+		
+
+	<li id="nav-login167156" class="d-inline">
+	<a class="login c7 sz11" href="https://www.design-reuse.com/users/signup.php">Subscribe</a>
+	</li>
+
+
+</ul>
+  </div> 
+
+<div id="bandeau-nav167156">
+<div class="list grid-980">
+
+<ul id="nav-right167156" class="nav-right">
+
+
+<li class="d-inline">
+<a class="c7 sz11" href="https://www.design-reuse.com/about/">Company</a>
+</li>
+<li class="c5 sz11 d-inline">|</li>
+
+<li class="d-inline">
+<a class="c7 sz11" href="https://www.design-reuse.com/foundry/siliconip/cn.php">design-reuse.cn</a>
+</li>
+<li class="c5 sz11 d-inline">|</li>
+<li class="d-inline">
+<a class="c7 sz11" href="https://www.design-reuse.com/foundry/siliconip/drembedded3.php" rel="nofollow">dr-embedded.com</a>
+</li>
+
+<li class="c5 sz11 d-inline">|</li>
+<li class="d-inline">
+<a class="c7 sz11" href="http://www.design-reuse-enterprise.com/" rel="nofollow">D&amp;R Products</a>
+</li>
+<li class="c5 sz11 d-inline">|</li>
+ 
+<li class="d-inline dropdown">
+<span class="c7 sz11"><img src="Encrypting%20data%20with%20the%20Blowfish%20algorithm_files/cn.png" style="margin-top:4px; margin-right:10px" width="21" height="16"></span>
+  <div class="dropdown-content">
+    <a href="https://www.design-reuse.com/" class="c5 sz11 d-inline"> <img src="Encrypting%20data%20with%20the%20Blowfish%20algorithm_files/en.png" style="margin-top:4px;" width="16" height="12"> English</a>
+    <a href="https://www.design-reuse.com/foundry/siliconip/cn.php" class="c5 sz11 d-inline"><img src="Encrypting%20data%20with%20the%20Blowfish%20algorithm_files/cn.png" style="margin-top:4px" width="16" height="12"> Chinese</a>
+  </div>
+</li>
+
+ 
+<style>
+.dropdown {
+    position: relative;
+    display: inline-block;
+	cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 80px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 2px;
+	z-index: 99999;
+	margin-top: -8px;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 1px;
+    text-decoration: none;
+    display: block;
+}
+.dropdown-content a:hover {background-color: #f1f1f1}
+</style>
+			<li class="d-inline">
+		<a class="login c7 sz11" href="https://www.design-reuse.com/login2.php?nexturl=https%3A%2F%2Fwww.design-reuse.com%2Farticles%2F5922%2Fencrypting-data-with-the-blowfish-algorithm.html">Login</a>
+		</li>
+		<li class="c5 sz11 d-inline">|</li>
+		
+
+	<li id="nav-login167156" class="d-inline">
+	<a class="login c7 sz11" href="https://www.design-reuse.com/users/signup.php">Subscribe to D&amp;R SoC News Alert</a>
+	</li>
+
+
+</ul>
+</div>
+</div>
+<div id="leadeboard"><div id="leadeboard-in">
+	<a href="https://www.design-reuse.com/" id="drlogo">Design And Reuse</a>
+	
+</div></div> 
+<div id="center">
+    <div class="outter"></div>
+    <div id="mainmenu" class="navigation navigation2012">
+        <ul id="menu-bar">
+            <li id="nav_onglet_1" class=" actu">
+                <a href="https://www.design-reuse.com/sip/" class="imaged"><span class="text">Search IP</span><span class="drop"></span></a>
+				<ul class="ombrage">
+				
+                    <li class="first">
+					     <span>Categories</span>
+                        <div class="ul">
+                            <ul>
+                                <li class="first"><a href="https://www.design-reuse.com/sip/"><strong>Silicon IP</strong></a></li>
+                                <li><a href="https://www.design-reuse.com/sip/analog-mixed-signal-c-3/">Analog &amp; Mixed Signal</a></li>
+                                <li><a href="https://www.design-reuse.com/sip/storage-controller-phy-c-5/">Storage Controller &amp; PHY</a></li>
+                                <li><a href="https://www.design-reuse.com/sip/graphic-peripheral-c-6/">Graphic &amp; Peripheral</a></li>
+                                <li><a href="https://www.design-reuse.com/sip/interfaces-c-7/">Interface Controller &amp; PHY</a></li>
+                                <li><a href="https://www.design-reuse.com/sip/processors-microcontrollers-c-9/">Processors &amp; Microcontrollers</a></li>
+                                <li><a href="https://www.design-reuse.com/sip/memory-logic-library-c-10/">Memory &amp; Logic Library</a></li>
+                                <li><a href="https://www.design-reuse.com/sip/security-c-11/">Security</a></li>
+                                <li><a href="https://www.design-reuse.com/sip/multimedia-c-12/">Multimedia</a></li>
+                                <li><a href="https://www.design-reuse.com/sip/wireline-communication-c-13/">Wireline Communication</a></li>
+                                <li><a href="https://www.design-reuse.com/sip/wireless-communication-c-14/">Wireless Communication</a></li>
+                                <li class="first">
+                                    <a href="https://www.design-reuse.com/sip/provider.php"><strong>Silicon IP Vendors</strong></a>
+                                </li>
+
+
+
+								
+                            </ul>
+                        </div>
+                    </li>
+
+					
+                   <li>
+						<span>&nbsp;</span>
+
+                        <div class="ul">
+							<ul>
+                                <li class="first">
+                                    <a href="https://www.design-reuse.com/vip/"><strong>Verification IP</strong></a>
+                                </li>
+                                <li>
+                                    <a href="https://www.design-reuse.com/vip/">Search / Browse</a>
+                                </li>
+                                <li>
+                                    <a href="https://www.design-reuse.com/vip/provider.php">Verification IP Vendors</a>
+                                </li>
+
+	
+					
+									<li class="first">
+                                    <a href="https://www.design-reuse.com/hds/"><strong>Software IP</strong></a>
+                                </li>
+                                <li>
+                                    <a href="https://www.design-reuse.com/hds/">Search / Browse</a>
+                                </li>
+                                <li>
+                                    <a href="https://www.design-reuse.com/hds/provider.php">Software IP Vendors</a>
+                                </li>
+   	  		
+                         
+                                <li>
+                                    <strong>&nbsp;</strong>
+                                </li>
+                                <li style="border-top:0px">
+                                    <strong>&nbsp;</strong>
+                                </li>
+                                <li>
+                                    <strong>Additional Services</strong>
+                                </li>
+													
+	                                <li>
+                                    <a href="https://www.design-reuse.com/sip/wanted/">Wanted IPs</a>
+                                </li>
+   	  	
+                                <li>
+                                    <a href="https://www.design-reuse.com/ipanalytics/">IP Analytics</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+					
+					<li>
+						<a href="https://www.design-reuse.com/sip/">	
+						Featured Products</a> 
+						<div class="ul articles">	
+						<ul>
+						<li><div class="media"><a href="https://www.design-reuse.com/sip/inside-secure-aes-gcm-xts-engine-ip-30213/"><img src="Encrypting%20data%20with%20the%20Blowfish%20algorithm_files/insidesecure2.gif" longdesc="//static.designandreuse.com/sip/logo/insidesecure2.gif" alt="INSIDE Secure" class="logo" width="64" height="27"></a></div><div class="article product"><p><a href="https://www.design-reuse.com/sip/inside-secure-aes-gcm-xts-engine-ip-30213/">INSIDE Secure AES GCM/XTS Engine</a></p></div></li>	<li><div class="media"><a href="https://www.design-reuse.com/sip/mipi-c-phy-v1-1-ip-36900/"><img src="Encrypting%20data%20with%20the%20Blowfish%20algorithm_files/arasan.gif" longdesc="//static.designandreuse.com/sip/logo/arasan.gif?3" alt="Arasan Chip Systems Inc." class="logo" width="64" height="27"></a></div><div class="article product"><p><a href="https://www.design-reuse.com/sip/mipi-c-phy-v1-1-ip-36900/">MIPI C-PHY v1.1</a></p></div></li>	<li><div class="media"><a href="https://www.design-reuse.com/sip/deep-learning-processor-ip-44291/"><img src="Encrypting%20data%20with%20the%20Blowfish%20algorithm_files/videantis.gif" longdesc="//static.designandreuse.com/sip/logo/videantis.gif?2" alt="videantis GmbH" class="logo" width="64" height="27"></a></div><div class="article product"><p><a href="https://www.design-reuse.com/sip/deep-learning-processor-ip-44291/">Deep Learning Processor</a></p></div></li>	<li><div class="media"><a href="https://www.design-reuse.com/sip/novea-mtp-rfid-towerjazz-180-sl-ip-28308/"><img src="Encrypting%20data%20with%20the%20Blowfish%20algorithm_files/synopsys.gif" longdesc="//static.designandreuse.com/sip/logo/synopsys.gif" alt="Synopsys, Inc." class="logo" width="64" height="27"></a></div><div class="article product"><p><a href="https://www.design-reuse.com/sip/novea-mtp-rfid-towerjazz-180-sl-ip-28308/">NOVeA MTP RFID TowerJazz 180 SL</a></p></div></li>	     
+						</ul></div>
+						
+                    </li>
+
+                </ul>
+				
+            </li>
+  		
+
+	
+					
+	
+            <li id="nav_onglet_3" class=" actu">
+                <a href="https://www.design-reuse.com/news/" class="imaged"><span class="text">News</span><span class="drop"></span></a>
+              <ul>
+                    <li class="first">
+                        <span>Categories</span>
+                        <div class="ul">
+                            <ul>
+                                <li class="first">
+                                    <a href="https://www.design-reuse.com/news/semiconductor-ip-soc-0.html">IP/SoC Products </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.design-reuse.com/news/embedded-systems-0.html">Embedded Systems </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.design-reuse.com/news/foundries-0.html">Foundries</a>
+                                </li>
+                                <li>
+                                    <a href="https://www.design-reuse.com/news/fpga-0.html">FPGA </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.design-reuse.com/news/fabless-0.html">Fabless / IDM </a>
+                                </li>
+                               <li>
+                                    <a href="https://www.design-reuse.com/news/deals-0.html">Deals</a>
+                                </li>
+                               <li>
+                                    <a href="https://www.design-reuse.com/news/legal-0.html">Legal</a>
+                                </li>
+                               <li>
+                                    <a href="https://www.design-reuse.com/news/business-0.html">Business</a>
+                                </li>
+                               <li>
+                                    <a href="https://www.design-reuse.com/news/financial-0.html">Financial Results</a>
+                                </li>
+                               <li>
+                                    <a href="https://www.design-reuse.com/news/people-0.html">People</a>
+                                </li>
+                                <li>
+                                    <a href="https://www.design-reuse.com/news/commentary-analysis-0.html">Commentary / Analysis</a>
+                                </li> 
+								<li>
+                                    <a href="https://www.design-reuse.com/news/mostpopular"><strong>20 Most Popular News</strong></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+					<li>
+                        <a href="https://www.design-reuse.com/news/">					
+						Latest News</a> 
+						<div class="ul articles">	
+						<ul>
+						<li><div class="media"><a href="https://www.design-reuse.com/news/45323/wave-computing-mips-open-initiative.html"><img src="Encrypting%20data%20with%20the%20Blowfish%20algorithm_files/mips.jpg" longdesc="//static.designandreuse.com/news_img2/news45323/mips.jpg" alt="wave-computing-mips-open-initiative" class="" width="73" height="50"></a></div><div class="article product"><p><a href="https://www.design-reuse.com/news/45323/wave-computing-mips-open-initiative.html">Wave Computing Launches the MIPS Open Initiative To Accelerate Innovation for the Renowned MIPS Architecture</a></p><div class="meta">Tuesday Dec. 18, 2018</div></div></li>	<li><div class="media"><a href="https://www.design-reuse.com/news/45320/arasan-mipi-i3c-ip-xilinx-fpga.html"><img src="Encrypting%20data%20with%20the%20Blowfish%20algorithm_files/arasan.jpg" longdesc="//static.designandreuse.com/news_img2/news45320/arasan.jpg" alt="arasan-mipi-i3c-ip-xilinx-fpga" class="" width="73" height="50"></a></div><div class="article product"><p><a href="https://www.design-reuse.com/news/45320/arasan-mipi-i3c-ip-xilinx-fpga.html">Arasan Announces availability of its Total I3C IP Solution for Xilinx FPGA's </a></p><div class="meta">Monday Dec. 17, 2018</div></div></li>	<li><div class="media"><a href="https://www.design-reuse.com/news/45315/ememory-mtp-globalfoundries-130nm-bcdlite-bcd.html"><img src="Encrypting%20data%20with%20the%20Blowfish%20algorithm_files/ememory.jpg" longdesc="//static.designandreuse.com/news_img2/news45315/ememory.jpg" alt="ememory-mtp-globalfoundries-130nm-bcdlite-bcd" class="" width="73" height="50"></a></div><div class="article product"><p><a href="https://www.design-reuse.com/news/45315/ememory-mtp-globalfoundries-130nm-bcdlite-bcd.html">eMemory's
+ Reprogrammable NeoMTP Qualified on GLOBALFOUNDRIES' 130nm BCDLite and 
+BCD Technology Platforms for Automotive Applications</a></p><div class="meta">Monday Dec. 17, 2018</div></div></li>	     
+						</ul></div>
+
+						
+                    </li>
+                </ul>
+
+            </li>
+            <li id="nav_onglet_4" class=" actu">
+                <a href="https://www.design-reuse.com/articles/" class="imaged"><span class="text">Industry Articles</span><span class="drop"></span></a>
+              <ul>
+                    <li class="first">
+                        <span>Categories</span>
+                        <div class="ul">
+                            <ul>
+                                <li class="first">
+                                    <a href="https://www.design-reuse.com/articles/semiconductor-ip-soc-0.html">IP/SoC Products </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.design-reuse.com/articles/embedded-systems-0.html">Embedded Systems </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.design-reuse.com/articles/foundries-0.html">Foundries</a>
+                                </li>
+                                <li>
+                                    <a href="https://www.design-reuse.com/articles/fpga-0.html">FPGA </a>
+                                </li>
+                               <li>
+                                    <a href="https://www.design-reuse.com/articles/business-0.html">Business</a>
+                                </li>
+								<li>
+                                    <a href="https://www.design-reuse.com/articles/mostpopular"><strong>20 Most Popular Articles</strong></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+					<li>
+                        <a href="https://www.design-reuse.com/articles/">					
+						Featured Articles</a> 
+						<div class="ul articles">	
+						<ul>
+						<li><div class="media"><a href="https://www.design-reuse.com/articles/45307/extending-8k-over-a-single-cost-effective-wire-with-tico-lightweight-compression.html"><img src="Encrypting%20data%20with%20the%20Blowfish%20algorithm_files/intopix_8k.jpg" longdesc="//static.designandreuse.com/news_img2/news45307/intopix_8k.jpg" alt="extending-8k-over-a-single-cost-effective-wire-with-tico-lightweight-compression" class="" width="73" height="50"></a></div><div class="article product"><p><a href="https://www.design-reuse.com/articles/45307/extending-8k-over-a-single-cost-effective-wire-with-tico-lightweight-compression.html">Extending 8K over a single, cost-effective wire with TICO lightweight compression</a></p><div class="meta">Thursday Dec. 13, 2018</div></div></li>	<li><div class="media"><a href="https://www.design-reuse.com/articles/45241/pci-express-3-0-needs-reliable-timing-design.html"><img src="Encrypting%20data%20with%20the%20Blowfish%20algorithm_files/pcie.jpg" longdesc="//static.designandreuse.com/news_img2/news45241/pcie.jpg" alt="pci-express-3-0-needs-reliable-timing-design" class="" width="73" height="50"></a></div><div class="article product"><p><a href="https://www.design-reuse.com/articles/45241/pci-express-3-0-needs-reliable-timing-design.html">PCI Express 3.0 needs reliable timing design</a></p><div class="meta">Monday Dec. 03, 2018</div></div></li>	<li><div class="media"><a href="https://www.design-reuse.com/articles/45224/traffic-management-system-through-vehicle-classification-and-counting-techniques.html"><img src="Encrypting%20data%20with%20the%20Blowfish%20algorithm_files/einfo2.jpg" longdesc="//static.designandreuse.com/news_img2/news45224/einfo2.jpg" alt="traffic-management-system-through-vehicle-classification-and-counting-techniques" class="" width="73" height="50"></a></div><div class="article product"><p><a href="https://www.design-reuse.com/articles/45224/traffic-management-system-through-vehicle-classification-and-counting-techniques.html">Designing an Effective Traffic Management System Through Vehicle Classification and Counting Techniques</a></p><div class="meta">Thursday Nov. 29, 2018</div></div></li>	     
+						</ul></div>
+
+						
+                    </li>
+                </ul> 
+            </li>
+            <li id="nav_onglet_5" class=" actu">
+                <a href="https://www.design-reuse.com/industryexpertblogs/" class="imaged"><span class="text">Blogs</span><span class="drop"></span></a>
+               <ul>
+ 					<li>
+                        <a href="https://www.design-reuse.com/industryexpertblogs/">					
+						Industry Expert Blogs</a> 
+						<div class="ul articles">	
+						<ul>
+						<li><div class="media"><a href="https://www.design-reuse.com/industryexpertblogs/45321/intel-custom-foundry-business.html"><img src="Encrypting%20data%20with%20the%20Blowfish%20algorithm_files/semiwiki.jpg" longdesc="//static.designandreuse.com/industryexpertblogs/images/semiwiki.jpg" alt="intel-custom-foundry-business" class="" width="64" height="64"></a></div><div class="article product"><p><a href="https://www.design-reuse.com/industryexpertblogs/45321/intel-custom-foundry-business.html">Intel Discontinues the Custom Foundry Business!</a></p><div class="meta">SemiWiki - Daniel Nenni</div></div></li>	<li><div class="media"><a href="https://www.design-reuse.com/industryexpertblogs/45289/risc-v-china-centre-of-the-soc-universe.html"><img src="Encrypting%20data%20with%20the%20Blowfish%20algorithm_files/ultrasoc.jpg" longdesc="//static.designandreuse.com/industryexpertblogs/images/ultrasoc.jpg" alt="risc-v-china-centre-of-the-soc-universe" class="" width="64" height="64"></a></div><div class="article product"><p><a href="https://www.design-reuse.com/industryexpertblogs/45289/risc-v-china-centre-of-the-soc-universe.html">RISC-V to help China take its place at the centre of the SoC universe</a></p><div class="meta">UltraSoC  Blog - Aileen Smith, UltraSoC</div></div></li>	<li><div class="media"><a href="https://www.design-reuse.com/industryexpertblogs/45276/micron-authenta-cryptomanager-platform.html"><img src="Encrypting%20data%20with%20the%20Blowfish%20algorithm_files/rambus.gif" longdesc="//static.designandreuse.com/industryexpertblogs/images/rambus.gif" alt="micron-authenta-cryptomanager-platform" class="" width="64" height="64"></a></div><div class="article product"><p><a href="https://www.design-reuse.com/industryexpertblogs/45276/micron-authenta-cryptomanager-platform.html">Micron Taps CryptoManager Platform for Secure Provisioning To Authenta Technology</a></p><div class="meta">Rambus Blog - </div></div></li>	     
+						</ul></div>
+
+						
+                    </li>
+                </ul>     
+            </li>
+            <li id="nav_onglet_6" class=" cols">
+                <a href="https://www.design-reuse.com/video/" class="imaged nodrop"><span class="text">Videos</span></a>
+
+            </li>
+            <li id="nav_onglet_8" class=" cols">
+                <a href="https://www.design-reuse.com/slides/" class="imaged nodrop"><span class="text">Slides</span></a>
+
+            </li>
+
+            <li id="nav_onglet_7" class="cols">
+
+					<a rel="nofollow" href="https://www.design-reuse.com/ipsoc2018/" class="imaged"><span class="text">Events</span><span class="drop"></span></a>
+					<ul>
+                    <li class="first">
+					
+					  <a rel="nofollow" href="http://www.design-reuse-embedded.com/ipsocdays/ipsocdays2018/shanghai2018/">IP-SOC Days 2018</a>
+					   <a rel="nofollow" href="https://www.design-reuse.com/ipsoc2018/">IP-SOC 2018 </a>
+
+					<span>Archives</span>
+                        <div class="ul">
+                            <ul>
+
+								<li class="first">
+                                    <a href="https://www.design-reuse.com/ipsoc2016/program/">IP-SOC 2016 </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.design-reuse.com/ipsoc2015/program/">IP-SOC 2015 </a>
+                                </li>
+								<li>
+                                    <a href="https://www.design-reuse.com/ipsoc2014/program/">IP-SOC 2014 </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.design-reuse.com/ipsoc2013/program/">IP-SOC 2013 </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.design-reuse.com/ipsoc2012/program/">IP-SOC 2012 </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.design-reuse.com/ipsoc2011/slides/">IP-SOC 2011 </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.design-reuse.com/ipsoc2010/slides/">IP-SOC 2010 </a>
+                                </li>
+
+
+                            </ul>
+                        </div>
+                    </li>
+
+                </ul>
+            </li>
+ 
+        </ul>
+		
+<div id="search">
+		<form method="get" action="https://www.design-reuse.com/search/" style="top:0px; width:250px">
+<ul id="searchFilter"><li class="filterBtn" onclick="return true" title="search filter">
+<div class="searchDropdown">
+<fieldset>
+<legend>Choose a filter </legend>
+<ul id="searchOptions">
+<li><input id="areafull" type="radio" value="full" name="area"><label for="areafull">Full Site Search</label></li>
+<li><input id="areasip" type="radio" value="sip" name="area"><label for="areasip">Silicon IP</label></li>
+<li><input id="areavip" type="radio" value="vip" name="area"><label for="areavip">Verification IP</label></li>
+<li><input id="areahds" type="radio" value="hds" name="area"><label for="areahds">Software IP</label></li>
+<li><input id="areanews" type="radio" value="news" name="area"><label for="areanews">News</label></li>
+<li><input id="areaarticle" type="radio" value="articles" checked="checked" name="area"><label for="areaarticle">Industry Articles</label></li>
+</ul>
+</fieldset>
+</div>
+</li>
+</ul>
+<input id="i" name="i" class="inset " type="text" maxlength="255" value="Search Industry Articles">
+<input class="magBtn" type="submit" value="Search D&amp;R site" title="search">
+</form></div>
+
+    </div>
+</div>
+
+
+<div id="section">
+<div id="global">
+
+
+<!--/sphider_noindex--> 
+
+<div id="content">
+ <div id="left800">
+<h1>Encrypting data with the Blowfish algorithm</h1>
+<div id="wrapleft500">
+<div id="left500" class="bluelink">
+ 
+		  
+
+
+
+
+				
+
+    <h1>Encrypting data with the Blowfish algorithm</h1><br>        <font size="2" face="verdana,arial,helvetica,sans-serif">
+                                         By                             
+                     Bill  Gatliff,                                     
+                                                                        
+                      Courtesy of                                       
+                                                                        
+           <a href="http://www.embedded.com/" target="_blank">                  Embedded Systems Programming                  </a>                                                       <br>        Jul 15 2003 (11:00 AM)<br>      URL:       <a href="http://www.embedded.com/showArticle.jhtml?articleID=12800442">      http://www.embedded.com/showArticle.jhtml?articleID=12800442      </a>                    <p>            <b>Many
+ embedded systems depend on obscurity to achieve security. We often 
+design systems to download unsigned or unencrypted firmware upgrades or 
+store unencrypted user data, a practice we justify because it's 
+invisible to the end user and makes our lives easier. The stealthy 
+practice, however, is no longer kosher.  With the help of this 
+public-domain encryption algorithm, we can clean up our act.   </b>   </p><p>
+  Modern embedded systems need data security more than ever before. Our 
+PDAs store personal e-mail and contact lists; GPS receivers and, soon, 
+cell phones keep logs of our movements;<b><a href="#endnotes" name="1"><sup>[1]</sup></a></b> and our automobiles record our driving habits.<b><a href="#endnotes" name="2"><sup>[2]</sup></a></b>
+ On top of that, users demand products that can be reprogrammed during 
+normal use, enabling them to eliminate bugs and add new features as 
+firmware upgrades become available.   </p><p>  Data security helps keep 
+private data private. Secure data transmissions prevent contact lists 
+and personal e-mail from being read by someone other than the intended 
+recipient, keep firmware upgrades out of devices they don't belong in, 
+and verify that the sender of a piece of information is who he says he 
+is. The sensibility of data security is even mandated by law in certain 
+applications: in the U.S. electronic devices cannot exchange personal 
+medical data without encrypting it first, and electronic engine 
+controllers must not permit tampering with the data tables used to 
+control engine emissions and performance.   </p><p>  Data security 
+techniques have a reputation for being computationally intensive, 
+mysterious, and fraught with intellectual property concerns. While some 
+of this is true, straightforward public domain techniques that are both 
+robust and lightweight do exist. One such technique, an algorithm called
+ Blowfish, is perfect for use in embedded systems.   </p><p>  <font size="3" face="Verdana" color="#003366"><b>Terminology</b></font><br>
+  In cryptographic circles, plaintext is the message you're trying to 
+transmit. That message could be a medical test report, a firmware 
+upgrade, or anything else that can be represented as a stream of bits. 
+The process of encryption converts that plaintext message into 
+ciphertext, and decryption converts the ciphertext back into plaintext. 
+  </p><p>  Generally speaking, encryption algorithms come in two 
+flavors, symmetric and public key. Symmetric algorithms, such as 
+Blowfish, use the same key for encryption and decryption. Like a 
+password, you have to keep the key secret from everyone except the 
+sender and receiver of the message.   </p><p>  Public key encryption 
+algorithms use two keys, one for encryption and another for decryption. 
+The key used for encryption, the "public key" need not be kept secret. 
+The sender of the message uses that public key to encrypt their message,
+ and the recipient uses their secret decryption key, or "private key", 
+to read it. In a sense, the public key "locks" the message, and the 
+private key "unlocks" it: once encrypted with the public key, nobody 
+except the holder of the private key can decrypt the message. RSA is a 
+popular public key encryption algorithm.   </p><p>  Most credible 
+encryption algorithms are published and freely available for analysis, 
+because it's the security of the key that actually makes the algorithm 
+secure. A good encryption algorithm is like a good bank vault: even with
+ complete plans for the vault, the best tools, and example vaults to 
+practice on, you won't get inside the real thing without the key.   </p><p>
+  Sometimes an encryption algorithm is restricted, meaning that the 
+algorithm itself is kept secret. But then you can never know for sure 
+just how weak a restricted algorithm really is, because the developer 
+doesn't give anyone a chance to analyze it.   </p><p>  Encryption algorithms can be used for several kinds of data security. Sometimes you want <i>data integrity,</i>
+ the assurance that the recipient received the same message you sent. 
+Encryption algorithms can also provide authentication, the assurance 
+that a message came from whom it says it came from. Some encryption 
+algorithms can even provide nonrepudiation, a way to prove beyond a 
+doubt (say, in a courtroom) that a particular sender was the originator 
+of a message. And of course, most encryption algorithms can also assure 
+data privacy, a way to prevent someone other than the intended recipient
+ from reading the message.   </p><p>  <font size="3" face="Verdana" color="#003366"><b>Data security in practice </b></font><br>
+  Let's say an embedded system wants to establish a secure data-exchange
+ session with a laptop, perhaps over a wireless medium. At the start of 
+the session, both the embedded system and laptop compute a private 
+Blowfish key and public and private RSA keys. The embedded system and 
+laptop exchange the public RSA keys and use them to encrypt and exchange
+ their private Blowfish keys. The two machines then encrypt the 
+remainder of their communications using Blowfish. When the 
+communications session is over, all the keys are discarded.   </p><p>  
+In this example, it doesn't matter if someone is eavesdropping on the 
+entire conversation. Without the private RSA keys, which never go over 
+the airwaves, the eavesdropper can't obtain the Blowfish keys and, 
+therefore, can't decrypt the messages passed between the two machines. 
+This example is similar to how the OpenSSH command shell works (although
+ OpenSSH takes additional steps to prevent the public keys from being 
+tampered with during transit).   </p><p>  Now let's say that a server 
+wants to send a firmware upgrade to a device and wants to be sure that 
+the code isn't intercepted and modified during transit. The firmware 
+upgrade may be delivered over a network connection, but could just as 
+easily be delivered via a CD-ROM. In any case, the server first encrypts
+ the firmware upgrade with its private RSA key, and then sends it to the
+ device. The recipient decrypts the message with the server's public 
+key, which was perhaps programmed into the device during manufacture. If
+ the firmware upgrade is successfully decrypted, in other words a 
+checksum of the image equals a known value, or the machine instructions 
+look valid, the firmware upgrade is considered authentic.   </p><p>  The
+ RSA algorithm is computationally expensive, although not unreasonably 
+so for the level of functionality and security it provides. A 
+lighter-weight approach to firmware exchange with an embedded system 
+would be to encrypt the image with Blowfish, instead of RSA. The 
+downside to this approach is that the Blowfish key in the embedded 
+system has to be kept secret, which can be difficult to achieve for a 
+truly determined attacker with hardware skills. In less extreme cases, 
+however, Blowfish is probably fine since an attacker with such intimate 
+knowledge of the target system and environment will likely find another 
+way into the device anyway (in other words, simply snatching the 
+firmware upgrade from flash memory once it's decrypted).   </p><p>  <font size="3" face="Verdana" color="#003366"><b>The Blowfish algorithm </b></font><br>
+  Blowfish is a symmetric encryption algorithm, meaning that it uses the
+ same secret key to both encrypt and decrypt messages. Blowfish is also a
+ block cipher, meaning that it divides a message up into fixed length 
+blocks during encryption and decryption. The block length for Blowfish 
+is 64 bits; messages that aren't a multiple of eight bytes in size must 
+be padded.   </p><p>  Blowfish is public domain, and was designed by 
+Bruce Schneier expressly for use in performance-constrained environments
+ such as embedded systems.<b><a href="#endnotes" name="3"><sup>[3]</sup></a></b>
+ It has been extensively analyzed and deemed "reasonably secure" by the 
+cryptographic community. Implementation examples are available from 
+several sources, including the one by Paul Kocher that's excerpted in 
+this article as Listing 1. (The complete code is available for download 
+at ftp://ftp.embedded.com/pub/2003/08blowfish.)  </p><p>  /*<br>  &nbsp;&nbsp;Blowfish algorithm.  Written 1997 by Paul Kocher (<a href="mailto:paul@cryptography.com">paul@cryptography.com</a>).<br>  &nbsp;&nbsp;This code and the algorithm are in the0 public domain.<br>   */<br>  <br>  #define MAXKEYBYTES 56&nbsp;&nbsp;&nbsp; /* 448 bits */<br>  #define N&nbsp;&nbsp;&nbsp;16<br>  <br>  typedef struct {<br>  &nbsp;&nbsp;&nbsp;uint32_t P[16 + 2];<br>  &nbsp;&nbsp;&nbsp;uint32_t S[4][256];<br>  } BLOWFISH_CTX;<br>  <br>  unsigned long <br>  F(BLOWFISH_CTX *ctx, uint32_t x) <br>  {<br>  &nbsp;&nbsp;&nbsp;uint16_t  a, b, c, d;<br>  &nbsp;&nbsp;&nbsp;uint32_t  y;<br>  <br>  &nbsp;&nbsp;&nbsp;d = x &amp; 0x00FF;<br>  &nbsp;&nbsp;&nbsp;x &gt;&gt;= 8;<br>  &nbsp;&nbsp;&nbsp;c = x &amp; 0x00FF;<br>  &nbsp;&nbsp;&nbsp;x &gt;&gt;= 8;<br>  &nbsp;&nbsp;&nbsp;b = x &amp; 0x00FF;<br>  &nbsp;&nbsp;&nbsp;x &gt;&gt;= 8;<br>  &nbsp;&nbsp;&nbsp;a = x &amp; 0x00FF;<br>  <br>  &nbsp;&nbsp;&nbsp;y = ctx-&gt;S[0][a] + ctx-&gt;S[1][b];<br>  &nbsp;&nbsp;&nbsp;y = y ^ ctx-&gt;S[2][c];<br>  &nbsp;&nbsp;&nbsp;y = y + ctx-&gt;S[3][d];<br>  <br>  &nbsp;&nbsp;&nbsp;return y;<br>  }<br>  void <br>  Blowfish_Encrypt(BLOWFISH_CTX *ctx, uint32_t *xl, uint32_t *xr) <br>  {<br>  &nbsp;&nbsp;&nbsp;uint32_t  Xl;<br>  &nbsp;&nbsp;&nbsp;uint32_t  Xr;<br>  &nbsp;&nbsp;&nbsp;uint32_t  temp;<br>  &nbsp;&nbsp;&nbsp;int&nbsp;&nbsp;&nbsp;ii;<br>  <br>  &nbsp;&nbsp;&nbsp;Xl = *xl;<br>  &nbsp;&nbsp;&nbsp;Xr = *xr;<br>  <br>  &nbsp;&nbsp;&nbsp;for (i = 0; i &lt; N; ++i) <br>  &nbsp;&nbsp;&nbsp;{<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Xl = Xl ^ ctx-&gt;P[i];<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Xr = F(ctx, Xl) ^ Xr;<br>  <br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temp = Xl;<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Xl = Xr;<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Xr = temp;<br>  &nbsp;&nbsp;&nbsp;}<br>  <br>  &nbsp;&nbsp;&nbsp;temp = Xl;<br>  &nbsp;&nbsp;&nbsp;Xl = Xr;<br>  &nbsp;&nbsp;&nbsp;Xr = temp;<br>  <br>  &nbsp;&nbsp;&nbsp;Xr = Xr ^ ctx-&gt;P[N];<br>  &nbsp;&nbsp;&nbsp;Xl = Xl ^ ctx-&gt;P[N + 1];<br>  <br><br>  &nbsp;&nbsp;&nbsp;*xl = Xl;<br>  &nbsp;&nbsp;&nbsp;*xr = Xr;<br>  }<br>  <br>  void <br>  Blowfish_Decrypt(BLOWFISH_CTX *ctx, uint32_t *xl, uint32_t *xr) <br>  {<br>  &nbsp;&nbsp;&nbsp;uint32_t  Xl;<br>  &nbsp;&nbsp;&nbsp;uint32_t  Xr;<br>  &nbsp;&nbsp;&nbsp;uint32_t  temp;<br>  &nbsp;&nbsp;&nbsp;int&nbsp;&nbsp;&nbsp;ii;<br>  <br>  &nbsp;&nbsp;&nbsp;Xl = *xl;<br>  &nbsp;&nbsp;&nbsp;Xr = *xr;<br>  <br>  &nbsp;&nbsp;&nbsp;for (i = N + 1; i &gt; 1; --i) <br>  &nbsp;&nbsp;&nbsp;{<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Xl = Xl ^ ctx-&gt;P[i];<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Xr = F(ctx, Xl) ^ Xr;<br>  <br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temp = Xl;<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Xl = Xr;<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Xr = temp;<br>  &nbsp;&nbsp;&nbsp;}<br>  <br>  &nbsp;&nbsp;&nbsp;temp = Xl;<br>  &nbsp;&nbsp;&nbsp;Xl = Xr;<br>  &nbsp;&nbsp;&nbsp;Xr = temp;<br>  <br>  &nbsp;&nbsp;&nbsp;Xr = Xr ^ ctx-&gt;P[1];<br>  &nbsp;&nbsp;&nbsp;Xl = Xl ^ ctx-&gt;P[0];<br>  <br>  &nbsp;&nbsp;&nbsp;*xl = Xl;<br>  &nbsp;&nbsp;&nbsp;*xr = Xr;<br>  }<br>  <br>  void <br>  Blowfish_Init(BLOWFISH_CTX *ctx, uint16_t *key, int KeyLen) <br>  {<br>  &nbsp;&nbsp;&nbsp;uint32_t  Xl;<br>  {<br>  &nbsp;&nbsp;&nbsp;int i, j, k;<br>  &nbsp;&nbsp;&nbsp;uint32_t data, datal, datar;<br>  <br>  &nbsp;&nbsp;&nbsp;for (i = 0; i &lt; 4; i++) <br>  &nbsp;&nbsp;&nbsp;{<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (j = 0; j &lt; 256; j++) ctx-&gt;S[i][j] = ORIG_S[i][j];<br>  &nbsp;&nbsp;&nbsp;}<br>  <br>  &nbsp;&nbsp;&nbsp;j = 0;<br>  &nbsp;&nbsp;&nbsp;for (i = 0; i &lt; N + 2; ++i) <br>  &nbsp;&nbsp;&nbsp;{<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data = 0x00000000;<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (k = 0; k &lt; 4; ++k) <br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data = (data &lt;&lt; 8) | key[j];<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;j = j + 1;<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (j &gt;= keyLen) j = 0;<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ctx-&gt;P[i] = ORIG_P[i] ^ data;<br>  &nbsp;&nbsp;&nbsp;}<br>  <br>  &nbsp;&nbsp;&nbsp;datal = 0x00000000;<br>  &nbsp;&nbsp;&nbsp;datar = 0x00000000;<br>  <br>  &nbsp;&nbsp;&nbsp;for (i = 0; i &lt; N + 2; i += 2) <br>  &nbsp;&nbsp;&nbsp;{<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Blowfish_Encrypt(ctx, &amp;datal, &amp;datar);<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ctx-&gt;P[i] = datal;<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ctx-&gt;P[i + 1] = datar;<br>  &nbsp;&nbsp;&nbsp;}<br>  <br>  &nbsp;&nbsp;&nbsp;for (i = 0; i &lt; 4; ++i) <br>  &nbsp;&nbsp;&nbsp;{<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (j = 0; j &lt; 256; j += 2) <br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Blowfish_Encrypt(ctx, &amp;datal, &amp;datar);<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ctx-&gt;S[i][j] = datal;<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ctx-&gt;S[i][j + 1] = datar;<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>  &nbsp;&nbsp;&nbsp;}<br>  }<br>  <br>  int <br>  Blowfish_Test(BLOWFISH_CTX *ctx) <br>  {<br>  &nbsp;&nbsp;&nbsp;uint32_t L = 1, R = 2;<br>  <br>  &nbsp;&nbsp;&nbsp;Blowfish_Init(ctx, (unsigned char*)"TESTKEY", 7);<br>  &nbsp;&nbsp;&nbsp;Blowfish_Encrypt(ctx, &amp;L, &amp;R);<br>  &nbsp;&nbsp;&nbsp;if (L != 0xDF333FD2L || R != 0x30A71BB4L) return (-1);<br>  <br>  &nbsp;&nbsp;&nbsp;Blowfish_Decrypt(ctx, &amp;L, &amp;R);<br>  &nbsp;&nbsp;&nbsp;if (L != 1 || R != 2) return (-1); return (0);<br>  }<br>  </p><p>
+    Blowfish requires about 5KB of memory. A careful implementation on a
+ 32-bit processor can encrypt or decrypt a 64-bit message in 
+approximately 12 clock cycles. (Not-so-careful implementations, like 
+Kocher, don't increase that time by much.) Longer messages increase 
+computation time in a linear fashion; for example, a 128-bit message 
+takes about (2 x 12) clocks. Blowfish works with keys up to 448 bits in 
+length.   </p><p>  <img src="Encrypting%20data%20with%20the%20Blowfish%20algorithm_files/0308feat2fig1.html" vspace="0" hspace="0" border="0"><br clear="all">  <b>Figure 1:  Blowfish algorithm</b>  </p><p>
+  A graphical representation of the Blowfish algorithm appears in Figure
+ 1. In this description, a 64-bit plaintext message is first divided 
+into 32 bits. The "left" 32 bits are XORed with the first element of a 
+P-array to create a value I'll call P', run through a transformation 
+function called F, then XORed with the "right" 32 bits of the message to
+ produce a new value I'll call F'. F' then replaces the "left" half of 
+the message and P' replaces the "right" half, and the process is 
+repeated 15 more times with successive members of the P-array. The 
+resulting P' and F' are then XORed with the last two entries in the 
+P-array (entries 17 and 18), and recombined to produce the 64-bit 
+ciphertext.   </p><p>  <img src="Encrypting%20data%20with%20the%20Blowfish%20algorithm_files/0308feat2fig2.html" vspace="0" hspace="0" border="0"><br clear="all">  <b>Figure 2:  Graphic representation of F</b>  </p><p>
+    A graphical representation of F appears in Figure 2. The function 
+divides a 32-bit input into four bytes and uses those as indices into an
+ S-array. The lookup results are then added and XORed together to 
+produce the output.   </p><p>  Because Blowfish is a symmetric 
+algorithm, the same procedure is used for decryption as well as 
+encryption. The only difference is that the input to the encryption is 
+plaintext; for decryption, the input is ciphertext.   </p><p>  The 
+P-array and S-array values used by Blowfish are precomputed based on the
+ user's key. In effect, the user's key is transformed into the P-array 
+and S-array; the key itself may be discarded after the transformation. 
+The P-array and S-array need not be recomputed (as long as the key 
+doesn't change), but must remain secret.   </p><p>  I'll refer you to the source code for computing the P and S arrays and only briefly summarize the procedure as follows:   </p><ul>  &nbsp;&nbsp;&nbsp;<li>P is an array of eighteen 32-bit integers.   &nbsp;&nbsp;&nbsp;</li><li>S is a two-dimensional array of 32-bit integer of dimension 4x256.   &nbsp;&nbsp;&nbsp;</li><li>Both
+ arrays are initialized with constants, which happen to be the 
+hexadecimal digits of π (a pretty decent random number source).   
+&nbsp;&nbsp;&nbsp;</li><li>The key is divided up into 32-bit blocks and 
+XORed with the initial elements of the P and S arrays. The results are 
+written back into the array.   &nbsp;&nbsp;&nbsp;</li><li>A message of 
+all zeros is encrypted; the results of the encryption are written back 
+to the P and S arrays. The P and S arrays are now ready for use.   </li></ul>  <font size="3" face="Verdana" color="#003366"><b>Using the example code </b></font><br>
+  Of course, firmware upgrades and data logs are seldom exactly 64 bits 
+in length. To encrypt long strings of data using Blowfish, carve the 
+message up into 64-bit blocks, encrypt each block and save the results. 
+Pad the message with a value of your choosing to end on a 64-bit 
+boundary. The code in the <b>main()</b> of Listing 2 does exactly this.   <p>  <b>Listing 2:  Example of Blowfish use</b>  </p><p>  #include &lt;stdio.h&gt;<br>  #include &lt;string.h&gt;  </p><p>  int <br>  main (void) <br>  &nbsp;&nbsp;&nbsp;{<br>  &nbsp;&nbsp;&nbsp;BLOWFISH_CTX ctx;<br>  &nbsp;&nbsp;&nbsp;int n;<br>  <br>  &nbsp;&nbsp;&nbsp;/* must be less than 56 bytes */<br>  &nbsp;&nbsp;&nbsp;char *key = "a random number string would be a better key";<br>  &nbsp;&nbsp;&nbsp;int keylen = strlen(key);<br>  <br>  &nbsp;&nbsp;&nbsp;uint8_t *plaintext_string = "this is our message";<br>  &nbsp;&nbsp;&nbsp;int plaintext_len = strlen(plaintext_string);<br>  <br>  &nbsp;&nbsp;&nbsp;uint8_t ciphertext_buffer[256];<br>  &nbsp;&nbsp;&nbsp;uint8_t *ciphertext_string = &amp;ciphertext_buffer[0];<br>  &nbsp;&nbsp;&nbsp;int ciphertext_len = 0;<br>  <br>  &nbsp;&nbsp;&nbsp;uint32_t message_left;<br>  &nbsp;&nbsp;&nbsp;uint32_t message_right;<br>  &nbsp;&nbsp;&nbsp;int block_len;<br>  &nbsp;&nbsp;&nbsp;<br>  #if 1<br>  &nbsp;&nbsp;&nbsp;/* sanity test, encrypts a known message */<br>  &nbsp;&nbsp;&nbsp;n = Blowfish_Test(&amp;ctx);<br>  &nbsp;&nbsp;&nbsp;printf("Blowfish_Test returned: %d.%s\n", n, n ? "  Abort." : "");<br>  &nbsp;&nbsp;&nbsp;if (n) return n;<br>  #endif<br>  <br>  &nbsp;&nbsp;&nbsp;Blowfish_Init(&amp;ctx, key, keylen);<br>  <br>  &nbsp;&nbsp;&nbsp;printf("Plaintext message string is: %s\n", plaintext_string);<br>  <br>  &nbsp;&nbsp;&nbsp;/* encrypt the plaintext message string */<br>  &nbsp;&nbsp;&nbsp;printf("Encrypted message string is: ");<br>  <br>  &nbsp;&nbsp;&nbsp;while (plaintext_len) <br>  &nbsp;&nbsp;&nbsp;{<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;message_left = message_right = 0UL;<br>  <br>
+  &nbsp;&nbsp;&nbsp;/* crack the message string into a 64-bit block (ok,
+ really two 32-bit blocks); pad with zeros if necessary */<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (block_len = 0; block_len &lt; 4; block_len++) <br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;message_left = message_left &lt;&lt; 8;<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (plaintext_len) <br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;message_left += *plaintext_string++;<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;plaintext_len--;<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else message_left += 0;<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (block_len = 0; block_len &lt; 4; block_len++) <br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;message_right = message_right &lt;&lt; 8;<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (plaintext_len) <br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;message_right += *plaintext_string++;<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;plaintext_len--;<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else message_right += 0;<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>  &nbsp;&nbsp;&nbsp;/* encrypt and print the results */<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Blowfish_Encrypt(&amp;ctx, &amp;message_left, &amp;message_right);<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("%lx%lx", message_left, message_right);<br>  <br>  &nbsp;&nbsp;&nbsp;/* save the results for decryption below */<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*ciphertext_string++ = (uint8_t)(message_left &gt;&gt; 24);<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*ciphertext_string++ = (uint8_t)(message_left &gt;&gt; 16);<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*ciphertext_string++ = (uint8_t)(message_left &gt;&gt; 8);<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*ciphertext_string++ = (uint8_t)message_left;<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*ciphertext_string++ = (uint8_t)(message_right &gt;&gt; 24);<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*ciphertext_string++ = (uint8_t)(message_right &gt;&gt; 16);<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*ciphertext_string++ = (uint8_t)(message_right &gt;&gt; 8);<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*ciphertext_string++ = (uint8_t)message_right;<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ciphertext_len += 8;<br>  printf("\n");<br>  <br>  &nbsp;&nbsp;&nbsp;/* reverse the process */<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("Decrypted message string is: ");<br>  <br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ciphertext_string = &amp;ciphertext_buffer[0];<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while(ciphertext_len) <br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;message_left = message_right = 0UL;<br>  <br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (block_len = 0; block_len &lt; 4; block_len++) <br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;message_left = message_left &lt;&lt; 8;<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;message_left += *ciphertext_string++;<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (ciphertext_len)<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ciphertext_len--;<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (block_len = 0; block_len &lt; 4; block_len++) <br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; message_right = message_right &lt;&lt; 8;<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; message_right += *ciphertext_string++;<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (ciphertext_len)<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ciphertext_len--;<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>  <br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Blowfish_Decrypt(&amp;ctx, &amp;message_left, &amp;message_right);<br>  <br>  &nbsp;&nbsp;&nbsp;/* if plaintext message string padded, extra zeros here */<br>  <br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("%c%c%c%c%c%c%c%c", <br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(int)(message_left &gt;&gt; 24), (int)(message_left &gt;&gt; 16),<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(int)(message_left &gt;&gt; 8), (int)(message_left),<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(int)(message_right &gt;&gt; 24), (int)(message_right &gt;&gt; 16),<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(int)(message_right &gt;&gt; 8), (int)(message_right));<br>  }<br>  <br>  printf("\n");<br>  <br>  return 0;<br>  }  </p><p>
+  Now is a good time to start thinking about adding data integrity and 
+privacy capabilities to your embedded system. The Blowfish algorithm is 
+an excellent choice for encryption, since it's lightweight, public 
+domain, and considered secure even after extensive analysis.  </p><p>  <b>Bill Gatliff</b>
+ is a consultant who specializes in solving embedded development 
+problems using free software tools. He's the  creator of the gdbstubs 
+library, a free collection of embeddable stubs for the GNU debugger. You
+ can reach him at <a href="mailto:bgat@billgatliff.com">bgat@billgatliff.com</a>.   </p><p>  <a name="endnotes"></a><font size="3" face="Verdana" color="#003366"><b>End notes:</b></font><br>  </p></font><ol><font size="2" face="verdana,arial,helvetica,sans-serif">  &nbsp;&nbsp;&nbsp;<li>Not
+ an actual log per se, but so-called ephemerides information that allows
+ the device to find GPS transmitters without doing a time-consuming 
+search of the entire GPS spectrum. Such information can also be used to 
+pinpoint the receiver's location at a previous point in time. Because of
+ this capability, GPS receivers are routinely collected and analyzed 
+during searches by law enforcement. A digital signature would  
+authenticate the ephimeride, verifying that it hadn't been tampered with
+  or rendered invalid before being used as evidence. <br>  <a href="#1">Back</a>  &nbsp;&nbsp;&nbsp;</li><li>In
+ the U.S., commercial automotive systems do this to prevent warranty 
+claims for user-damaged hardware; in Europe, it's to prevent speeding. <br>  <a href="#2">Back</a>  &nbsp;&nbsp;&nbsp;</li></font><li><font size="2" face="verdana,arial,helvetica,sans-serif">Schneier, Bruce. <i>Applied Cryptography: Protocols, Algorithms, and Source Code in C, Second Edition.</i> New York, NY: John Wiley &amp; Sons, 1995.<br>  <a href="#3">Back</a></font>  </li></ol>                    <p>   	<!--sphider_noindex--> 
+
+	<br><br>  		<style>
+		table#contactprov, table#contactprov td
+		{
+		padding:0px!important;
+		border-collapse:collapse!important; 
+		border:1px solid black;
+		}
+		table.hidden, table.hidden td
+		{
+		padding:0px!important;
+		border-collapse:collapse!important; 
+		border:0!important;
+		}
+	
+		</style>
+
+	
+<br><br>  
+
+
+       
+<br><br>     
+
+
+<br><br>     
+<script type="text/javascript">      
+function page_info(text) 
+{
+	windows = window.open(text,"description", "scrollbars=yes,width=520,height=500");
+}
+</script>
+
+<br><br>
+
+	
+  
+
+
+<script type="text/javascript">      
+//<!--
+function sendbyemail() 
+   {
+
+    var id  = "5922";
+    var url  = "//www.design-reuse.com/articles/sendbyemail.php?id=";
+    windows = window.open(url  + id,"description", "scrollbars=yes,width=570,height=500");
+   }
+//-->
+</script>
+
+<script type="text/javascript">
+//<!--	
+	
+			
+	function GoOutside(url) {
+		newsid = 5922 ;
+		location.href = "//www.design-reuse.com/articles" + "/exit/?id=" + newsid  + "&url=" + url;
+		return false;
+	}
+	
+
+			
+//-->
+</script>
+
+<!--/sphider_noindex-->
+
+
+</p></div>
+
+</div>
+
+
+	<!--sphider_noindex--> 
+	<div id="middle300">
+	<div style="margin-top: 15px;"> 
+
+<ul class="share-buttons">
+  <li><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.design-reuse.com%2Farticles%2F5922%2Fencrypting-data-with-the-blowfish-algorithm.html%3Futm_medium%3Dfa%26utm_source%3Dwebsite&amp;t=Encrypting+data+with+the+Blowfish+algorithm" title="Share on Facebook" target="_blank"><img src="Encrypting%20data%20with%20the%20Blowfish%20algorithm_files/facebook.png"></a></li>
+  <li><a href="https://twitter.com/intent/tweet?source=https%3A%2F%2Fwww.design-reuse.com%2Farticles%2F5922%2Fencrypting-data-with-the-blowfish-algorithm.html%3Futm_medium%3Dtw%26utm_source%3Dwebsite&amp;text=Encrypting+data+with+the+Blowfish+algorithm:%20https%3A%2F%2Fwww.design-reuse.com%2Farticles%2F5922%2Fencrypting-data-with-the-blowfish-algorithm.html&amp;via=designreuse" target="_blank" title="Tweet"><img src="Encrypting%20data%20with%20the%20Blowfish%20algorithm_files/twitter.png"></a></li>
+  <li><a href="https://plus.google.com/share?url=https%3A%2F%2Fwww.design-reuse.com%2Farticles%2F5922%2Fencrypting-data-with-the-blowfish-algorithm.html%3Futm_medium%3Dgo%26utm_source%3Dwebsite" target="_blank" title="Share on Google+"><img src="Encrypting%20data%20with%20the%20Blowfish%20algorithm_files/google.png"></a></li>
+  <li><a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Fwww.design-reuse.com%2Farticles%2F5922%2Fencrypting-data-with-the-blowfish-algorithm.html%3Futm_medium%3Dli%26utm_source%3Dwebsite&amp;title=Encrypting+data+with+the+Blowfish+algorithm&amp;source=%2F%2Fwww.design-reuse.com%2F" target="_blank" title="Share on LinkedIn"><img src="Encrypting%20data%20with%20the%20Blowfish%20algorithm_files/linkedin.png"></a></li>
+</ul>
+ <br></div>
+
+	 
+		<div class="gradient">
+		<h3 class="oswald" style="margin-bottom: 15px;"><a href="https://www.design-reuse.com/sip/" style="color:#E41129;">Search Silicon IP</a></h3>
+		<div class="type1 bluelink">
+		<div style="font-size: 12px; color:black;">16,000 IP Cores from 450 Vendors</div>
+		<form method="get" action="https://www.design-reuse.com/sip/" name="formsip" style="padding:6px">
+		<input class="searchip-text" type="text" id="qsip" name="q" onblur="if (this.value == '') {this.value = 'Enter Keywords....';}" onfocus="if(this.value == 'Enter Keywords....') {this.value = '';}" value="Enter Keywords...." style="float: left;">
+		<input type="submit" class="searchip" alt="Search Design-Reuse.com">
+		</form>
+				</div>
+		<div class="spaceboy" style="clear:both">&nbsp;</div>
+		</div>
+	
+	
+
+
+		
+		
+	<div class="bloc300 gradient">
+			  <h3 class="oswald" style="margin-bottom: 15px;">Related Articles</h3>
+			 <div> 
+
+	<div class="type1">
+
+
+	<ul class="arrowList1" style="line-height: 13px; height: auto; border-bottom: 0px">
+	
+
+<li><a href="https://www.design-reuse.com/articles/42985/the-battle-of-data-center-interconnect-fabric.html">
+The Battle of Data center Interconnect Fabric</a></li>
+
+<li><a href="https://www.design-reuse.com/articles/42251/in-memory-computing-versus-data-center-networks.html">
+In-Memory Computing Versus Data Center Networks</a></li>
+
+<li><a href="https://www.design-reuse.com/articles/41673/reusable-verification-model-for-motion-estimation-algorithm.html">
+Reusable Verification Model for Motion estimation Algorithm</a></li>
+
+<li><a href="https://www.design-reuse.com/articles/41403/hybrid-hardware-architecture-for-low-complexity-motion-estimation-algorithm.html">
+Hybrid Hardware Architecture for Low Complexity Motion Estimation Algorithm</a></li>
+
+<li><a href="https://www.design-reuse.com/articles/40840/adaptive-rate-control-algorithm.html">
+Adaptive Rate Control Algorithm</a></li>
+
+
+	</ul>
+	</div></div>
+	<div class="spaceboy" style="clear:both">&nbsp;</div>
+		</div>
+
+	
+			<div class="bloc300 gradient">
+		  <h3 class="oswald" style="margin-bottom: 15px;">New Articles</h3>
+		 <div> 
+
+		<div class="type1">
+
+
+		<ul class="arrowList1" style="line-height: 13px; height: auto; border-bottom: 0px">
+		<li>
+				<a href="https://www.design-reuse.com/articles/45330/bulletproofing-pcie-based-soc-reliability-availability-serviceability-ras-mechanism.html" target="_top">Bulletproofing PCIe-based SoCs with Advanced Reliability, Availability, Serviceability (RAS) Mechanisms</a>
+				</li>
+<li>
+				<a href="https://www.design-reuse.com/articles/45307/extending-8k-over-a-single-cost-effective-wire-with-tico-lightweight-compression.html" target="_top">Extending 8K over a single, cost-effective wire with TICO lightweight compression</a>
+				</li>
+<li>
+				<a href="https://www.design-reuse.com/articles/45241/pci-express-3-0-needs-reliable-timing-design.html" target="_top">PCI Express 3.0 needs reliable timing design</a>
+				</li>
+<li>
+				<a href="https://www.design-reuse.com/articles/45224/traffic-management-system-through-vehicle-classification-and-counting-techniques.html" target="_top">Designing an Effective Traffic Management System Through Vehicle Classification and Counting Techniques</a>
+				</li>
+<li>
+				<a href="https://www.design-reuse.com/articles/45176/improving-reliability-of-non-volatile-memory-systems.html" target="_top">Improving reliability of non-volatile memory systems</a>
+				</li>
+
+		</ul>
+		</div></div>
+		<div class="spaceboy" style="clear:both">&nbsp;</div>
+	<div class="txtR">
+		<a class="fcTheme ud" style="color:#E41129;" href="https://www.design-reuse.com/articles/">See New Articles &gt;&gt;</a>
+		</div>
+		</div>
+	
+		<div class="bloc300 gradient">
+			  <h3 class="oswald" style="margin-bottom: 15px;">Most Popular</h3>
+			 <div> 
+
+	<div class="type1">
+
+
+	<ol>
+
+					<li class=""><a href="https://www.design-reuse.com/articles/25090/dynamic-memory-allocation-fragmentation-c.html" target="_top">
+				Dynamic Memory Allocation and Fragmentation in C and C++				</a></li>
+
+							<li class=""><a href="https://www.design-reuse.com/articles/41330/cmos-soi-finfet-technology-review-paper.html" target="_top">
+				A Review Paper on CMOS, SOI and FinFET Technology				</a></li>
+
+							<li class="up"><a href="https://www.design-reuse.com/articles/20994/embedded-software-architecture-soc-design-and-re-use.html" target="_top">
+				Embedded Software Architecture Specification Developments in Support of SoC Design and Re-use				</a></li>
+
+							<li class="up"><a href="https://www.design-reuse.com/articles/8289/how-to-calculate-cpu-utilization.html" target="_top">
+				How to calculate CPU utilization				</a></li>
+
+							<li class="down"><a href="https://www.design-reuse.com/articles/41504/design-rule-checks-drc-a-practical-view-for-28nm-technology.html" target="_top">
+				Design Rule Checks (DRC) - A Practical View for 28nm Technology				</a></li>
+
+			
+	</ol>
+	</div></div>
+	<div class="spaceboy" style="clear:both">&nbsp;</div>
+	<div class="txtR">
+		<a class="fcTheme ud" style="color:#E41129;" href="https://www.design-reuse.com/articles/mostpopular">See the Top 20 &gt;&gt;</a></div>
+
+	</div>
+	
+	
+	<table style="text-align: center;" class="hidden">
+<tbody><tr><td>
+<a href="javascript:sendbyemail()">
+<img src="Encrypting%20data%20with%20the%20Blowfish%20algorithm_files/icn_emailarticle.gif" alt="" width="24" height="24" border="0">
+</a></td>
+<td><a href="javascript:sendbyemail()" style="font-size:9px">
+E-mail This Article
+</a></td>
+<td><img src="Encrypting%20data%20with%20the%20Blowfish%20algorithm_files/spacer.gif" alt="" width="20" height="24" border="0">
+</td>
+<td><a href="https://www.design-reuse.com/articles/?id=5922&amp;print=yes">
+<img src="Encrypting%20data%20with%20the%20Blowfish%20algorithm_files/icn_print.gif" alt="" width="24" height="24" border="0">
+</a>
+</td>
+<td><a href="https://www.design-reuse.com/articles/?id=5922&amp;print=yes" style="font-size:9px">
+Printer-Friendly Page</a>
+</td>
+</tr>
+</tbody></table>
+	
+	</div>
+	</div>
+
+	<!--/sphider_noindex-->
+
+</div>
+	<div id="right135">
+	<!--sphider_noindex-->
+	<ins>
+<div id="rv_swf_d15808c13b" style="display: inline;"><img src="Encrypting%20data%20with%20the%20Blowfish%20algorithm_files/1x1.gif" alt="" title="" border="0"></div>
+<script type="text/javascript"><!--// <![CDATA[
+    var ox_swf = new FlashObject('https://static.designandreuse.com/adserver/www/images/4000420fe8aead498c2332d4fcfa7c4e.swf', 'id-', '125', '125', '10.2');
+    ox_swf.addVariable('clickTARGET', '_blank');
+    ox_swf.addVariable('clickTAG', 'https%3A%2F%2Fwww.us.design-reuse.com%2Fadserver%2Fwww%2Fdelivery%2Fck.php%3Foaparams%3D2__bannerid%3D2136__zoneid%3D5__cb%3Dd15808c13b__oadest%3Dhttps%253A%252F%252Fwww.design-reuse.com%252Fbanner%252Fexit.php%253Fid%253D566');
+    ox_swf.addParam('wmode','opaque');
+    ox_swf.addParam('allowScriptAccess','always');
+    ox_swf.write('rv_swf_d15808c13b', "https:\/\/www.us.design-reuse.com\/adserver\/www\/delivery\/lg.php?bannerid=2136&campaignid=646&zoneid=5&loc=https%3A%2F%2Fwww.design-reuse.com%2Farticles%2F5922%2Fencrypting-data-with-the-blowfish-algorithm.html&referer=https%3A%2F%2Fwww.google.com%2F&cb=d15808c13b", "https:\/\/www.us.design-reuse.com\/adserver\/www\/delivery\/lg.php?bannerid=0&campaignid=0&zoneid=5&loc=https%3A%2F%2Fwww.design-reuse.com%2Farticles%2F5922%2Fencrypting-data-with-the-blowfish-algorithm.html&referer=https%3A%2F%2Fwww.google.com%2F&fb=1&cb=d15808c13b");
+// ]]> --></script><noscript><div id='beacon_d15808c13b' style='position: absolute; left: 0px; top: 0px; visibility: hidden;'><img src='https://www.us.design-reuse.com/adserver/www/delivery/lg.php?bannerid=0&amp;campaignid=0&amp;zoneid=5&amp;loc=https%3A%2F%2Fwww.design-reuse.com%2Farticles%2F5922%2Fencrypting-data-with-the-blowfish-algorithm.html&amp;referer=https%3A%2F%2Fwww.google.com%2F&amp;fb=1&amp;cb=d15808c13b' width='0' height='0' alt='' style='width: 0px; height: 0px;' /></div></noscript></ins>
+	<br><br>
+	<ins><a href="https://www.us.design-reuse.com/adserver/www/delivery/ck.php?oaparams=2__bannerid=3782__zoneid=6__cb=df9c510978__oadest=https%3A%2F%2Fwww.design-reuse.com%2Fbanner%2Fexit.php%3Fid%3D16125" target="_blank"><img src="Encrypting%20data%20with%20the%20Blowfish%20algorithm_files/902fcb99b525c99d4ea350cb632c39d4.gif" alt="" title="" width="120" height="600" border="0"></a><div id="beacon_df9c510978" style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="Encrypting%20data%20with%20the%20Blowfish%20algorithm_files/lg_003.gif" alt="" style="width: 0px; height: 0px;" width="0" height="0"></div></ins>
+	<br><br>
+	
+<ins><a href="https://www.us.design-reuse.com/adserver/www/delivery/ck.php?oaparams=2__bannerid=3067__zoneid=7__cb=b80cb03ed8__oadest=https%3A%2F%2Fwww.design-reuse.com%2Fbanner%2Fexit.php%3Fid%3D6161" target="_blank"><img src="Encrypting%20data%20with%20the%20Blowfish%20algorithm_files/cf6d27c62280269f228f50993ffd6f52.gif" alt="" title="" width="125" height="125" border="0"></a><div id="beacon_b80cb03ed8" style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="Encrypting%20data%20with%20the%20Blowfish%20algorithm_files/lg_004.gif" alt="" style="width: 0px; height: 0px;" width="0" height="0"></div></ins>
+	<br><br>
+		<!--/sphider_noindex-->
+	</div>
+
+<div class="clearBoth"></div>
+<div id="leaderboard2015">
+<ins><a href="https://www.us.design-reuse.com/adserver/www/delivery/ck.php?oaparams=2__bannerid=3531__zoneid=3__cb=3d88e36a12__oadest=https%3A%2F%2Fwww.design-reuse.com%2Fbanner%2Fexit.php%3Fid%3D12259" target="_blank"><img src="Encrypting%20data%20with%20the%20Blowfish%20algorithm_files/d259ce955393081ddf98242fb37df76b.jpg" alt="" title="" width="728" height="90" border="0"></a><div id="beacon_3d88e36a12" style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="Encrypting%20data%20with%20the%20Blowfish%20algorithm_files/lg.gif" alt="" style="width: 0px; height: 0px;" width="0" height="0"></div></ins>
+</div> 
+
+</div>
+
+
+ <div class="clearLeft"></div> 
+  </div>
+  
+  
+<div id="bandeauBasFooter"><div id="bandeauBasFooter2">
+    <div id="copyright">
+	<!--sphider_noindex-->
+	<p><strong>© 2018 Design And Reuse</strong></p> <p>All Rights Reserved.</p>
+	<p style="font-weight: normal;">No portion of this site may be copied, 
+retransmitted, reposted, duplicated or otherwise used without the 
+express written permission of Design And Reuse.</p> 
+	</div>
+<!--
+	<div class="colonne sansBordure">
+    <h4 style="font-size: 16px;">Give us your feedback</h4>
+	<p style="height:50px">Was this page helpful?<br/>Ask us a question or get help<br/><br/></p>
+		<div class="sitebutton">
+		<a href="/contact/" title="Talk to us" id="talktous"  rel="nofollow">Talk to us</a>					
+        </div>
+	</div>
+	-->
+                
+	<div class="colonne sansBordure">
+	<h4 style="font-size: 16px;">Partner with us</h4>
+	<p style="height:50px">
+	Visit our new Partnership Portal for more information.
+	<br><br></p>
+				<div class="sitebutton">
+				<a href="http://www.dr-embedded.com/join-dr/" id="talktous" rel="nofollow">Partner with us</a>
+				</div>
+	</div>             
+	
+	<div class="colonne hid980">
+	<h4 style="font-size: 16px;">List your Products</h4>
+	<p style="height:50px">Suppliers, list
+	your IPs for free.<br><br></p>
+				<div class="sitebutton">
+									<a href="https://www.design-reuse.com/map/providers/" id="addproducts">List your Products</a>
+
+						</div>
+	</div>
+
+	<div class="colonne">
+	<h4 style="font-size: 16px;">Design-Reuse.com</h4>
+	<ul>
+	<li class="puceBlancheMini"><a href="https://www.design-reuse.com/contact/">Contact Us</a></li>
+	<li class="puceBlancheMini"><a href="https://www.design-reuse.com/products/about.php">About us</a></li>
+	<li class="puceBlancheMini"><a href="https://www.design-reuse.com/partners/">D&amp;R Partner Program</a></li>
+	<li class="puceBlancheMini"><a href="https://www.design-reuse.com/ads/">Advertise with Us</a></li>
+	<li class="puceBlancheMini"><a href="https://www.design-reuse.com/privacy/">Privacy Policy</a></li>
+	</ul>
+	
+
+	</div>
+
+
+</div></div>
+
+
+
+</section></form>
+
+
+	<script type="text/javascript" src="Encrypting%20data%20with%20the%20Blowfish%20algorithm_files/staticdefault-20150421.css"></script>
+	
+
+
+
+
+					<div id="flosensing"><img src="Encrypting%20data%20with%20the%20Blowfish%20algorithm_files/lg_002.gif" width="1" height="1"><img src="Encrypting%20data%20with%20the%20Blowfish%20algorithm_files/5922.gif" width="1" height="1"></div>
+	<script type="text/javascript">
+	$( "#flosensing" ).append( "<img src=\"//www.design-reuse.com/flosensing/lg.php?url=%2Farticles%2F5922%2Fencrypting-data-with-the-blowfish-algorithm.html&c=articles&action=view&prod=5922&prov=1&ref=https%3A%2F%2Fwww.google.com%2F\" width=\"1\" height=\"1\">");
+
+	</script>
+		
+			<script type="text/javascript">
+			$( "#flosensing" ).append( "<img src=\"//www.design-reuse.com/popularity/5922.gif\" width=\"1\" height=\"1\">");
+
+			</script>		
+			
+		
+	
+
+<script async="" src="Encrypting%20data%20with%20the%20Blowfish%20algorithm_files/asyncjs.php"></script>
+
+</body></html>

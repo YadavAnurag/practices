@@ -1,0 +1,512 @@
+plain text: 'L' 
+
+plain text: 'o' 
+
+plain text: 'r' 
+
+plain text: 'e' 
+
+plain text: 'm' 
+
+plain text: 'i' 
+
+plain text: 'p' 
+
+plain text: 's' 
+
+plain text: 'u' 
+
+plain text: 'm' 
+
+plain text: 'd' 
+
+plain text: 'o' 
+
+plain text: 'l' 
+
+plain text: 'o' 
+
+plain text: 'r' 
+
+plain text: 's' 
+
+duration encryption seal 0.04408  ms 
+
+encrypt: 17909319723303669451 
+
+encrypt: 15313531128009525096 
+
+encrypt: 12805975608996648158 
+
+encrypt: 11837877629530275934 
+
+encrypt: 3839955027093428499 
+
+encrypt: 9424886420739246759 
+
+encrypt: 709644089065125977 
+
+encrypt: 10684844513490545629 
+
+encrypt: 1493439952993723221 
+
+encrypt: 768681754139323153 
+
+encrypt: 1540980017790951149 
+
+encrypt: 11178120029797316912 
+
+encrypt: 7832520184042778086 
+
+encrypt: 8245528599095316797 
+
+encrypt: 7603856890115464767 
+
+encrypt: 6922447778837355702 
+
+duration decrypt seal 0.026921  ms 
+
+decrypt seal: L 
+
+decrypt seal: o 
+
+decrypt seal: r 
+
+decrypt seal: e 
+
+decrypt seal: m 
+
+decrypt seal: i 
+
+decrypt seal: p 
+
+decrypt seal: s 
+
+decrypt seal: u 
+
+decrypt seal: m 
+
+decrypt seal: d 
+
+decrypt seal: o 
+
+decrypt seal: l 
+
+decrypt seal: o 
+
+decrypt seal: r 
+
+decrypt seal: s 
+
+------------------blowfish algo--------------------- 
+
+plain text blowfish: 'L' 
+
+plain text blowfish: 'o' 
+
+plain text blowfish: 'r' 
+
+plain text blowfish: 'e' 
+
+plain text blowfish: 'm' 
+
+plain text blowfish: 'i' 
+
+plain text blowfish: 'p' 
+
+plain text blowfish: 's' 
+
+plain text blowfish: 'u' 
+
+plain text blowfish: 'm' 
+
+plain text blowfish: 'd' 
+
+plain text blowfish: 'o' 
+
+plain text blowfish: 'l' 
+
+plain text blowfish: 'o' 
+
+plain text blowfish: 'r' 
+
+plain text blowfish: 's' 
+
+duration encrypt blowfish 0.009053  ms 
+
+encrypt blowfish : 3671526512892562359 
+
+encrypt blowfish : 4508291144359757348 
+
+encrypt blowfish : 14813863317274908175 
+
+encrypt blowfish : 13316861684739227570 
+
+encrypt blowfish : 16609180346759667457 
+
+encrypt blowfish : 1454371360608071592 
+
+encrypt blowfish : 319213475008791695 
+
+encrypt blowfish : 6126974243892446769 
+
+encrypt blowfish : 14823472739379102320 
+
+encrypt blowfish : 2251889744340403421 
+
+encrypt blowfish : 6172188070313966550 
+
+encrypt blowfish : 4182069265974794505 
+
+encrypt blowfish : 15450490643759813986 
+
+encrypt blowfish : 12974585042456675378 
+
+encrypt blowfish : 32772277205947878 
+
+encrypt blowfish : 3375863365857287509 
+
+duration decrypt blowfish 0.009738  ms 
+
+decrypt blowfish: L 
+
+decrypt blowfish: o 
+
+decrypt blowfish: r 
+
+decrypt blowfish: e 
+
+decrypt blowfish: m 
+
+decrypt blowfish: i 
+
+decrypt blowfish: p 
+
+decrypt blowfish: s 
+
+decrypt blowfish: u 
+
+decrypt blowfish: m 
+
+decrypt blowfish: d 
+
+decrypt blowfish: o 
+
+decrypt blowfish: l 
+
+decrypt blowfish: o 
+
+decrypt blowfish: r 
+
+decrypt blowfish: s 
+
+################   clefia algo ############################# 
+
+------------------clefia algo------------------------------- 
+
+clefia plaintext :  76 
+
+clefia plaintext :  111 
+
+clefia plaintext :  114 
+
+clefia plaintext :  101 
+
+clefia plaintext :  109 
+
+clefia plaintext :  105 
+
+clefia plaintext :  112 
+
+clefia plaintext :  115 
+
+clefia plaintext :  117 
+
+clefia plaintext :  109 
+
+clefia plaintext :  100 
+
+clefia plaintext :  111 
+
+clefia plaintext :  108 
+
+clefia plaintext :  111 
+
+clefia plaintext :  114 
+
+clefia plaintext :  115 
+
+duration encryption clefia 0.015317  ms 
+
+clefia ciphertext:  1 
+
+clefia ciphertext:  0 
+
+clefia ciphertext:  3 
+
+clefia ciphertext:  144 
+
+clefia ciphertext:  125 
+
+clefia ciphertext:  236 
+
+clefia ciphertext:  10 
+
+clefia ciphertext:  71 
+
+clefia ciphertext:  205 
+
+clefia ciphertext:  235 
+
+clefia ciphertext:  163 
+
+clefia ciphertext:  251 
+
+clefia ciphertext:  87 
+
+clefia ciphertext:  174 
+
+clefia ciphertext:  250 
+
+clefia ciphertext:  19 
+
+duration decryption clefia 0.014131  ms 
+
+clefia plaintext :  76 
+
+clefia plaintext :  111 
+
+clefia plaintext :  114 
+
+clefia plaintext :  101 
+
+clefia plaintext :  109 
+
+clefia plaintext :  105 
+
+clefia plaintext :  112 
+
+clefia plaintext :  115 
+
+clefia plaintext :  117 
+
+clefia plaintext :  109 
+
+clefia plaintext :  100 
+
+clefia plaintext :  111 
+
+clefia plaintext :  108 
+
+clefia plaintext :  111 
+
+clefia plaintext :  114 
+
+clefia plaintext :  115 
+
+--------------------rc5------------------------ 
+
+rc5 plaintext :  76 
+
+rc5 plaintext :  111 
+
+rc5 plaintext :  114 
+
+rc5 plaintext :  101 
+
+rc5 plaintext :  109 
+
+rc5 plaintext :  105 
+
+rc5 plaintext :  112 
+
+rc5 plaintext :  115 
+
+rc5 plaintext :  117 
+
+rc5 plaintext :  109 
+
+rc5 plaintext :  100 
+
+rc5 plaintext :  111 
+
+rc5 plaintext :  108 
+
+rc5 plaintext :  111 
+
+rc5 plaintext :  114 
+
+rc5 plaintext :  115 
+
+duration Encryption rc 0.001988  ms 
+
+rc5 ciphertext:  3157413641 
+
+rc5 ciphertext:  3278432367 
+
+rc5 ciphertext:  1407064301 
+
+rc5 ciphertext:  2045609218 
+
+rc5 ciphertext:  4183052288 
+
+rc5 ciphertext:  1385045979 
+
+rc5 ciphertext:  929134225 
+
+rc5 ciphertext:  518797787 
+
+rc5 ciphertext:  3678218246 
+
+rc5 ciphertext:  692473208 
+
+rc5 ciphertext:  466784394 
+
+rc5 ciphertext:  1761510838 
+
+rc5 ciphertext:  2381239505 
+
+rc5 ciphertext:  25971944 
+
+rc5 ciphertext:  4026651505 
+
+rc5 ciphertext:  2948559520 
+
+duration Decryption rc 0.002008  ms 
+
+rc5 plaintext:  76 
+
+rc5 plaintext:  111 
+
+rc5 plaintext:  114 
+
+rc5 plaintext:  101 
+
+rc5 plaintext:  109 
+
+rc5 plaintext:  105 
+
+rc5 plaintext:  112 
+
+rc5 plaintext:  115 
+
+rc5 plaintext:  117 
+
+rc5 plaintext:  109 
+
+rc5 plaintext:  100 
+
+rc5 plaintext:  111 
+
+rc5 plaintext:  108 
+
+rc5 plaintext:  111 
+
+rc5 plaintext:  114 
+
+rc5 plaintext:  115 
+
+--------------------gost------------------------ 
+
+gost plaintext :  76 
+
+gost plaintext :  111 
+
+encrypt gost: 18446740794011049262 
+
+encrypt gost: 2829239214668 
+
+decrypt gost: 76 
+
+decrypt gost: 111 
+
+gost plaintext :  114 
+
+gost plaintext :  101 
+
+encrypt gost: 18446740594480944952 
+
+encrypt gost: 18446742456050289796 
+
+decrypt gost: 114 
+
+decrypt gost: 101 
+
+gost plaintext :  109 
+
+gost plaintext :  105 
+
+encrypt gost: 18446743919049147514 
+
+encrypt gost: 3908313696392 
+
+decrypt gost: 109 
+
+decrypt gost: 105 
+
+gost plaintext :  112 
+
+gost plaintext :  115 
+
+encrypt gost: 687092007292 
+
+encrypt gost: 18446743012495813659 
+
+decrypt gost: 112 
+
+decrypt gost: 115 
+
+gost plaintext :  117 
+
+gost plaintext :  109 
+
+encrypt gost: 18446741848772767356 
+
+encrypt gost: 2128681405051 
+
+decrypt gost: 117 
+
+decrypt gost: 109 
+
+gost plaintext :  100 
+
+gost plaintext :  111 
+
+encrypt gost: 18446743004978855386 
+
+encrypt gost: 18446740004093727924 
+
+decrypt gost: 100 
+
+decrypt gost: 111 
+
+gost plaintext :  108 
+
+gost plaintext :  111 
+
+encrypt gost: 18446741186237275397 
+
+encrypt gost: 401473004372 
+
+decrypt gost: 108 
+
+decrypt gost: 111 
+
+gost plaintext :  114 
+
+gost plaintext :  115 
+
+encrypt gost: 18446742253708997708 
+
+encrypt gost: 18446740413989708892 
+
+decrypt gost: 114 
+
+decrypt gost: 115 
+
+duration decryption Gost 0.300179  ms 
+
+The program has unexpectedly finished.
+
+/home/kamal/algo/algo exited with code 0
+

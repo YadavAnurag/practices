@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">NFC Sample Application</string>
+    <string name="write_url_button">Write URL</string>
+    <string name="write_text_button">Write Text</string>
+    <string name="write_aar_button">Write AAR tag</string>
+    <string name="waiting_for_tag">Move an NFC tag close to the device</string>
+    <string name="default_text">Sample message</string>
+    
+</resources>
