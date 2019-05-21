@@ -1,5 +1,5 @@
 node_modules
-.vscode
+*.vscode
 package.lock.json
-.mp4
-.avi
+*.mp4
+*.avi
