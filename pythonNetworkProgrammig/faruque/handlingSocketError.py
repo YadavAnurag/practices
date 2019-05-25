@@ -10,11 +10,11 @@ def main():
 	parser.add_argument('--port', action='store', dest='port', required=False)
 	parser.add_argument('--file', action='store', dest='file', required=False)
 
-	given_args = parser.parse_args()
-
 	host = given_args.host
 	port = int(given_args.port)
-	filename = given_args.file 
+	filename = given_args.file
+
+
 
 	try:
 		s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -31,6 +31,8 @@ def main():
 		print('Connecting.......')
 		sys.exit(1)
 
+for i in range(100):
+	print(str(i))
 
 	try:
 		msg = 'GET %s HTTP/1.0\r\n\r\n' %filename
