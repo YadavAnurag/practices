@@ -1,0 +1,6 @@
+Component - 
+    user defined custom tags
+    has two parts - 
+        decorator
+        class defination
+        
