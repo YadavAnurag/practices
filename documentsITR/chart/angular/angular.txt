@@ -4,3 +4,15 @@ Component -
         decorator
         class defination
         
+
+Features in TypeScript -    
+    import
+    language utilities  eg.destructuring
+    decorator
+    class 
+    types 
+
+    interfaces
+    generics
+    importing and exporting modules
+    
