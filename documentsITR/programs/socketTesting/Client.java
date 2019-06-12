@@ -3,6 +3,7 @@ import java.net.*;
 
 public class Client{
 	public static void main(String[] args){
+		System.out.println("asfda");
 		try{
 			Socket s = new Socket("localhost", 8888);
 			DataOutputStream dout = new DataOutputStream(s.getOutputStream());
@@ -12,6 +13,7 @@ public class Client{
 			s.close();
 		}catch(Exception e){
 			System.out.println(e);
+
 		}
 
 	}
