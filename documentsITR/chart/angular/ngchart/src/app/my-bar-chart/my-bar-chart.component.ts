@@ -1,5 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ChartOptions } from 'chart.js';
+import { Subscription } from 'rxjs';
+import { DataService } from './data.service';
 
 @Component({
   selector: 'app-my-bar-chart',
@@ -9,7 +11,59 @@ import { ChartOptions } from 'chart.js';
 export class MyBarChartComponent implements OnInit {
 
   id: any;
-  constructor() { }
+  sub: Subscription;
+  data: number;
+
+  constructor(private dataService: DataService) { }
+  ngOnInit() {
+    this.id = setInterval(() => {
+      this.addData([Math.sin(Math.PI*(0.5-Math.random()))], new Date().toLocaleString());
+    }, 500);
+    // this.sub = this.dataService.getData()
+    //   .subscribe((data)=>{
+    //     this.data = data;
+    //     console.log(data);
+    //   });
+  }
+
+  ngOnDestroy() {
+    if (this.id) {
+      clearInterval(this.id);
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   public barChartOptions = {
@@ -20,17 +74,23 @@ export class MyBarChartComponent implements OnInit {
       easing: 'linear'
     },
     scales: {
-      xAxes: [{
-        type: 'time',
+      // xAxes: [{
+      //   type: 'time',
+      // }],
+      yAxes: [{
+        ticks: {
+          beginAtZero: true,
+          stepSize: 1
+        }
       }]
     }
   };
-  public barChartLabels = [];
+  public barChartLabels = ['first', 'second'];
 
   public barChartType = 'line';
   public barChartLegend = true;
   public barChartDatasets = [
-    { data: [], 
+    { data: [48,40,40], 
       label: 'Series A',
       lineTension: 0.1,
       pointRadius: 0,
@@ -55,15 +115,6 @@ export class MyBarChartComponent implements OnInit {
     this.barChartLabels = [...this.barChartLabels, label];
   };
 
-  ngOnInit() {
-    this.id = setInterval(() => {
-      this.addData([Math.sin(Math.PI*(0.5-Math.random()))], new Date().toLocaleString());
-    }, 500);
-  }
-
-  ngOnDestroy() {
-    if (this.id) {
-      clearInterval(this.id);
-    }
-  }
+  
 }
+
