@@ -1,20 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
 </head>
+
 <body>
-        <script src="/socket.io/socket.io.js"></script>
-        <script>
-          var socket = io('http://127.0.0.1:8888');
-          console.log('server connected');
-          socket.emit('clientMessage', 'hi this is me');
-          socket.on('serverMessage', (serverData)=>{
-              console.log(serverData.data);
-          });
-        </script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    var socket = io('http://127.0.0.1:9999');
+
+    setInterval(() => {
+      socket.emit('clientMessage', {
+        data: 'fuck you'
+      });
+    }, 1000);
+    socket.on('serverMessage', (serverData) => {
+      console.log(serverData.data);
+    });
+  </script>
 </body>
+
 </html>
