@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 
-const config: SocketIoConfig = {url: 'http://127.0.0.1:8888', options: {}};
+const config: SocketIoConfig = { url: 'http://127.0.0.1:9898', options: {} };
 
 @NgModule({
   declarations: [
