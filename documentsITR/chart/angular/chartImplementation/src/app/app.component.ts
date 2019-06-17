@@ -1,6 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { DataService } from './data-service/data.service';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -14,12 +13,11 @@ export class AppComponent implements OnInit, OnDestroy {
 
 
 
-  subTitle = Subscription;
   ngOnInit() {
     this.dataService.sendData(this.title);
     this.dataService.getData().subscribe(data => {
       console.log(data);
-      this.title = data.msg + data.position;
+      this.title = data['msg'] + data['position'];
     });
   }
   ngOnDestroy() { }
