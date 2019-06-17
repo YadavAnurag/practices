@@ -4,7 +4,8 @@ const server = require('http').createServer(app);
 const io = require('socket.io')(server);
 
 const lineByLine = require('n-readlines/readlines');
-const liner = new lineByLine('./test_sim_ss_txyzvxvyvz.dat');
+//const liner = new lineByLine('./test_sim_ss_txyzvxvyvz.dat');
+const liner = new lineByLine('./cdp.txt');
 
 
 
@@ -20,9 +21,9 @@ let sockets = new Set();
 
 let id;
 let i = 0;
-let data = {
-  first: Math.random(),
-  second: i
+let serverData = {
+  x: 0,
+  y: 0
 }
 
 
@@ -44,22 +45,22 @@ io.on('connection', (socket) => {
   }); 
 
   id = setInterval(()=>{
+    i=0
     line = liner.next();
     if(line){
 
       lineString = line.toString('ascii');
-      data.first = lineString.split(" ")[1];
-      data.second = lineString.split(" ")[2];
+      serverData.x = lineString.split(" ")[2];
+      serverData.y = lineString.split(" ")[1];
       
-      socket.emit('serverMessage', data);
-      console.log('data sent from server', data);
+      socket.emit('serverMessage', serverData);
+      console.log('data sent from server', serverData);
+      i+=1;
       
     }else{
       clearInterval(id);
     }
-  }, 5000);
-
-
+  }, 2000);
 });
 
 

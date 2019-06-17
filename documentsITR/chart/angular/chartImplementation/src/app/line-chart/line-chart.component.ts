@@ -1,6 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { DataInterface } from '../interfaces/dataInterface';
 import { DataService } from '../data-service/data.service';
+import { ChartDataSets, ChartOptions } from 'chart.js';
+import { Label, Color } from 'ng2-charts';
 
 @Component({
   selector: 'app-line-chart',
@@ -9,71 +11,71 @@ import { DataService } from '../data-service/data.service';
 })
 export class LineChartComponent implements OnInit {
 
-  first: number;
-  second: number;
+  x: number;
+  y: number;
   constructor(private dataService: DataService) { }
 
 
-  data: number;
-
-  public barChartOptions = {
-    scaleShowVerticalLines: false,
+  
+  public lineChartData: ChartDataSets[] = [
+    { data: [], label: 'Series A' },
+    { data: [-3, -5, 5, 50, -15, 20, 12, 56, 6,3,1], label: 'Series B' },
+  ];
+  public lineChartLabels: Label[ ] = ['0', '3','7','11','15', '19','23', '27', '31', '35', '39'];  
+  public lineChartOptions: ChartOptions = {
     responsive: true, 
-    animation:{
-      duration: 250,
-      easing: 'linear'
-    },
     scales: {
-      // xAxes: [{
-      //   type: 'time',
-      // }],
-      yAxes: [{
+      xAxes: [{
+        display: true,
         ticks: {
           beginAtZero: true,
-          stepSize: 1
+          max: 150,
+          min: -150,
+          stepSize: 10
+
+        }
+      }],
+      yAxes: [{
+        display: true,
+        ticks: {
+          beginAtZero: true,
+            stepSize:5,
+            max: 150,
+            min: -150
         }
       }]
     }
   };
-  public barChartLabels = ['first', 'second'];
-
-  public barChartType = 'line';
-  public barChartLegend = true;
-  public barChartDatasets = [
-    { data: [48,40,40], 
-      label: 'Series A',
-      lineTension: 0.1,
-      pointRadius: 0,
-      fill: false
+  public lineChartColors: Color[] = [
+    {
+      borderColor: 'black',
+      backgroundColor: 'rgba(255,0,0,0.3)',
     },
-    // { data: [28, 48, 40, 19, 86, 27, 90, 7], label: 'Series B' }
   ];
 
+  
+  public lineChartLegend = true;
+  public lineChartType = 'line';
 
+  // addData(dataArr: Array<number>, label: number) {
+  //   this.lineChartData.forEach((dataset, index) => {
+  //     this.lineChartData[index] =
+  //       Object.assign({}, this.lineChartData[index], { data: [...this.lineChartData[index].data, dataArr[index]] });
+  //   });
 
-  onChartClick(event: MouseEvent): void { }
-
-  onChartHover(event: MouseEvent): void { }
-
-  addData(dataArr: Array<number>, label: string) {
-    this.barChartDatasets.forEach((dataset, index) => {
-      this.barChartDatasets[index] =
-        Object.assign({}, this.barChartDatasets[index], { data: [...this.barChartDatasets[index].data, dataArr[index]] });
-    });
-
-
-    this.barChartLabels = [...this.barChartLabels, label];
-  };
+  //   this.lineChartLabels = [...this.lineChartLabels, label];
+  // };
 
 
   ngOnInit() {
-    // this.dataService.sendData(this.first);
-    this.dataService.getData().subscribe(data => {
-      console.log(data);
-      this.first = data['first'];
-      this.second = data['second'];
-      this.addData([this.first], this.second.toString());
-      console.log(data);
+    this.dataService.getData().subscribe(serverData => {
+      console.log(serverData);
+      this.x = serverData['x'];
+      this.y = serverData['y'];
+      // this.addData([this.first], this.second);
+      this.lineChartData[0].data.push(this.y);
+      //this.lineChartLabels.push(this.x.toString());
+      console.log(serverData);
     });
   }
   ngOnDestroy() {

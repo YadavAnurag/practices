@@ -1,17 +1,20 @@
 <p>
-  Message: {{second}}
+  x: {{x}}
 </p>
 <p>
-    loopNumber: {{first}}
+    y: {{y}}
 </p>
 
 <br />
 
-<div>
-  <div style="display: block">
-    <canvas baseChart [datasets]="barChartDatasets" [labels]="barChartLabels" [options]="barChartOptions"
-      [legend]="barChartLegend" [chartType]="barChartType"
-    >
-    </canvas>
-  </div>
+<div style="display: block;">
+  <canvas baseChart
+    [datasets]="lineChartData"
+    [labels]="lineChartLabels"
+    [options]="lineChartOptions"
+    [colors]="lineChartColors"
+    [legend]="lineChartLegend"
+    [chartType]="lineChartType">
+  </canvas>
 </div>
+
