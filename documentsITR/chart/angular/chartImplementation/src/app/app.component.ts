@@ -17,7 +17,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.dataService.sendData(this.title);
     this.dataService.getData().subscribe(data => {
       console.log(data);
-      this.title = data['msg'] + data['position'];
+      // this.title = data['msg'] + data['position'];
     });
   }
   ngOnDestroy() { }

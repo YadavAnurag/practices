@@ -3,10 +3,33 @@ const app = express();
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
 
+const lineByLine = require('n-readlines/readlines');
+const liner = new lineByLine('./test_sim_ss_txyzvxvyvz.dat');
+
+
+
+
 app.use(express.static(__dirname + '/dist'));
 
 
+
+
+
 let sockets = new Set();
+
+
+let id;
+let i = 0;
+let data = {
+  first: Math.random(),
+  second: i
+}
+
+
+
+
+
+
 io.on('connection', (socket) => {
 
   sockets.add(socket);
@@ -18,20 +41,25 @@ io.on('connection', (socket) => {
 
   socket.on('clientMessage', (clientData) => {
     console.log(clientData);
-  });
+  }); 
 
-  let i = 0;
-  setInterval(() => {
-    console.log(`server trying to send data to client`);
+  id = setInterval(()=>{
+    line = liner.next();
+    if(line){
 
-    data = {
-      msg: 'server data sent to client',
-      position: i
+      lineString = line.toString('ascii');
+      data.first = lineString.split(" ")[1];
+      data.second = lineString.split(" ")[2];
+      
+      socket.emit('serverMessage', data);
+      console.log('data sent from server', data);
+      
+    }else{
+      clearInterval(id);
     }
+  }, 5000);
 
-    socket.emit('serverMessage', data);
-    i += 1;
-  }, 2000);
+
 });
 
 

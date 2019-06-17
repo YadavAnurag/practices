@@ -1,3 +1,17 @@
 <p>
-  serverData: {{firstData}}
+  Message: {{second}}
 </p>
+<p>
+    loopNumber: {{first}}
+</p>
+
+<br />
+
+<div>
+  <div style="display: block">
+    <canvas baseChart [datasets]="barChartDatasets" [labels]="barChartLabels" [options]="barChartOptions"
+      [legend]="barChartLegend" [chartType]="barChartType"
+    >
+    </canvas>
+  </div>
+</div>
