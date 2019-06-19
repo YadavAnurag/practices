@@ -3,6 +3,7 @@ import { DataInterface } from '../interfaces/dataInterface';
 import { DataService } from '../data-service/data.service';
 import { ChartDataSets, ChartOptions } from 'chart.js';
 import { Label, Color } from 'ng2-charts';
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-line-chart',
@@ -13,35 +14,44 @@ export class LineChartComponent implements OnInit {
 
   x: number;
   y: number;
+  dataLength:number = 15;
+
+  xmax:number = 2500000;
+  xmin:number = 0;
+
+  ymax:number = 1000000;
+  ymin:number = 0;
+
   constructor(private dataService: DataService) { }
 
 
-  
   public lineChartData: ChartDataSets[] = [
-    { data: [], label: 'Series A' },
-    { data: [-3, -5, 5, 50, -15, 20, 12, 56, 6,3,1], label: 'Series B' },
+    { data: [], borderWidth:0.5,fill: false,borderColor:'red',lineTension: 0, label: 'Real-Time Data' },
+    { data: [], borderWidth:0.5,fill: false,borderColor:'red',lineTension:0, label: 'Nominal Data' },
   ];
-  public lineChartLabels: Label[ ] = ['0', '3','7','11','15', '19','23', '27', '31', '35', '39'];  
+  public lineChartLabels: Label[ ] = [];  
   public lineChartOptions: ChartOptions = {
     responsive: true, 
+    elements: {
+      point: {
+        radius: 1
+      }
+    },
+
     scales: {
       xAxes: [{
-        display: true,
+        display: false,
         ticks: {
-          beginAtZero: true,
-          max: 150,
-          min: -150,
-          stepSize: 10
+          max: this.xmax,
+          min: this.xmin,
 
         }
       }],
       yAxes: [{
         display: true,
         ticks: {
-          beginAtZero: true,
-            stepSize:5,
-            max: 150,
-            min: -150
+            max: this.ymax,
+            min: this.ymin
         }
       }]
     }
@@ -67,19 +77,43 @@ export class LineChartComponent implements OnInit {
   // };
 
 
-  ngOnInit() {
-    this.dataService.getData().subscribe(serverData => {
+  ngOnInit() {}
+  ngOnDestroy() {}
+
+  getNominalData(){
+    this.dataService.getNominalData().subscribe(serverData =>{
       console.log(serverData);
       this.x = serverData['x'];
       this.y = serverData['y'];
-      // this.addData([this.first], this.second);
-      this.lineChartData[0].data.push(this.y);
-      //this.lineChartLabels.push(this.x.toString());
-      console.log(serverData);
+      this.lineChartData[1].data.push(this.y);
+      this.lineChartLabels.push(this.x.toString());
     });
+
+    this.dataService.getCompletionMessage().subscribe(serverData=>{
+      console.log('client: All nominal data has been received');
+    });
+
   }
-  ngOnDestroy() {
-    console.log('completed');
+
+  getRealTimeData(){
+    this.dataService.getRealTimeData().subscribe(serverData =>{
+      console.log(`server: realtime data ${serverData['x']}, ${serverData['y']}`);
+      this.x = serverData['x'];
+      this.y = serverData['y'];
+      this.lineChartData[0].data.push(this.y);
+    });
+
+    this.dataService.getCompletionMessage().subscribe(serverData=>{
+      console.log('client: All real time data has been received');
+    });
+
   }
+
+
+  saveFile(){
+    console.log('saving');
+    saveAs.saveAs('http://localhost:9898/file', 'plainText.txt');
+  }
+
 }
 
