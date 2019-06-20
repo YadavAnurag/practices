@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
 import { ChartsModule } from 'ng2-charts';
+import { HttpClientModule } from '@angular/common/http';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,7 +23,8 @@ const config: SocketIoConfig = { url: 'http://127.0.0.1:9898', options: {} };
     BrowserModule,
     AppRoutingModule,
     ChartsModule,
-    SocketIoModule.forRoot(config)
+    SocketIoModule.forRoot(config),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

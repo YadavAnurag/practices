@@ -3,6 +3,8 @@ const app = express();
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
 const lineByLine = require('n-readlines/readlines');
+const path = require('path');
+
 
 app.use(express.static(__dirname + '/dist'));
 
@@ -39,15 +41,17 @@ io.on('connection', (socket) => {
 
   socket.on('getNominalData', clientData => {
     console.log(`${clientData}`);
-    sendNominalData(socket, './test_sim_ss_grh.dat');
+    mypath = path.join(__dirname,'src/assets/dataFile/newdata.txt');
+    // sendNominalData(socket, './test_sim_ss_grh.dat');
+    sendNominalData(socket, mypath);
   });
 
   socket.on('getRealTimeData', clientData =>{
     console.log(`${clientData}`);
-    sendRealTimeData(socket, './test_sim_ss_grh.dat');
+    mypath = path.join(__dirname,'src/assets/dataFile/newdata.txt');
+    console.log(path.join(__dirname,'src/assets/dataFile/newdata.txt'));
+    sendRealTimeData(socket, mypath);
   });
-
-
   
 });
 
@@ -83,7 +87,7 @@ function sendNominalData(socket, pathToFile){
       socket.emit('serverNominalDataCompleted', 'nominal data has been sent');
     }
 
-  }, 2);
+  }, 200);
 }
 
 function sendRealTimeData(socket, pathToFile){

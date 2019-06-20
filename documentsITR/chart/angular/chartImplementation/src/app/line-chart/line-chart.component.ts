@@ -3,7 +3,8 @@ import { DataInterface } from '../interfaces/dataInterface';
 import { DataService } from '../data-service/data.service';
 import { ChartDataSets, ChartOptions } from 'chart.js';
 import { Label, Color } from 'ng2-charts';
-import { saveAs } from 'file-saver';
+
+
 
 @Component({
   selector: 'app-line-chart',
@@ -16,21 +17,24 @@ export class LineChartComponent implements OnInit {
   y: number;
   dataLength:number = 15;
 
-  xmax:number = 2500000;
+  xmax:number = 2207000;
   xmin:number = 0;
 
-  ymax:number = 1000000;
-  ymin:number = 0;
+  ymax:number = 1006367;
+  ymin:number = -1000;
 
   constructor(private dataService: DataService) { }
 
 
   public lineChartData: ChartDataSets[] = [
     { data: [], borderWidth:0.5,fill: false,borderColor:'red',lineTension: 0, label: 'Real-Time Data' },
-    { data: [], borderWidth:0.5,fill: false,borderColor:'red',lineTension:0, label: 'Nominal Data' },
+    { data: [], borderWidth:0.5,fill: false,borderColor:'blue',lineTension:0, label: 'Nominal Data' },
   ];
   public lineChartLabels: Label[ ] = [];  
   public lineChartOptions: ChartOptions = {
+    animation: {
+      duration: 0
+    },
     responsive: true, 
     elements: {
       point: {
@@ -40,7 +44,7 @@ export class LineChartComponent implements OnInit {
 
     scales: {
       xAxes: [{
-        display: false,
+        display: true,
         ticks: {
           max: this.xmax,
           min: this.xmin,
@@ -101,6 +105,7 @@ export class LineChartComponent implements OnInit {
       this.x = serverData['x'];
       this.y = serverData['y'];
       this.lineChartData[0].data.push(this.y);
+      //this.lineChartLabels.push(this.x.toString());
     });
 
     this.dataService.getCompletionMessage().subscribe(serverData=>{
@@ -109,11 +114,26 @@ export class LineChartComponent implements OnInit {
 
   }
 
+  totalx:Array<string> = [];
+  totaly:Array<number> = []
 
-  saveFile(){
-    console.log('saving');
-    saveAs.saveAs('http://localhost:9898/file', 'plainText.txt');
+  getFile(){
+    this.dataService.getFile('http://localhost:4200/assets/dataFile/newdata.txt').subscribe(res =>{
+      for (const line of res.split(/[\r\n]+/)){
+        this.totalx.push(line.split(" ")[0]);
+        this.totaly.push(Number(line.split(" ")[1]));
+        //console.log(line.split(" "));
+      }
+      //console.log(this.totalx, this.totaly);
+      setTimeout(()=>{
+        this.lineChartData[1].data.push(...this.totaly);
+        this.lineChartLabels.push(...this.totalx);
+        //console.log(this.lineChartData[1].data, this.lineChartLabels, this.totaly);
+      }, 1000)
+    });
   }
+
+
 
 }
 
