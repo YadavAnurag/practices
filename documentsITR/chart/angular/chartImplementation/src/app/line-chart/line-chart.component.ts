@@ -1,8 +1,8 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { DataInterface } from '../interfaces/dataInterface';
 import { DataService } from '../data-service/data.service';
 import { ChartDataSets, ChartOptions } from 'chart.js';
-import { Label, Color } from 'ng2-charts';
+import { Label, Color, BaseChartDirective } from 'ng2-charts';
 
 
 
@@ -13,29 +13,31 @@ import { Label, Color } from 'ng2-charts';
 })
 export class LineChartComponent implements OnInit {
 
+  @ViewChild(BaseChartDirective, { static: false }) chart: BaseChartDirective;
+
   x: number;
   y: number;
-  dataLength:number = 15;
+  dataLength: number = 15;
 
-  xmax:number = 2207000;
-  xmin:number = 0;
+  xmax: number = 2207000;
+  xmin: number = 0;
 
-  ymax:number = 1006367;
-  ymin:number = -1000;
+  ymax: number = 1006367;
+  ymin: number = -1000;
 
   constructor(private dataService: DataService) { }
 
 
   public lineChartData: ChartDataSets[] = [
-    { data: [], borderWidth:0.5,fill: false,borderColor:'red',lineTension: 0, label: 'Real-Time Data' },
-    { data: [], borderWidth:0.5,fill: false,borderColor:'blue',lineTension:0, label: 'Nominal Data' },
+    { data: [], borderWidth: 0.5, fill: false, borderColor: 'red', lineTension: 0, label: 'Real-Time Data' },
+    { data: [], borderWidth: 0.5, fill: false, borderColor: 'blue', lineTension: 0, label: 'Nominal Data' },
   ];
-  public lineChartLabels: Label[ ] = [];  
+  public lineChartLabels: Label[] = [];
   public lineChartOptions: ChartOptions = {
     animation: {
       duration: 0
     },
-    responsive: true, 
+    responsive: true,
     elements: {
       point: {
         radius: 1
@@ -54,8 +56,8 @@ export class LineChartComponent implements OnInit {
       yAxes: [{
         display: true,
         ticks: {
-            max: this.ymax,
-            min: this.ymin
+          max: this.ymax,
+          min: this.ymin
         }
       }]
     }
@@ -67,7 +69,7 @@ export class LineChartComponent implements OnInit {
     },
   ];
 
-  
+
   public lineChartLegend = true;
   public lineChartType = 'line';
 
@@ -81,51 +83,71 @@ export class LineChartComponent implements OnInit {
   // };
 
 
-  ngOnInit() {}
-  ngOnDestroy() {}
+  ngOnInit() { }
+  ngOnDestroy() { }
 
-  getNominalData(){
-    this.dataService.getNominalData().subscribe(serverData =>{
-      console.log(serverData);
+
+  getNominalData() {
+
+    this.dataService.getNominalData().subscribe(serverData => {
+      console.log(`${this.j}th`);
       this.x = serverData['x'];
       this.y = serverData['y'];
       this.lineChartData[1].data.push(this.y);
       this.lineChartLabels.push(this.x.toString());
+
+
     });
 
-    this.dataService.getCompletionMessage().subscribe(serverData=>{
+    this.dataService.getCompletionMessage().subscribe(serverData => {
       console.log('client: All nominal data has been received');
     });
 
   }
 
-  getRealTimeData(){
-    this.dataService.getRealTimeData().subscribe(serverData =>{
-      console.log(`server: realtime data ${serverData['x']}, ${serverData['y']}`);
-      this.x = serverData['x'];
-      this.y = serverData['y'];
-      this.lineChartData[0].data.push(this.y);
+  j = 0
+  d = new Date();
+  e = new Date();
+  total: any;
+  getRealTimeData() {
+    // this.d = new Date();
+    this.j = 0
+    this.dataService.getRealTimeData().subscribe(serverData => {
+      //console.log(`server: realtime data ${serverData['x']}, ${serverData['y']}`);
+      // this.x = serverData['x'];
+      // this.y = serverData['y'];
+      this.lineChartData[0].data.push(serverData['y']);
       //this.lineChartLabels.push(this.x.toString());
+      this.chart.chart.update();
+
+      // this.e = new Date();
+      // this.total = <any>this.d - <any>this.e;
+      // console.log('time ', (this.total) / 1000);
+      console.log(this.j);
+
+      this.j += 1;
     });
 
-    this.dataService.getCompletionMessage().subscribe(serverData=>{
-      console.log('client: All real time data has been received');
+    this.dataService.getCompletionMessage().subscribe(serverData => {
+      this.e = new Date();
+      this.total = <any>this.d - <any>this.e;
+      console.log('client: All real time data has been received', (this.total) / 1000);
     });
 
   }
 
-  totalx:Array<string> = [];
-  totaly:Array<number> = []
+  totalx: Array<string> = [];
+  totaly: Array<number> = []
 
-  getFile(){
-    this.dataService.getFile('http://localhost:4200/assets/dataFile/newdata.txt').subscribe(res =>{
-      for (const line of res.split(/[\r\n]+/)){
+  getFile() {
+    this.dataService.getFile('http://localhost:4200/assets/dataFile/newdata.txt').subscribe(res => {
+      for (const line of res.split(/[\r\n]+/)) {
         this.totalx.push(line.split(" ")[0]);
         this.totaly.push(Number(line.split(" ")[1]));
         //console.log(line.split(" "));
       }
       //console.log(this.totalx, this.totaly);
-      setTimeout(()=>{
+      setTimeout(() => {
         this.lineChartData[1].data.push(...this.totaly);
         this.lineChartLabels.push(...this.totalx);
         //console.log(this.lineChartData[1].data, this.lineChartLabels, this.totaly);
@@ -133,7 +155,12 @@ export class LineChartComponent implements OnInit {
     });
   }
 
-
+  connect() {
+    this.dataService.connect();
+  }
+  disconnect() {
+    this.dataService.disconnect();
+  }
 
 }
 

@@ -2,7 +2,7 @@
   x: {{x}}
 </p>
 <p>
-    y: {{y}}
+  y: {{y}}
 </p>
 
 <br />
@@ -10,14 +10,11 @@
 <button (click)="getNominalData()">get Nominal Data</button>
 <button (click)="getRealTimeData()">get Real Time Data</button>
 <button (click)="getFile()">get file</button>
+<button (click)="connect()">connect</button>
+<button (click)="disconnect()">disconnect</button>
+
 <div style="display: block;">
-  <canvas baseChart
-    [datasets]="lineChartData"
-    [labels]="lineChartLabels"
-    [options]="lineChartOptions"
-    [colors]="lineChartColors"
-    [legend]="lineChartLegend"
-    [chartType]="lineChartType">
+  <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions"
+    [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType">
   </canvas>
 </div>
-

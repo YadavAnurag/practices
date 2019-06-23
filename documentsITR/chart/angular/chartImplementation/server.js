@@ -9,9 +9,9 @@ const path = require('path');
 app.use(express.static(__dirname + '/dist'));
 
 
-app.get('/file', (req, res)=>{
-  res.download(__dirname+ '/dataFile/mydata.txt');
-  console.log(__dirname+ '/dataFile/mydata.txt');
+app.get('/file', (req, res) => {
+  res.download(__dirname + '/dataFile/mydata.txt');
+  console.log(__dirname + '/dataFile/mydata.txt');
 });
 
 
@@ -37,22 +37,22 @@ io.on('connection', (socket) => {
 
   socket.on('clientMessage', (clientData) => {
     console.log(clientData);
-  }); 
+  });
 
   socket.on('getNominalData', clientData => {
     console.log(`${clientData}`);
-    mypath = path.join(__dirname,'src/assets/dataFile/newdata.txt');
+    mypath = path.join(__dirname, 'src/assets/dataFile/newdata.txt');
     // sendNominalData(socket, './test_sim_ss_grh.dat');
     sendNominalData(socket, mypath);
   });
 
-  socket.on('getRealTimeData', clientData =>{
+  socket.on('getRealTimeData', clientData => {
     console.log(`${clientData}`);
-    mypath = path.join(__dirname,'src/assets/dataFile/newdata.txt');
-    console.log(path.join(__dirname,'src/assets/dataFile/newdata.txt'));
+    mypath = path.join(__dirname, 'src/assets/dataFile/newdata.txt');
+    console.log(path.join(__dirname, 'src/assets/dataFile/newdata.txt'));
     sendRealTimeData(socket, mypath);
   });
-  
+
 });
 
 
@@ -65,24 +65,24 @@ server.listen(port, () => {
 
 
 
-function sendNominalData(socket, pathToFile){
+function sendNominalData(socket, pathToFile) {
   console.log(`Server start to send nominal data`);
   const liner = new lineByLine(pathToFile);
-  i=0
-  id = setInterval(()=>{
-    
+  i = 0
+  id = setInterval(() => {
+
     line = liner.next();
 
-    if(line){
+    if (line) {
       lineString = line.toString('ascii');
       serverData.x = lineString.split(" ")[0];
       serverData.y = lineString.split(" ")[1];
-      
+
       socket.emit('serverNominalData', serverData);
       console.log(`${i}th data sent from server x: ${serverData.x} y: ${serverData.y}`);
-      i+=1;
-      
-    }else{
+      i += 1;
+
+    } else {
       clearInterval(id);
       socket.emit('serverNominalDataCompleted', 'nominal data has been sent');
     }
@@ -90,27 +90,29 @@ function sendNominalData(socket, pathToFile){
   }, 200);
 }
 
-function sendRealTimeData(socket, pathToFile){
+function sendRealTimeData(socket, pathToFile) {
   console.log(`Server: start to send real time data`);
   const liner = new lineByLine(pathToFile);
-  i=0
-  id = setInterval(()=>{
-    
+  i = 0
+  id = setInterval(() => {
+
     line = liner.next();
 
-    if(line){
+    if (line) {
       lineString = line.toString('ascii');
       serverData.x = lineString.split(" ")[0];
       serverData.y = lineString.split(" ")[1];
-      
-      socket.emit('serverRealTimeData', serverData);
+
+      for (const socket of sockets) {
+        socket.emit('serverRealTimeData', serverData);
+      }
       console.log(`server: ${i}th data sent from server x: ${serverData.x} y: ${serverData.y}`);
-      i+=1;
-      
-    }else{
+      i += 1;
+
+    } else {
       clearInterval(id);
       socket.emit('serverRealTimeDataCompleted', 'real time data has been sent');
     }
 
-  }, 50);
+  }, 200);
 }
