@@ -26,7 +26,10 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/js/chartjs.js",
+              "src/assets/js/socket.io.js"
+            ]
           },
           "configurations": {
             "production": {
