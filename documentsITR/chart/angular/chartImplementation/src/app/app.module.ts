@@ -13,9 +13,9 @@ import { LineChartComponent } from './line-chart/line-chart.component';
 
 
 const config: SocketIoConfig = {
-  url: 'http://127.0.0.1:9898',
+  url: 'localhost:9898',
   options: {
-    autoConnect: false,
+    autoConnect: true,
     reconnection: true,
     reconnectionDelay: 50,
     reconnectionAttempts: Infinity,

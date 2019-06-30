@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
-// const lineByLine = require('n-readlines/readlines');
+const lineByLine = require('n-readlines/readlines');
 const path = require('path');
 
 
@@ -48,7 +48,7 @@ io.on('connection', (socket) => {
 
   socket.on('getRealTimeData', clientData => {
     console.log(`${clientData}`);
-    mypath = path.join(__dirname+'src/assets/dataFile/newdata.txt');
+    mypath = path.join(__dirname + 'src/assets/dataFile/newdata.txt');
     //console.log(path.join(__dirname, 'src/assets/dataFile/newdata.txt'));
     sendRealTimeData(socket, mypath);
   });
@@ -66,28 +66,28 @@ server.listen(port, () => {
 
 
 function sendNominalData(socket, pathToFile) {
-  // console.log(`Server start to send nominal data`);
-  // const liner = new lineByLine(pathToFile);
-  // i = 0
-  // id = setInterval(() => {
+  console.log(`Server start to send nominal data`);
+  const liner = new lineByLine(pathToFile);
+  i = 0
+  id = setInterval(() => {
 
-  //   line = liner.next();
+    line = liner.next();
 
-  //   if (line) {
-  //     lineString = line.toString('ascii');
-  //     serverData.x = lineString.split(" ")[0];
-  //     serverData.y = lineString.split(" ")[1];
+    if (line) {
+      lineString = line.toString('ascii');
+      serverData.x = lineString.split(" ")[0];
+      serverData.y = lineString.split(" ")[1];
 
-  //     socket.emit('serverNominalData', serverData);
-  //     console.log(`${i}th data sent from server x: ${serverData.x} y: ${serverData.y}`);
-  //     i += 1;
+      socket.emit('serverNominalData', serverData);
+      console.log(`${i}th data sent from server x: ${serverData.x} y: ${serverData.y}`);
+      i += 1;
 
-  //   } else {
-  //     clearInterval(id);
-  //     socket.emit('serverNominalDataCompleted', 'nominal data has been sent');
-  //   }
+    } else {
+      clearInterval(id);
+      socket.emit('serverNominalDataCompleted', 'nominal data has been sent');
+    }
 
-  // }, 200);
+  }, 200);
 }
 
 function sendRealTimeData(socket, pathToFile) {
@@ -115,9 +115,9 @@ function sendRealTimeData(socket, pathToFile) {
     }
 
   }, 200);
-  i=0;
-  setInterval(()=>{
-    i+=1;
+  i = 0;
+  setInterval(() => {
+    i += 1;
     socket.emit('serverRealTimeData', i.toString());
-  },50);
+  }, 50);
 }

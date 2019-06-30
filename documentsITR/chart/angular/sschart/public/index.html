@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Chart</title>
+  <link rel="stylesheet" href="public/stylesheets/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+  <style>
+    canvas {
+      width: 500px;
+      height: 500px;
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="myChart"></canvas>
+  <script src="public/javascripts/chartjs.js"></script>
+  <script>
+    var ctx = document.getElementById('myChart').getContext('2d');
+
+    var chartColors = {
+      red: 'rgb(255, 99, 132)',
+      orange: 'rgb(255, 159, 64)',
+      yellow: 'rgb(255, 205, 86)',
+      green: 'rgb(75, 192, 192)',
+      blue: 'rgb(54, 162, 235)',
+      purple: 'rgb(153, 102, 255)',
+      grey: 'rgb(231,233,237)'
+    };
+
+    var xmax = 200;
+    var xmin = 0;
+
+    var ymax = 100;
+    var ymin = -100;
+
+    var nominalLabels = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90];
+
+    var nominalData = [10, 20, 30];
+    var realTimeData = [{
+      x: 10,
+      y: 27
+    }, {
+      x: 12,
+      y: 5
+    }, {
+      x: 22,
+      y: 72
+    }];
+
+
+    var nominalDataset = {
+      type: 'line',
+      label: 'Nominal Data',
+      borderColor: chartColors.red,
+      borderWidth: 1.5,
+      pointRadius: 1.5,
+      lineTension: 0,
+      fill: false,
+      data: nominalData,
+    };
+
+    var realTimeDataset = {
+      type: 'line',
+      label: 'RealTime Data',
+      borderColor: chartColors.blue,
+      borderWidth: 1.5,
+      pointRadius: 1.5,
+      lineTension: 0,
+      fill: false,
+      xAxisID: 'x-axis-2',
+      data: realTimeData
+    };
+
+    var myDatasets = [nominalDataset, realTimeDataset];
+
+    var chartOptions = {
+      responsive: true,
+      title: {
+        display: true,
+        text: 'RealTime Data with Nominal Data'
+      },
+      tooltips: {
+        mode: 'nearest',
+        intersect: true,
+      },
+      scales: {
+
+        xAxes: [{
+            gridLines: {
+              offsetGridLines: false
+            }
+          },
+          {
+            id: 'x-axis-2',
+            type: 'linear',
+            position: 'bottom',
+            display: true,
+            ticks: {
+              min: xmin,
+              max: xmax,
+              beginAtZero: true,
+              // stepSize: 10
+            }
+          }
+        ],
+        yAxes: [{
+          ticks: {
+            beginAtZero: true,
+            min: ymin,
+            max: ymax,
+            // stepSize: 10
+          }
+        }]
+      }
+    };
+
+
+    var config = {
+      type: 'line',
+      data: {
+        labels: nominalLabels,
+        datasets: myDatasets,
+      },
+      options: chartOptions
+    };
+
+    var myChart = new Chart(ctx, config);
+
+
+
+
+    var socket = io.connect("127.0.0.1:9898");
+
+    socket.on("nominalData", function (data) {
+      config.data.datasets[0].data = data.totalx;
+      config.data.labels = data.totaly
+      myChart.update();
+      console.log(config.data.datasets[0].data[1], config.data.labels[1]);
+    });
+
+
+    socket.on("serverRealTimeData", function (data) {
+      speedData.datasets[1].data.push(data.y);
+      myChart.update();
+      console.log(speedData.datasets[0].data[1], speedData.labels[1]);
+    });
+
+    setTimeout(function () {
+      socket.emit("getNominalData", "Please send nominal data")
+    }, 1000);
+  </script>
+
+</body>
+
+</html>

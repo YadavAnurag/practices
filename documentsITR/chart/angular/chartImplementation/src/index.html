@@ -12,21 +12,21 @@
 <body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.5/socket.io.min.js" type="javascript"></script>
     <script>
-            function hello(msg) {
-                document.getElementById("hello").innerHTML = msg;
-            }
+            // function hello(msg) {
+            //     document.getElementById("hello").innerHTML = msg;
+            // }
     
-            function broadcast(msg) {
-                document.getElementById("broadcast").innerHTML = document.getElementById("broadcast").innerHTML + msg + "<br>";
-            }
+            // function broadcast(msg) {
+            //     document.getElementById("broadcast").innerHTML = document.getElementById("broadcast").innerHTML + msg + "<br>";
+            // }
     
-            var socket = io.connect("http://127.0.0.1:9898/",{
-                "connect timeout": 3000,
-                "reconnect": false
-            });
+            // var socket = io.connect("http://127.0.0.1:9898/",{
+            //     "connect timeout": 3000,
+            //     "reconnect": false
+            // });
     
-            socket.on("hello",hello);
-            socket.on("broadcast",broadcast);
+            // socket.on("hello",hello);
+            // socket.on("broadcast",broadcast);
     
     </script>
   <app-root style="background-color: cyan"></app-root>
