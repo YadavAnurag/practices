@@ -4,151 +4,25 @@
 <head>
   <title>Chart</title>
   <link rel="stylesheet" href="public/stylesheets/style.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+  <script src="public/javascripts/socket.io.js"></script>
+  <script src="public/javascripts/chartjs.js"></script>
   <style>
     canvas {
-      width: 500px;
-      height: 500px;
+      width: 1000px;
+      height: 1000px;
     }
   </style>
 </head>
 
 <body>
+
+  <div id="display">
+    <p>x: <span id="x"></span> &nbsp;&nbsp;&nbsp; y: <span id="y"></span></p>
+    <p>RowNumberTime: <span id="rowNumberTime"></span></p>
+    <p>Time: <span id="time"></span></p>
+  </div>
   <canvas id="myChart"></canvas>
-  <script src="public/javascripts/chartjs.js"></script>
-  <script>
-    var ctx = document.getElementById('myChart').getContext('2d');
-
-    var chartColors = {
-      red: 'rgb(255, 99, 132)',
-      orange: 'rgb(255, 159, 64)',
-      yellow: 'rgb(255, 205, 86)',
-      green: 'rgb(75, 192, 192)',
-      blue: 'rgb(54, 162, 235)',
-      purple: 'rgb(153, 102, 255)',
-      grey: 'rgb(231,233,237)'
-    };
-
-    var xmax = 2207000;
-    var xmin = 0;
-
-    var ymax = 955700;
-    var ymin = -100;
-
-    var nominalLabels = [];
-
-    var nominalData = [];
-    var realTimeData = [];
-
-
-    var nominalDataset = {
-      type: 'line',
-      label: 'Nominal Data',
-      borderColor: chartColors.red,
-      borderWidth: 1,
-      pointRadius: 0,
-      lineTension: 0,
-      fill: false,
-      data: nominalData,
-    };
-
-    var realTimeDataset = {
-      type: 'line',
-      label: 'RealTime Data',
-      borderColor: chartColors.blue,
-      borderWidth: 2,
-      pointRadius: 0,
-      lineTension: 0,
-      fill: false,
-      xAxisID: 'x-axis-2',
-      data: realTimeData
-    };
-
-    var myDatasets = [nominalDataset, realTimeDataset];
-
-    var chartOptions = {
-      responsive: true,
-      title: {
-        display: true,
-        text: 'RealTime Data with Nominal Data'
-      },
-      tooltips: {
-        mode: 'nearest',
-        intersect: true,
-      },
-      scales: {
-
-        xAxes: [{
-            gridLines: {
-              offsetGridLines: false
-            }
-          },
-          {
-            id: 'x-axis-2',
-            type: 'linear',
-            position: 'bottom',
-            display: true,
-            ticks: {
-              min: xmin,
-              max: xmax,
-              beginAtZero: true,
-              // stepSize: 10
-            }
-          }
-        ],
-        yAxes: [{
-          ticks: {
-            beginAtZero: true,
-            min: ymin,
-            max: ymax,
-            // stepSize: 10
-          }
-        }]
-      }
-    };
-
-
-    var config = {
-      type: 'line',
-      data: {
-        labels: nominalLabels,
-        datasets: myDatasets,
-      },
-      options: chartOptions
-    };
-
-    var myChart = new Chart(ctx, config);
-
-
-
-
-    var socket = io.connect("127.0.0.1:9898");
-
-    socket.on("nominalData", function (data) {
-      config.data.datasets[0].data = data.totaly;
-      config.data.labels = data.totalx
-      myChart.update();
-      console.log(config.data.datasets[0].data.length, config.data.labels.length, data);
-    });
-
-
-    socket.on("serverRealTimeData", function (data) {
-      config.data.datasets[1].data.push(data);
-      myChart.update();
-      console.log(data);
-    });
-
-    setTimeout(function () {
-      socket.emit("getNominalData", "Please send nominal data");
-      console.log('Firing event getNominalData');
-    }, 1000);
-
-    setTimeout(function () {
-      socket.emit("getRealTimeData", "Please send realtime data");
-      console.log('Firing event getrealTimeData');
-    }, 8000);
-  </script>
-
+  <script src="public/javascripts/index.js"></script>
 </body>
 
 </html>

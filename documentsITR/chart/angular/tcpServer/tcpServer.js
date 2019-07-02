@@ -1,55 +1,97 @@
 var http = require('http');
-var socket = require('socket.io');
+var server = require('socket.io');
+var client = require('socket.io-client');
 
+let serverSockets = new Set();
+let localNominalData = null;
 
-var server = http.createServer((err, req, res)=>{
-    if(err){
+var httpServer = http.createServer((err, req, res) => {
+    if (err) {
         console.log(`Server error: \n${err}`);
     }
-    res.writeHead(200, {"Content-Type": "text/plain"});
+    res.writeHead(200, {
+        "Content-Type": "text/plain"
+    });
     res.end("Hello TCP Server");
 });
 
 
-
-var PORT = 7777;
-
-var io1 = socket.listen(server);
-var io2 = socket.listen(server);
-
-io1.attach(6000);
-io2.attach(7000);
+var ioServer = server(httpServer, {});
+var clientSocket = client('http://127.0.0.1:9898');
 
 
 
 
+ioServer.on('connection', (socket) => {
+    serverSockets.add(socket.id);
+    console.log(`User ${socket.id} connected ${serverSockets.size} remaining`);
+    socket.emit('nominalData', localNominalData);
 
+    socket.on('getNominalData', (data) => {
+        socket.emit('nominalData', localNominalData);
+    });
 
-
-
-
-
-
-
-io1.on('connection', (socket)=>{
-    console.log(`User ${socket.id} connected with io1`);
-    socket.emit("serverMsg", "this is server");
-    socket.on('myevent', (data)=>{
-        console.log(data);
+    socket.on('disconnect', () => {
+        serverSockets.delete(socket.id);
+        if (!serverSockets.size) {
+            stopRealTimeData();
+        }
+        console.log(`TCP Server: client ${socket.id} disconnected ${serverSockets.size} remaining`);
     });
 });
-io1.on('msg', (data)=>{
-    console.log(data);
+
+
+clientSocket.on('connect', () => {
+    console.log(`TCP Client connnected with mainServer`);
+    clientSocket.emit('getNominalData', {
+        msg: 'TCP Client: please send nominal data'
+    });
+});
+clientSocket.on('disconnect', () => {
+    console.log(`TCP Client socket disconnected retrying...`);
+    stopRealTimeData();
+});
+clientSocket.on('error', (error) => {
+    console.log(`Error occurred\n ${error}`);
 });
 
-
-
-io2.on('connection', (socket)=>{
-    console.log(`User ${socket.id} connected with io2`);
+clientSocket.on('nominalData', (nominalData) => {
+    localNominalData = nominalData;
+    console.log(`TCP Client Got nominal-> X: ${nominalData.totalx.length} Y: ${nominalData.totaly.length}`);
+});
+clientSocket.on('serverRealTimeData', (realTimeData) => {
+    console.log(realTimeData.x, realTimeData.y);
+    ioServer.sockets.emit('serverRealTimeData', realTimeData);
 });
 
-io2.on('msg', (data)=>{
-    console.log(data);
-});
+startRealTimeData();
 
-server.listen(PORT);
+
+
+function startRealTimeData() {
+    console.log('get called');
+    setTimeout(function () {
+        console.log('exact get called');
+        clientSocket.emit('getRealTimeData', {
+            msg: 'Please send realtime data'
+        });
+    }, 6000);
+}
+
+function stopRealTimeData() {
+    if (localNominalData && !serverSockets.size) {
+        stopMsg = {
+            msg: 'Please stop sending realTimeData'
+        };
+        clientSocket.emit('stopRealTimeData', stopMsg);
+        localNominalData = null;
+        console.log(`TCP Client: stop event fired`);
+    }
+}
+
+
+
+
+
+var PORT = 7777;
+httpServer.listen(PORT);
