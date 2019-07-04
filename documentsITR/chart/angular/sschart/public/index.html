@@ -1,27 +1,120 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <title>Chart</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="public/stylesheets/style.css">
+  <link rel="stylesheet" href="public/stylesheets/bootstrap.css">
   <script src="public/javascripts/socket.io.js"></script>
   <script src="public/javascripts/chartjs.js"></script>
-  <style>
-    canvas {
-      width: 1000px;
-      height: 1000px;
-    }
-  </style>
+  <title>Document</title>
 </head>
 
 <body>
 
-  <div id="display">
-    <p>x: <span id="x"></span> &nbsp;&nbsp;&nbsp; y: <span id="y"></span></p>
-    <p>RowNumberTime: <span id="rowNumberTime"></span></p>
-    <p>Time: <span id="time"></span></p>
+  <div class=" container-fluid col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="row">
+      <div class=" col-lg-3 col-md-3 col-sm-6 col-xs-6">
+        <div class="my-card mt-2 p-2 ">
+          <span class="card-p-heading">Count Up : </span>
+          <p class="card-span-text" id="rowNumberTime"> </p>
+        </div>
+      </div>
+      <div class=" col-lg-3 col-md-3 col-sm-6 col-xs-6">
+        <div class="my-card mt-2 p-2 ">
+          <span class="card-p-heading">Mission : </span>
+          <p class="card-span-text">Something.... </p>
+        </div>
+      </div>
+      <div class=" col-lg-3 col-md-3 col-sm-6 col-xs-6">
+        <div class="my-card mt-2 p-2 ">
+          <span class="card-p-heading">CDT : </span>
+          <p class="card-span-text" id="time"> </p>
+        </div>
+      </div>
+      <div class=" col-lg-3 col-md-3 col-sm-6 col-xs-6">
+        <div class="my-card mt-2 p-2 ">
+          <span class="card-p-heading">Anything : </span>
+          <p class="card-span-text"> </p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-9 col-md-9 col-sm-12 col-col-xs-12 mt-2">
+        <canvas id="myChart" class="chart-div"></canvas>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-12 col-col-xs-12">
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="my-card mt-2 p-2 ">
+              <p class="right-card-main-heading">Parameters</p>
+              <div class="parameter-div">
+                <span class="card-p-heading">Source : </span>
+                <p class="card-span-text">I don't know</p>
+              </div>
+              <div class="parameter-div">
+                <span class="card-p-heading">Range (km) : </span>
+                <p class="card-span-text">I don't know</p>
+              </div>
+              <div class="parameter-div">
+                <span class="card-p-heading">Altitude : </span>
+                <p class="card-span-text" id="y"> </p>
+              </div>
+              <div class="parameter-div">
+                <span class="card-p-heading">Azimuth : </span>
+                <p class="card-span-text" id="x"> </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="my-card mt-2 p-2 ">
+              <p class="right-card-main-heading">Other Parameters</p>
+              <div class="parameter-div">
+                <span class="card-p-heading">Parameter1 : </span>
+                <p class="card-span-text"> </p>
+              </div>
+              <div class="parameter-div">
+                <span class="card-p-heading">Parameter2 : </span>
+                <p class="card-span-text"> </p>
+              </div>
+              <div class="parameter-div">
+                <span class="card-p-heading">Parameter3 : </span>
+                <p class="card-span-text"> </p>
+              </div>
+              <div class="parameter-div">
+                <span class="card-p-heading">Parameter4 : </span>
+                <p class="card-span-text"> </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="my-card mt-2 p-2 ">
+              <p class="right-card-main-heading">Other Parameters</p>
+              <div class="parameter-div">
+                <span class="card-p-heading">Parameter1 : </span>
+                <p class="card-span-text"> </p>
+              </div>
+              <div class="parameter-div">
+                <span class="card-p-heading">Parameter2 : </span>
+                <p class="card-span-text"> </p>
+              </div>
+              <div class="parameter-div">
+                <span class="card-p-heading">Parameter3 : </span>
+                <p class="card-span-text"> </p>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <canvas id="myChart"></canvas>
   <script src="public/javascripts/index.js"></script>
 </body>
 

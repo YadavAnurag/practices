@@ -14,7 +14,8 @@ var chartColors = {
     green: 'rgb(75, 192, 192)',
     blue: 'rgb(54, 162, 235)',
     purple: 'rgb(153, 102, 255)',
-    grey: 'rgb(231,233,237)'
+    grey: 'rgb(231,233,237)',
+    white: 'rgb(255,255,255)'
 };
 
 var xmax = 2207000;
@@ -31,9 +32,9 @@ var realTimeData = [];
 var nominalDataset = {
     type: 'line',
     label: 'Nominal Data',
-    borderColor: chartColors.red,
+    borderColor: chartColors.white,
     borderWidth: 0,
-    pointRadius: 0.05,
+    pointRadius: 0.01,
     lineTension: 0,
     fill: false,
     data: nominalData,
@@ -42,9 +43,10 @@ var nominalDataset = {
 var realTimeDataset = {
     type: 'line',
     label: 'RealTime Data',
-    borderColor: chartColors.blue,
+    borderColor: chartColors.yellow,
     borderWidth: 0,
     pointRadius: 3,
+    pointBackgroundColor: "yellow",
     lineTension: 0,
     fill: false,
     xAxisID: 'x-axis-2',
@@ -54,9 +56,19 @@ var realTimeDataset = {
 var myDatasets = [realTimeDataset, nominalDataset];
 
 var chartOptions = {
+
+    layout: {
+        padding: {
+            left: 10,
+            right: 0,
+            top: 0,
+            bottom: 0
+        }
+    },
     responsive: true,
+    maintainAspectRatio: false,
     title: {
-        display: true,
+        display: false,
         text: 'RealTime Data with Nominal Data'
     },
     // tooltips: {
@@ -75,15 +87,27 @@ var chartOptions = {
                 type: 'linear',
                 position: 'bottom',
                 display: true,
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Down Range (km)',
+                    fontSize: 20
+
+                },
                 ticks: {
                     min: xmin,
                     max: xmax,
                     beginAtZero: true,
-                    // stepSize: 10
                 }
             }
         ],
         yAxes: [{
+            scaleLabel: {
+                display: true,
+                labelString: 'Altitude (km)',
+                fontSize: 20
+            },
+
+
             ticks: {
                 beginAtZero: true,
                 min: ymin,
@@ -95,6 +119,7 @@ var chartOptions = {
 };
 
 
+
 var config = {
     type: 'line',
     data: {
@@ -104,9 +129,9 @@ var config = {
     options: chartOptions
 };
 
+Chart.defaults.global.defaultFontColor = 'white';
+
 var myChart = new Chart(ctx, config);
-
-
 
 
 var socket = io.connect("127.0.0.1:7777");
@@ -122,6 +147,9 @@ socket.on("nominalData", function (data) {
     config.data.datasets[1].data = data.totaly;
     config.data.labels = data.totalx;
     myChart.update();
+
+    chartOptions.scales.xAxes[1].display = false;
+
     console.log(config.data.datasets[1].data.length, config.data.labels.length, data);
 });
 
@@ -137,7 +165,7 @@ socket.on("serverRealTimeData", function (data) {
 
     x.innerHTML = data.x;
     y.innerHTML = data.y;
-    rowNumberTime.innerHTML = Number(data.position) / 10;
+    rowNumberTime.innerHTML = (data.position / 10.0).toFixed(1) + ' seconds ';
 
     time.innerHTML = now.getHours() + ':' + now.getMinutes() + ':' + now.getSeconds() + ':' + now.getMilliseconds();
 

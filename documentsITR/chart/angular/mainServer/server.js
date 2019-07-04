@@ -9,7 +9,7 @@ var file = fs.readFileSync('dataFile/nominalData.txt').toString();
 
 
 
-app.use(express.static(__dirname + '/dist'));
+app.use(express.static(__dirname + '/public'));
 
 
 
@@ -26,7 +26,6 @@ let serverData = {
 
 
 io.on('connection', (socket) => {
-
 
     sockets.add(socket);
     console.log(`user ${socket.id} connected`);
@@ -52,18 +51,21 @@ io.on('connection', (socket) => {
 
     socket.on('getNominalData', clientData => {
         console.log(`${clientData.msg}`);
-        mypath = path.join(__dirname, '/dataFile/nominalData.txt');
-        sendNominalData(socket, mypath);
+        myPath = path.join(__dirname, '/dataFile/nominalData.txt');
+        sendNominalData(socket, myPath);
     });
 
     socket.on('getRealTimeData', clientData => {
         console.log(`${clientData.msg}`);
-        mypath = path.join(__dirname + '/dataFile/realtimeData.txt');
         console.log(id);
-        if (!id) {
-            sendRealTimeData(socket, mypath);
-        }
     });
+
+    setTimeout(function () {
+        if (!id) {
+            myPath = path.join(__dirname + '/dataFile/realtimeData.txt');
+            sendRealTimeData(socket, myPath);
+        }
+    }, 6000);
 
 });
 
@@ -78,12 +80,12 @@ server.listen(port, () => {
 
 
 function sendNominalData(socket, pathToFile) {
-    var str = file.split(/\r\n|\r|\n/g);
+    var allRows = file.split(/\r\n|\r|\n/g);
 
     var totalx = [];
     var totaly = [];
 
-    for (i of str) {
+    for (i of allRows) {
         j = i.split(" ")[0];
         totalx.push(j);
         k = i.split(" ")[1];
@@ -111,9 +113,8 @@ function sendRealTimeData(socket, pathToFile) {
             serverData.x = lineString.split(" ")[0];
             serverData.y = lineString.split(" ")[1];
             serverData.position = i;
-            for (const socket of sockets) {
-                socket.emit('serverRealTimeData', serverData);
-            }
+
+            socket.emit('serverRealTimeData', serverData);
             console.log(`server: ${i}th data sent from server x: ${serverData.x} y: ${serverData.position}`);
             i += 1;
 
