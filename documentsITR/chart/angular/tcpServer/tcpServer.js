@@ -23,7 +23,7 @@ clientSocket.on('connect', () => {
 });
 clientSocket.on('nominalData', (nominalData) => {
     localNominalData = nominalData;
-    console.log(`TCP Client Got nominal-> X: ${nominalData.totalx.length} Y: ${nominalData.totaly.length}`);
+    console.log(`TCP Client Got nominal-> X: ${nominalData.totalx.length} Y: ${nominalData.totaly.length} Z: ${nominalData.totalz.length} sq: ${nominalData.totalsq.length}`);
 });
 
 
@@ -59,12 +59,14 @@ clientSocket.on('error', (error) => {
 
 
 clientSocket.on('serverRealTimeData', (realTimeData) => {
-    console.log(realTimeData.x, realTimeData.y);
+    console.log(realTimeData.x, realTimeData.y, realTimeData.z, realTimeData.sq,realTimeData.positionTime);
     ioServer.sockets.emit('serverRealTimeData', realTimeData);
 });
 
 //startRealTimeData();
-
+// setTimeout(){
+//     console.log(serverSockets.ioServer.emit(1,2,3));
+// }
 
 
 function startRealTimeData() {

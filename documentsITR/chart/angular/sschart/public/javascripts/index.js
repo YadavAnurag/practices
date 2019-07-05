@@ -36,9 +36,8 @@ var nominalDataset = {
     borderWidth: 0,
     pointRadius: 1,
     pointBackgroundColor: 'white',
-    backgroundColor: 'rgba(255,255,255,0.2)',
     lineTension: 0,
-    fill: true,
+    fill: false,
     data: nominalData,
 };
 
@@ -48,10 +47,9 @@ var realTimeDataset = {
     borderColor: chartColors.yellow,
     borderWidth: 0,
     pointRadius: 2,
-    backgroundColor: "rgba(255, 205, 86,0.3)",
     pointBackgroundColor: "yellow",
     lineTension: 0,
-    fill: true,
+    fill: false,
     xAxisID: 'x-axis-2',
     data: realTimeData
 };
@@ -70,14 +68,6 @@ var chartOptions = {
     },
     responsive: true,
     maintainAspectRatio: false,
-    title: {
-        display: false,
-        text: 'RealTime Data with Nominal Data'
-    },
-    // tooltips: {
-    //   mode: 'nearest',
-    //   intersect: true,
-    // },
     scales: {
 
         xAxes: [{
@@ -89,7 +79,7 @@ var chartOptions = {
                 id: 'x-axis-2',
                 type: 'linear',
                 position: 'bottom',
-                display: true,
+                display: false,
                 scaleLabel: {
                     display: true,
                     labelString: 'Down Range (km)',
