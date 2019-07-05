@@ -6,7 +6,7 @@ const lineByLine = require('n-readlines/readlines');
 const path = require('path');
 var fs = require('fs');
 var file = fs.readFileSync('dataFile/nominalData.txt').toString();
-
+var ip = require('os').networkInterfaces().eno1[0] .address;
 
 
 app.use(express.static(__dirname + '/public'));
@@ -73,7 +73,7 @@ io.on('connection', (socket) => {
 
 const port = 9898;
 server.listen(port, () => {
-    console.log(`Visit http://127.0.0.1:${port} in your browser`);
+    console.log(`TCP Server: start listening on http://${ip}:${port}`);
 });
 
 

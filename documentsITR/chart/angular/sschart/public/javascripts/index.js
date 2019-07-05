@@ -34,9 +34,11 @@ var nominalDataset = {
     label: 'Nominal Data',
     borderColor: chartColors.white,
     borderWidth: 0,
-    pointRadius: 0.01,
+    pointRadius: 1,
+    pointBackgroundColor: 'white',
+    backgroundColor: 'rgba(255,255,255,0.2)',
     lineTension: 0,
-    fill: false,
+    fill: true,
     data: nominalData,
 };
 
@@ -45,10 +47,11 @@ var realTimeDataset = {
     label: 'RealTime Data',
     borderColor: chartColors.yellow,
     borderWidth: 0,
-    pointRadius: 3,
+    pointRadius: 2,
+    backgroundColor: "rgba(255, 205, 86,0.3)",
     pointBackgroundColor: "yellow",
     lineTension: 0,
-    fill: false,
+    fill: true,
     xAxisID: 'x-axis-2',
     data: realTimeData
 };
@@ -60,9 +63,9 @@ var chartOptions = {
     layout: {
         padding: {
             left: 10,
-            right: 0,
-            top: 0,
-            bottom: 0
+            right: 20,
+            top: 10,
+            bottom: 10
         }
     },
     responsive: true,

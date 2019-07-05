@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
+  <!-- <meta http-equiv="refresh" content="1"> -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="public/stylesheets/style.css">
@@ -10,45 +11,46 @@
   <script src="public/javascripts/socket.io.js"></script>
   <script src="public/javascripts/chartjs.js"></script>
   <title>Document</title>
+  <link rel="shortcut icon" href="public/images/favicon.ico" />
 </head>
 
 <body>
 
-  <div class=" container-fluid col-lg-12 col-md-12 col-sm-12 col-xs-12">
+  <div class=" container-fluid col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
     <div class="row">
-      <div class=" col-lg-3 col-md-3 col-sm-6 col-xs-6">
-        <div class="my-card mt-2 p-2 ">
+      <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-xs-6">
+        <div class="my-card mt-1 p-2 parameter-card-1">
           <span class="card-p-heading">Count Up : </span>
           <p class="card-span-text" id="rowNumberTime"> </p>
         </div>
       </div>
-      <div class=" col-lg-3 col-md-3 col-sm-6 col-xs-6">
-        <div class="my-card mt-2 p-2 ">
+      <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-xs-6">
+        <div class="my-card mt-1 p-2 parameter-card-2">
           <span class="card-p-heading">Mission : </span>
           <p class="card-span-text">Something.... </p>
         </div>
       </div>
-      <div class=" col-lg-3 col-md-3 col-sm-6 col-xs-6">
-        <div class="my-card mt-2 p-2 ">
+      <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-xs-6">
+        <div class="my-card mt-1 p-2 parameter-card-3">
           <span class="card-p-heading">CDT : </span>
           <p class="card-span-text" id="time"> </p>
         </div>
       </div>
-      <div class=" col-lg-3 col-md-3 col-sm-6 col-xs-6">
-        <div class="my-card mt-2 p-2 ">
+      <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-xs-6">
+        <div class="my-card mt-1 p-2 parameter-card-4 chart-div">
           <span class="card-p-heading">Anything : </span>
           <p class="card-span-text"> </p>
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-lg-9 col-md-9 col-sm-12 col-col-xs-12 mt-2">
+    <div class="row second-row">
+      <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-col-xs-12 mt-1">
         <canvas id="myChart" class="chart-div"></canvas>
       </div>
-      <div class="col-lg-3 col-md-3 col-sm-12 col-col-xs-12">
+      <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-col-xs-12">
         <div class="row">
-          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div class="my-card mt-2 p-2 ">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="my-card mt-1 p-2 parameter-card-1">
               <p class="right-card-main-heading">Parameters</p>
               <div class="parameter-div">
                 <span class="card-p-heading">Source : </span>
@@ -66,12 +68,20 @@
                 <span class="card-p-heading">Azimuth : </span>
                 <p class="card-span-text" id="x"> </p>
               </div>
+              <div class="parameter-div">
+                <span class="card-p-heading">Parameter1 : </span>
+                <p class="card-span-text"> </p>
+              </div>
+              <div class="parameter-div">
+                <span class="card-p-heading">Parameter2 : </span>
+                <p class="card-span-text"> </p>
+              </div>
             </div>
           </div>
         </div>
         <div class="row">
-          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div class="my-card mt-2 p-2 ">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="my-card mt-1 p-2 parameter-card-2">
               <p class="right-card-main-heading">Other Parameters</p>
               <div class="parameter-div">
                 <span class="card-p-heading">Parameter1 : </span>
@@ -93,8 +103,8 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div class="my-card mt-2 p-2 ">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="my-card mt-1 p-2 parameter-card-3">
               <p class="right-card-main-heading">Other Parameters</p>
               <div class="parameter-div">
                 <span class="card-p-heading">Parameter1 : </span>

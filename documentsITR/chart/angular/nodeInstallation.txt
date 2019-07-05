@@ -1,0 +1,11 @@
+sudo mkdir /usr/lib/nodejs
+sudo tar -xJvf node-v10.16.0-linux-x64.tar.xz -C /usr/lib/nodejs
+sudo mv node node-v10.16.0-linux-x64 node node-v10.16.0
+
+
+cd /etc/profile.d
+sudo touch nodejs-env.sh 
+
+export NODEJS_HOME=/usr/lib/nodejs/node-v10.16.0
+export PATH=$NODEJS_HOME/bin.$PATH
+ --- export PATH=$PATH:$NODEJS_HOME/bin

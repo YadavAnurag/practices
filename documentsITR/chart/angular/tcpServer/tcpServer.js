@@ -3,7 +3,7 @@ var app = express();
 var expressServer = require('http').createServer(app);
 var server = require('socket.io');
 var client = require('socket.io-client');
-
+var ip = require('os').networkInterfaces().eno1[0] .address;
 
 app.use(express.static(__dirname, + '/public'));
 
@@ -92,5 +92,7 @@ function stopRealTimeData() {
 
 
 
-var PORT = 7777;
-expressServer.listen(PORT);
+var port = 7777;
+expressServer.listen(port,[ip], ()=>{
+    console.log(`TCP Server: start listening on http://${ip}:${port}`);
+});
