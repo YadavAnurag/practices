@@ -1,11 +1,14 @@
-var x = document.getElementById('x');
-var y = document.getElementById("y");
-var rowNumberTime = document.getElementById('rowNumberTime');
+var range = document.getElementById("range");
+var altitude = document.getElementById("altitude");
+var azimuth = document.getElementById("azimuth");
+var positionTime = document.getElementById('positionTime');
 var time = document.getElementById('time');
 var now = null;
 
 
-var ctx = document.getElementById('myChart').getContext('2d');
+var firstCtx = document.getElementById('firstChart').getContext('2d');
+var secondCtx = document.getElementById('secondChart').getContext('2d');
+
 
 var chartColors = {
     red: 'rgb(255, 99, 132)',
@@ -18,68 +21,94 @@ var chartColors = {
     white: 'rgb(255,255,255)'
 };
 
-var xmax = 2207000;
-var xmin = 0;
+var fxmax = 1690660;
+var fxmin = 0;
+var fymax = 955600;
+var fymin = 0;
 
-var ymax = 985700;
-var ymin = -100;
+var sxmax = 0;
+var sxmin = -1690660;
+var symax = 0;
+var symin = -1418632;
 
-var nominalLabels = [];
-var nominalData = [];
-var realTimeData = [];
+var firstNominalLabels = [],secondNominalLabels = [];
+var firstNominalData = [],secondNominalData = [];
+var firstRealTimeData = [],secondRealTimeData = [];
 
 
-var nominalDataset = {
+var firstNominalDataset = {
     type: 'line',
-    label: 'Nominal Data',
+    label: 'first Nominal Data',
     borderColor: chartColors.white,
     borderWidth: 0,
     pointRadius: 1,
     pointBackgroundColor: 'white',
     lineTension: 0,
     fill: false,
-    data: nominalData,
+    data: firstNominalData,
+};
+var secondNominalDataset = {
+    type: 'line',
+    label: 'second Nominal Data',
+    borderColor: chartColors.white,
+    borderWidth: 0,
+    pointRadius: 1,
+    pointBackgroundColor: 'white',
+    lineTension: 0,
+    fill: false,
+    data: secondNominalData,
 };
 
-var realTimeDataset = {
+var firstRealTimeDataset = {
     type: 'line',
-    label: 'RealTime Data',
-    borderColor: chartColors.yellow,
+    label: 'first RealTime Data',
+    //borderColor: chartColors.yellow,
     borderWidth: 0,
     pointRadius: 2,
     pointBackgroundColor: "yellow",
     lineTension: 0,
     fill: false,
-    xAxisID: 'x-axis-2',
-    data: realTimeData
+    xAxisID: 'firstChart-x-axis-2',
+    data: firstRealTimeData
+};
+var secondRealTimeDataset = {
+    type: 'line',
+    label: 'second RealTime Data',
+    //borderColor: chartColors.yellow,
+    borderWidth: 0,
+    pointRadius: 2,
+    pointBackgroundColor: "yellow",
+    lineTension: 0,
+    fill: false,
+    xAxisID: 'secondChart-x-axis-2',
+    data: secondRealTimeData
 };
 
-var myDatasets = [realTimeDataset, nominalDataset];
+var firstDatasets = [firstRealTimeDataset, firstNominalDataset];
+var secondDatasets = [secondRealTimeDataset, secondNominalDataset];
 
-var chartOptions = {
-
+var firstChartOptions = {
     layout: {
         padding: {
-            left: 10,
-            right: 20,
-            top: 10,
-            bottom: 10
+            left: 5,
+            right: 10,
+            top: 5,
+            bottom: 5
         }
     },
     responsive: true,
     maintainAspectRatio: false,
     scales: {
-
         xAxes: [{
                 gridLines: {
                     offsetGridLines: false
                 }
             },
             {
-                id: 'x-axis-2',
+                id: 'firstChart-x-axis-2',
                 type: 'linear',
                 position: 'bottom',
-                display: false,
+                display: true,
                 scaleLabel: {
                     display: true,
                     labelString: 'Down Range (km)',
@@ -87,9 +116,9 @@ var chartOptions = {
 
                 },
                 ticks: {
-                    min: xmin,
-                    max: xmax,
-                    beginAtZero: true,
+                    min: fxmin,
+                    max: fxmax,
+                    // beginAtZero: true,
                 }
             }
         ],
@@ -102,10 +131,61 @@ var chartOptions = {
 
 
             ticks: {
-                beginAtZero: true,
-                min: ymin,
-                max: ymax,
-                // stepSize: 10
+                //beginAtZero: true,
+                min: fymin,
+                max: fymax,
+            }
+        }]
+    }
+};
+
+var secondChartOptions = {
+    layout: {
+        padding: {
+            left: 5,
+            right: 10,
+            top: 5,
+            bottom: 5
+        }
+    },
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+        xAxes: [{
+                gridLines: {
+                    offsetGridLines: false
+                }
+            },
+            {
+                id: 'secondChart-x-axis-2',
+                type: 'linear',
+                position: 'bottom',
+                display: false,
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Down Range (km)',
+                    fontSize: 10
+
+                },
+                ticks: {
+                    max: sxmax,
+                    min: sxmin,
+                    //beginAtZero: true,
+                }
+            }
+        ],
+        yAxes: [{
+            scaleLabel: {
+                display: true,
+                labelString: 'Altitude (km)',
+                fontSize: 10
+            },
+
+
+            ticks: {
+                //beginAtZero: true,
+                min: symin,
+                max: symax,
             }
         }]
     }
@@ -113,42 +193,68 @@ var chartOptions = {
 
 
 
-var config = {
+
+var firstConfig = {
     type: 'line',
     data: {
-        labels: nominalLabels,
-        datasets: myDatasets,
+        labels: firstNominalLabels,
+        datasets: firstDatasets,
     },
-    options: chartOptions
+    options: firstChartOptions
+};
+
+var secondConfig = {
+    type: 'line',
+    data: {
+        labels: secondNominalLabels,
+        datasets: secondDatasets,
+    },
+    options: secondChartOptions
 };
 
 Chart.defaults.global.defaultFontColor = 'white';
 
-var myChart = new Chart(ctx, config);
+var firstChart = new Chart(firstCtx, firstConfig);
+var secondChart = new Chart(secondCtx, secondConfig);
+
 
 
 var socket = io.connect("127.0.0.1:7777");
 socket.on('connect', function () {
     console.log('Client got connected');
-    //callGetNominalData();
+
 });
 socket.on('serverMessage', function (data) {
     console.log(data.msg);
 });
 
 socket.on("nominalData", function (data) {
-    config.data.datasets[1].data = data.totaly;
-    config.data.labels = data.totalx;
-    myChart.update();
+    firstConfig.data.labels = data.totalsq;
+    firstConfig.data.datasets[1].data = data.totalz;
+    
+    secondConfig.data.labels = data.totalx;
+    secondConfig.data.datasets[1].data = data.totaly;
+    
+    
+    firstChart.update();
+    firstChart.update();
 
-    chartOptions.scales.xAxes[1].display = false;
 
-    console.log(config.data.datasets[1].data.length, config.data.labels.length, data);
+    //firstChartOptions.scales.xAxes[1].display = false;
+
+    console.log(firstConfig.data.datasets[1].data.length, firstConfig.data.labels.length, data);
 });
 
 
 socket.on("serverRealTimeData", function (data) {
-    config.data.datasets[0].data.push({
+    console.log(data);
+
+    firstConfig.data.datasets[0].data.push({
+        x: data.sq,
+        y: data.z
+    });
+
+    secondConfig.data.datasets[0].data.push({
         x: data.x,
         y: data.y
     });
@@ -156,32 +262,15 @@ socket.on("serverRealTimeData", function (data) {
 
     var now = new Date();
 
-    x.innerHTML = data.x;
-    y.innerHTML = data.y;
-    rowNumberTime.innerHTML = (data.position / 10.0).toFixed(1) + ' seconds ';
+    range.innerHTML = data.sq;
+    altitude.innerHTML = data.z;
+    azimuth.innerHTML = 0;
+    positionTime.innerHTML = Number(data.positionTime).toFixed(1) + ' seconds ';
 
     time.innerHTML = now.getHours() + ':' + now.getMinutes() + ':' + now.getSeconds() + ':' + now.getMilliseconds();
 
-    myChart.update();
-    console.log(typeof (data.i));
+    firstChart.update();
+    secondChart.update();
+
+    
 });
-
-function callGetNominalData() {
-    setTimeout(function () {
-        socket.emit("getNominalData", {
-            msg: "webclient: Please send nominal data"
-        });
-        console.log('webClient: event getNominalData fired');
-    }, 2000);
-}
-
-function callGetRealTimeData() {
-    setTimeout(function () {
-        if (config.data.labels.length) {
-            socket.emit("getRealTimeData", "Please send realtime data");
-            console.log('getrealTimeData fired');
-        } else {
-            console.log('No nominal data..check tcp server running or not');
-        }
-    }, 8000);
-}

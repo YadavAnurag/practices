@@ -33,6 +33,7 @@ ioServer.on('connection', (socket) => {
     serverSockets.add(socket.id);
     console.log(`User ${socket.id} connected ${serverSockets.size} remaining`);
     socket.emit('nominalData', localNominalData);
+    console.log('Nominal Data sent',localNominalData);
 
     socket.on('getNominalData', (data) => {
         socket.emit('nominalData', localNominalData);
@@ -51,7 +52,7 @@ ioServer.on('connection', (socket) => {
 
 clientSocket.on('disconnect', () => {
     console.log(`TCP Client socket disconnected retrying...`);
-    stopRealTimeData();
+    //stopRealTimeData();
 });
 clientSocket.on('error', (error) => {
     console.log(`Error occurred\n ${error}`);
@@ -59,14 +60,11 @@ clientSocket.on('error', (error) => {
 
 
 clientSocket.on('serverRealTimeData', (realTimeData) => {
-    console.log(realTimeData.x, realTimeData.y, realTimeData.z, realTimeData.sq,realTimeData.positionTime);
+    console.log(realTimeData.positionTime,realTimeData.x, realTimeData.y, realTimeData.z, realTimeData.sq);
     ioServer.sockets.emit('serverRealTimeData', realTimeData);
 });
 
-//startRealTimeData();
-// setTimeout(){
-//     console.log(serverSockets.ioServer.emit(1,2,3));
-// }
+
 
 
 function startRealTimeData() {

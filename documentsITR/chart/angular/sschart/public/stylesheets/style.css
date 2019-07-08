@@ -2,33 +2,36 @@
   color: white;
 }
 
-
-
-
-/* 0076ad */
 .container-fluid {
   background-color: white;
   height: 100vh;
 }
 
 .second-row{
-  
   height: 90vh;
 }
 
-.chart-div {
+.chart-div{
   border-radius: 8px;
   background-color: #0ab1f3;
-  /* background-color: #2236e7; */
+}
 
+.first-chart-div {
+  border-radius: 8px;
+  background-color: #0ab1f3;
+
+}
+.second-chart-div-parent{
+  height: 400px;
+}
+.second-chart-div {
+  border-radius: 8px;
+  background-color: #0ab1f3;
 }
 
 .my-card {
   border-radius: 8px;
   box-shadow: 0px 0px 8px 2px #ddd;
-  /* border: 1px solid white; */
-  /* background-color: #293462; */
-  /* background-color: #0c99c1; */
 }
 
 .card-p-heading {

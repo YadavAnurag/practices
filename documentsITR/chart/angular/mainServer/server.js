@@ -5,7 +5,7 @@ const io = require('socket.io')(server);
 const lineByLine = require('n-readlines/readlines');
 const path = require('path');
 var fs = require('fs');
-var file = fs.readFileSync('dataFile/nominalData.txt').toString();
+
 
 
 
@@ -15,11 +15,13 @@ app.use(express.static(__dirname + '/public'));
 
 let sockets = new Set();
 let id = null;
-let i = 0;
+let i = 0,j = 0,k = 0;
 let serverData = {
+    positionTime: 0,
     x: 0,
     y: 0,
-    position: 0
+    z: 0,
+    sq: 0,
 }
 
 
@@ -51,7 +53,7 @@ io.on('connection', (socket) => {
 
     socket.on('getNominalData', clientData => {
         console.log(`${clientData.msg}`);
-        myPath = path.join(__dirname, '/dataFile/nominalData.txt');
+        myPath = path.join(__dirname, '/dataFile/test_sim_ss_txyzvxvyvz.dat');
         sendNominalData(socket, myPath);
     });
 
@@ -62,7 +64,7 @@ io.on('connection', (socket) => {
 
     setTimeout(function () {
         if (!id) {
-            myPath = path.join(__dirname + '/dataFile/realtimeData.txt');
+            myPath = path.join(__dirname + '/dataFile/test_sim_ss_txyzvxvyvz.dat');
             sendRealTimeData(socket, myPath);
         }
     }, 6000);
@@ -80,21 +82,28 @@ server.listen(port, () => {
 
 
 function sendNominalData(socket, pathToFile) {
+    var file = fs.readFileSync(pathToFile).toString();
     var allRows = file.split(/\r\n|\r|\n/g);
+    
 
-    var totalx = [];
-    var totaly = [];
+    var totalx = [],totaly = [],totalz = [],totalsq = [];
 
     for (i of allRows) {
-        j = i.split(" ")[0];
+        j = i.split(" ")[1];
         totalx.push(j);
-        k = i.split(" ")[1];
-        totaly.push(k)
+        k = i.split(" ")[2];
+        totaly.push(Number(k));
+        l = i.split(" ")[3];
+        totalz.push(Number(l));
+
+        totalsq.push((Math.sqrt(j*j+k*k)).toString());
     }
     var timer = setTimeout(function () {
         socket.emit("nominalData", {
             totalx,
-            totaly
+            totaly,
+            totalz,
+            totalsq
         });
         console.log("mainServer: nominalData sent");
     }, 2000);
@@ -110,12 +119,15 @@ function sendRealTimeData(socket, pathToFile) {
 
         if (line) {
             lineString = line.toString('ascii');
-            serverData.x = lineString.split(" ")[0];
-            serverData.y = lineString.split(" ")[1];
-            serverData.position = i;
+
+            serverData.positionTime = lineString.split(" ")[0];
+            serverData.x = lineString.split(" ")[1];
+            serverData.y = lineString.split(" ")[2];
+            serverData.z = lineString.split(" ")[3];
+            serverData.sq = Math.sqrt(serverData.x*serverData.x+serverData.y*serverData.y);
 
             socket.emit('serverRealTimeData', serverData);
-            console.log(`server: ${i}th data sent from server x: ${serverData.x} y: ${serverData.position}`);
+            console.log(`server: ${i}th data sent from server positionTime: ${serverData.positionTime} x: ${serverData.x} y: ${serverData.y} z: ${serverData.z} sq: ${serverData.sq}`);
             i += 1;
 
         } else {
@@ -123,6 +135,6 @@ function sendRealTimeData(socket, pathToFile) {
             socket.emit('serverRealTimeDataCompleted', 'real time data has been sent');
         }
 
-    }, 100);
+    }, 200);
 
 }

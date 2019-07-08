@@ -21,7 +21,7 @@
       <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-xs-6">
         <div class="my-card mt-1 p-2 parameter-card-1">
           <span class="card-p-heading">Count Up : </span>
-          <p class="card-span-text" id="rowNumberTime"> </p>
+          <p class="card-span-text" id="positionTime"> </p>
         </div>
       </div>
       <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-xs-6">
@@ -37,7 +37,7 @@
         </div>
       </div>
       <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-xs-6">
-        <div class="my-card mt-1 p-2 parameter-card-4 chart-div">
+        <div class="my-card mt-1 p-2 parameter-card-4 first-chart-div">
           <span class="card-p-heading">Anything : </span>
           <p class="card-span-text"> </p>
         </div>
@@ -45,7 +45,7 @@
     </div>
     <div class="row second-row">
       <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-col-xs-12 mt-1">
-        <canvas id="myChart" class="chart-div"></canvas>
+        <canvas id="firstChart" class="first-chart-div"></canvas>
       </div>
       <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-col-xs-12">
         <div class="row">
@@ -58,15 +58,15 @@
               </div>
               <div class="parameter-div">
                 <span class="card-p-heading">Range (km) : </span>
-                <p class="card-span-text" id="x"></p>
+                <p class="card-span-text" id="range"></p>
               </div>
               <div class="parameter-div">
                 <span class="card-p-heading">Altitude : </span>
-                <p class="card-span-text" id="y"> </p>
+                <p class="card-span-text" id="altitude"> </p>
               </div>
               <div class="parameter-div">
                 <span class="card-p-heading">Azimuth : </span>
-                <p class="card-span-text" id=""> </p>
+                <p class="card-span-text" id="azimuth"> </p>
               </div>
               <div class="parameter-div">
                 <span class="card-p-heading">Parameter1 : </span>
@@ -80,6 +80,13 @@
           </div>
         </div>
         <div class="row">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="second-chart-div-parent" style="margin-top: 5px;">
+              <canvas id="secondChart" class="second-chart-div"></canvas>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="row">
           <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="my-card mt-1 p-2 parameter-card-2">
               <p class="right-card-main-heading">Other Parameters</p>
@@ -101,7 +108,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
         <div class="row">
           <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="my-card mt-1 p-2 parameter-card-3">
