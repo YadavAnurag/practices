@@ -41,9 +41,9 @@ ioServer.on('connection', (socket) => {
 
     socket.on('disconnect', () => {
         serverSockets.delete(socket.id);
-        if (!serverSockets.size) {
-            stopRealTimeData();
-        }
+        // if (!serverSockets.size) {
+        //     stopRealTimeData();
+        // }
         console.log(`TCP Server: client ${socket.id} disconnected ${serverSockets.size} remaining`);
     });
 });

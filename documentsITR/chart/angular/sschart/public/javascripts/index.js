@@ -4,11 +4,12 @@ var azimuth = document.getElementById("azimuth");
 var positionTime = document.getElementById('positionTime');
 var time = document.getElementById('time');
 var now = null;
-
+var localNominalData = null;
 
 var firstCtx = document.getElementById('firstChart').getContext('2d');
 var secondCtx = document.getElementById('secondChart').getContext('2d');
 
+var firstChart,secondChart;
 
 var chartColors = {
     red: 'rgb(255, 99, 132)',
@@ -21,15 +22,15 @@ var chartColors = {
     white: 'rgb(255,255,255)'
 };
 
-var fxmax = 1690660;
+var fxmax = 0;
 var fxmin = 0;
-var fymax = 955600;
+var fymax = 0;
 var fymin = 0;
 
 var sxmax = 0;
-var sxmin = -1690660;
+var sxmin = 0;
 var symax = 0;
-var symin = -1418632;
+var symin = 0;
 
 var firstNominalLabels = [],secondNominalLabels = [];
 var firstNominalData = [],secondNominalData = [];
@@ -37,7 +38,7 @@ var firstRealTimeData = [],secondRealTimeData = [];
 
 
 var firstNominalDataset = {
-    type: 'line',
+    type: 'scatter',
     label: 'first Nominal Data',
     borderColor: chartColors.white,
     borderWidth: 0,
@@ -48,7 +49,7 @@ var firstNominalDataset = {
     data: firstNominalData,
 };
 var secondNominalDataset = {
-    type: 'line',
+    type: 'scatter',
     label: 'second Nominal Data',
     borderColor: chartColors.white,
     borderWidth: 0,
@@ -60,7 +61,7 @@ var secondNominalDataset = {
 };
 
 var firstRealTimeDataset = {
-    type: 'line',
+    type: 'scatter',
     label: 'first RealTime Data',
     //borderColor: chartColors.yellow,
     borderWidth: 0,
@@ -72,9 +73,9 @@ var firstRealTimeDataset = {
     data: firstRealTimeData
 };
 var secondRealTimeDataset = {
-    type: 'line',
+    type: 'scatter',
     label: 'second RealTime Data',
-    //borderColor: chartColors.yellow,
+    // borderColor: chartColors.yellow,
     borderWidth: 0,
     pointRadius: 2,
     pointBackgroundColor: "yellow",
@@ -97,13 +98,30 @@ var firstChartOptions = {
         }
     },
     responsive: true,
-    maintainAspectRatio: false,
+    maintainAspectRatio: true,
     scales: {
         xAxes: [{
                 gridLines: {
                     offsetGridLines: false
                 }
             },
+            // {
+            //     id: 'x-axis-1',
+            //     type: 'linear',
+            //     position: 'bottom',
+            //     display: true,
+            //     scaleLabel: {
+            //         display: true,
+            //         labelString: 'Down Range (km)',
+            //         fontSize: 20
+
+            //     },
+            //     ticks: {
+            //         min: fxmin,
+            //         max: fxmax,
+            //         // beginAtZero: true,
+            //     }
+            // },
             {
                 id: 'firstChart-x-axis-2',
                 type: 'linear',
@@ -124,6 +142,7 @@ var firstChartOptions = {
         ],
         yAxes: [{
             scaleLabel: {
+                
                 display: true,
                 labelString: 'Altitude (km)',
                 fontSize: 20
@@ -170,11 +189,12 @@ var secondChartOptions = {
                 ticks: {
                     max: sxmax,
                     min: sxmin,
-                    //beginAtZero: true,
+                    beginAtZero: true,
                 }
             }
         ],
         yAxes: [{
+            position: 'right',
             scaleLabel: {
                 display: true,
                 labelString: 'Altitude (km)',
@@ -183,7 +203,7 @@ var secondChartOptions = {
 
 
             ticks: {
-                //beginAtZero: true,
+                beginAtZero: true,
                 min: symin,
                 max: symax,
             }
@@ -195,7 +215,15 @@ var secondChartOptions = {
 
 
 var firstConfig = {
-    type: 'line',
+    type: 'scatter',
+    data: {
+        labels: firstNominalLabels,
+        datasets: firstDatasets,
+    },
+    options: firstChartOptions
+};
+var firstConfig1 = {
+    type: 'scatter',
     data: {
         labels: firstNominalLabels,
         datasets: firstDatasets,
@@ -204,7 +232,15 @@ var firstConfig = {
 };
 
 var secondConfig = {
-    type: 'line',
+    type: 'scatter',
+    data: {
+        labels: secondNominalLabels,
+        datasets: secondDatasets,
+    },
+    options: secondChartOptions
+};
+var secondConfig1 = {
+    type: 'scatter',
     data: {
         labels: secondNominalLabels,
         datasets: secondDatasets,
@@ -212,10 +248,10 @@ var secondConfig = {
     options: secondChartOptions
 };
 
+
 Chart.defaults.global.defaultFontColor = 'white';
 
-var firstChart = new Chart(firstCtx, firstConfig);
-var secondChart = new Chart(secondCtx, secondConfig);
+
 
 
 
@@ -228,26 +264,94 @@ socket.on('serverMessage', function (data) {
     console.log(data.msg);
 });
 
+
+
+
+
 socket.on("nominalData", function (data) {
-    firstConfig.data.labels = data.totalsq;
-    firstConfig.data.datasets[1].data = data.totalz;
     
-    secondConfig.data.labels = data.totalx;
-    secondConfig.data.datasets[1].data = data.totaly;
-    
-    
-    firstChart.update();
-    firstChart.update();
+    fxmin = Math.min(...data.totalsq);
+    sxmin = Math.min(...data.totalx);   
+
+    fxmax = Math.max(...data.totalsq);
+    sxmax = Math.max(...data.totalx);
 
 
-    //firstChartOptions.scales.xAxes[1].display = false;
 
-    console.log(firstConfig.data.datasets[1].data.length, firstConfig.data.labels.length, data);
+    fymin = Math.min(...data.totalz);
+    symin = Math.min(...data.totaly);   
+
+    fymax = Math.max(...data.totalz);
+    symax = Math.max(...data.totaly);
+
+    console.log(fxmax,fxmin,fymax, fymin);
+    console.log(fxmax,fxmin,fymax, fymin);
+
+    localNominalData = data;
+
+    updateChart();
 });
 
 
+
+
+
+
+function updateChart(){
+
+    firstChartOptions.scales.xAxes[1].ticks.max = fxmax;
+    firstChartOptions.scales.xAxes[1].ticks.min = fxmin;
+    firstChartOptions.scales.yAxes[0].ticks.max = fymax;
+    firstChartOptions.scales.yAxes[0].ticks.min = fymin;
+
+    secondChartOptions.scales.xAxes[1].ticks.max = sxmax;
+    secondChartOptions.scales.xAxes[1].ticks.min = sxmin;
+    secondChartOptions.scales.yAxes[0].ticks.max = symax;
+    secondChartOptions.scales.yAxes[0].ticks.min = symin;
+
+
+    for(i =0; i<localNominalData.totalx.length; i++){
+
+        firstConfig.data.datasets[1].data.push({
+            x: localNominalData.totalsq[i],
+            y: localNominalData.totalz[i]
+        });
+        
+        secondConfig.data.datasets[1].data.push({
+            x: localNominalData.totalx[i],
+            y: localNominalData.totaly[i]
+        });
+    }
+
+    firstChart1 = new Chart.Scatter(firstCtx, firstConfig1);
+    secondChart1 = new Chart.Scatter(secondCtx, secondConfig1);
+
+    rsFxmax = firstChart1.scales["x-axis-1"].max;
+    rsFxmin = firstChart1.scales["x-axis-1"].min;
+
+    rsSxmax = secondChart1.scales["x-axis-1"].max;
+    rsSxmin = secondChart1.scales["x-axis-1"].min;
+
+    
+
+    firstChartOptions.scales.xAxes[1].ticks.max = rsFxmax;
+    firstChartOptions.scales.xAxes[1].ticks.min = rsFxmin;
+    secondChartOptions.scales.xAxes[1].ticks.max = rsSxmax;
+    secondChartOptions.scales.xAxes[1].ticks.min = rsSxmin;
+    
+
+    firstChart = new Chart.Scatter(firstCtx, firstConfig);
+    secondChart = new Chart.Scatter(secondCtx, secondConfig);
+
+    firstChart.update();
+    secondChart.update();
+
+    console.log(firstChart);
+
+}
+
+
 socket.on("serverRealTimeData", function (data) {
-    console.log(data);
 
     firstConfig.data.datasets[0].data.push({
         x: data.sq,

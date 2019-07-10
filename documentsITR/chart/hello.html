@@ -11,107 +11,16 @@
 </head>
 
 <body>
-        <h1>9.html</h1>
-        <p id="hello"></p>
-        <p>
-        <input id="msgtobroadcast"> <input type="button" id="dobroadcast" value="send">
-        </p>
-        <p id="broadcast"></p>
     <canvas id="myChart"></canvas>
-    <script src="/socket.io/socket.io.js"></script>
     <script>
       
 	
-        function hello(msg) {
-            document.getElementById("hello").innerHTML = msg;
-        }
+ 
 
-        function broadcast(msg) {
-            document.getElementById("broadcast").innerHTML = document.getElementById("broadcast").innerHTML + msg + "<br>";
-        }
-
-        var socket = io.connect("/",{
-            "connect timeout": 3000,
-            "reconnect": false
-        });
-
-        socket.on("hello",hello);
-        socket.on("broadcast",broadcast);
-
-        document.getElementById("dobroadcast").addEventListener(
-            "click",
-            function(){
-                var inp = document.getElementById("msgtobroadcast");
-                socket.emit("msg",inp.value);
-                inp.value = "";
-            },
-            false
-        );
 
 
         var ctx = document.getElementById('myChart').getContext('2d');
 
-        var populationData = {
-            labels: ['China', 'India', 'United State', 'Indonesia', 'Brazil', 'Pakistan', 'Nigeria', 'Bangladesh',
-                'Russia', 'Japan'
-            ],
-            datasets: [{
-                label: 'Population',
-                data: [1379302771, 1281935911, 326625791, 260580739, 207353391, 204924861, 190632261,
-                    157826578, 142257519, 126451398
-                ],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.6)',
-                    'rgba(54, 162, 235, 0.6)',
-                    'rgba(255, 206, 86, 0.6)',
-                    'rgba(75, 192, 192, 0.6)',
-                    'rgba(153, 102, 255, 0.6)',
-                    'rgba(255, 159, 64, 0.6)',
-                    'rgba(255, 99, 132, 0.6)',
-                    'rgba(54, 162, 235, 0.6)',
-                    'rgba(255, 206, 86, 0.6)',
-                    'rgba(75, 192, 192, 0.6)',
-                    'rgba(153, 102, 255, 0.6)'
-                ]
-            }]
-        };
-        var colorData = {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-            datasets: [{
-                label: '# of Votes',
-                // data: [-12, 19, -3, 5, 2, 3],
-                data: [],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                fill: true,
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 1,
-                // borderDash: [5, 1],
-                lineTension: 0.2,
-
-
-                pointBorderColor: 'blue',
-                pointBackgroundColor: 'pink',
-                pointBorderWidth: 2,
-                pointRadius: 2,
-                pointHoverRadius: 10,
-                pointHitRadius: 30,
-                //pointStyle: 'rectRounded'
-            }]
-        };
 
         var firstData = {
             label: 'Car A - Speed(mph)',
@@ -122,14 +31,12 @@
         };
         var secondData = {
             label: 'Car B - Speed(mph)',
-            data: [20, 15, 50, 50, 65, 30, 70],
+            data: [],
             fill: false,
-            borderColor: 'blue'
         }
 
         var speedData = {
-            labels: ['0s', '10s', '20s', '30s', '40s', '50s', '60s'],
-            datasets: [firstData, secondData]
+            datasets: [secondData]
         };
 
         // var lineChart = new Chart(ctx, {
@@ -145,14 +52,14 @@
 
 
 
-        var myChart = new Chart(ctx, {
-            type: 'line',
+        var myChart = new Chart.Scatter(ctx, {
+            type: 'scatter',
 
             data: speedData,
             options: {
 
                 tooltips: {
-                    enabled: true,
+                    enabled: false,
                     intersect: false,
                     mode: 'nearest',
                     bodyFontFamily: 'lato',
@@ -178,24 +85,24 @@
 
                     }
                 },
-                responsive: false,
+                responsive: true,
                 scales: {
                     yAxes: [{
                         ticks: {
 
                             beginAtZero: true,
-                            max: 2,
-                            min: -2,
-                            stepSize: 0.5
+                            max: 100,
+                            min: -100,
                         }
                     }],
 
                     xAxes: [{
+                        id: 'first',
                         ticks: {
                             beginAtZero: true,
                             max: 100,
                             min: -100,
-                            stepSize: 0.5
+
                         }
                     }]
                 }
@@ -208,11 +115,11 @@
         var i = 1
 
         function addNewData() {
-            i += 1
-            myChart.data.labels.push(i + 'th');
-            myChart.data.datasets.forEach((dataset) => {
-                dataset.data.push(Math.sin(Math.PI *23* (0.5 - Math.random()) / 2));
-            });
+        i+=1;
+        var x = i;
+        var y = 20*Math.random();
+        myChart.data.datasets[0].data.push({x,y});
+        console.log(myChart.data.datasets[0].data);
             myChart.update();
         }
         var myTimer = setInterval(addNewData, 200);

@@ -90,23 +90,21 @@ function sendNominalData(socket, pathToFile) {
 
     for (i of allRows) {
         j = i.split(" ")[1];
-        totalx.push(j);
+        totalx.push(Number(j));
         k = i.split(" ")[2];
         totaly.push(Number(k));
         l = i.split(" ")[3];
         totalz.push(Number(l));
 
-        totalsq.push((Math.sqrt(j*j+k*k)).toString());
+        totalsq.push((Math.sqrt(j*j+k*k)));
     }
-    var timer = setTimeout(function () {
-        socket.emit("nominalData", {
-            totalx,
-            totaly,
-            totalz,
-            totalsq
-        });
-        console.log("mainServer: nominalData sent");
-    }, 2000);
+    socket.emit("nominalData", {
+        totalx,
+        totaly,
+        totalz,
+        totalsq
+    });
+    console.log("mainServer: nominalData sent");
 }
 
 function sendRealTimeData(socket, pathToFile) {
@@ -120,11 +118,11 @@ function sendRealTimeData(socket, pathToFile) {
         if (line) {
             lineString = line.toString('ascii');
 
-            serverData.positionTime = lineString.split(" ")[0];
-            serverData.x = lineString.split(" ")[1];
-            serverData.y = lineString.split(" ")[2];
-            serverData.z = lineString.split(" ")[3];
-            serverData.sq = Math.sqrt(serverData.x*serverData.x+serverData.y*serverData.y);
+            serverData.positionTime = Number(lineString.split(" ")[0]);
+            serverData.x = Number(lineString.split(" ")[1]);
+            serverData.y = Number(lineString.split(" ")[2]);
+            serverData.z = Number(lineString.split(" ")[3]);
+            serverData.sq = Number(Math.sqrt(serverData.x*serverData.x+serverData.y*serverData.y));
 
             socket.emit('serverRealTimeData', serverData);
             console.log(`server: ${i}th data sent from server positionTime: ${serverData.positionTime} x: ${serverData.x} y: ${serverData.y} z: ${serverData.z} sq: ${serverData.sq}`);
