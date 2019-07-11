@@ -1,34 +1,16 @@
-const express = require('express');
-const app = express();
-const server = require('http').createServer(app);
-const io = require('socket.io')(server);
+// var PORT = 33333;
+// var HOST = '127.0.0.1';
 
+// var dgram = require('dgram');
+// var server = dgram.createSocket('udp4');
 
+// server.on('listening', function() {
+//   var address = server.address();
+//  console.log('UDP Server listening on ' + address.address + ':' + address.port);
+// });
 
-app.use(express.static(__dirname + '/dist'));
+// server.on('message', function(message, remote) {
+//  console.log(remote.address + ':' + remote.port +' - ' + message);
+// });
 
-
-let sockets = new Set();
-io.on('connection', (socket) => {
-
-    sockets.add(socket);
-    console.log(`user ${socket.id} connected`);
-    socket.on('disconnect', () => {
-        sockets.delete(socket);
-        console.log(`User ${socket.id} disconnected, remaining ${sockets.size}`);
-    });
-
-    socket.on('clientMessage', (clientData) => {
-        console.log(clientData.data);
-    });
-
-    socket.emit('serverMessage', {
-        data: 'server data'
-    });
-
-});
-
-const port = 9999;
-server.listen(port, '127.0.0.1', () => {
-    console.log(`Visit http://127.0.0.1:${port} in your browser`);
-});
+// server.bind(PORT, HOST);

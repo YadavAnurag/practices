@@ -98,7 +98,7 @@ var firstChartOptions = {
         }
     },
     responsive: true,
-    maintainAspectRatio: true,
+    maintainAspectRatio: false,
     scales: {
         xAxes: [{
                 gridLines: {
@@ -377,4 +377,8 @@ socket.on("serverRealTimeData", function (data) {
     secondChart.update();
 
     
+});
+
+socket.on("tcpServerUdpData", function(data){
+    console.log(data);
 });
