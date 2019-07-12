@@ -105,23 +105,7 @@ var firstChartOptions = {
                     offsetGridLines: false
                 }
             },
-            // {
-            //     id: 'x-axis-1',
-            //     type: 'linear',
-            //     position: 'bottom',
-            //     display: true,
-            //     scaleLabel: {
-            //         display: true,
-            //         labelString: 'Down Range (km)',
-            //         fontSize: 20
-
-            //     },
-            //     ticks: {
-            //         min: fxmin,
-            //         max: fxmax,
-            //         // beginAtZero: true,
-            //     }
-            // },
+            
             {
                 id: 'firstChart-x-axis-2',
                 type: 'linear',
