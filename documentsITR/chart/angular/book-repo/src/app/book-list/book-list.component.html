@@ -1,0 +1,34 @@
+<nav class="navbar navbar-light  justify-content-between main-nav sticky">
+    <a class="navbar-brand text-white">Book Repository</a>
+    <form class="form-inline">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="searchTerm" [(ngModel)]="searchTerm">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)=searchBook()>Search</button>
+      <a routerLink="/cart"><i class="fa fa-shopping-cart text-white cart-style ml-3 pl-2"> {{this.cart.size}}</i></a>
+    </form>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-4 col-md-3 col-sm-6">
+          <div class="card-group" *ngFor='let book of localBooks'>
+              <div class="card">
+                <img class="card-img-top" src="./../../assets/images/book.png" alt="Book Image" height="200px" width="200px">
+                <div class="card-body">
+                  <h5 class="card-title">Title:  {{book.title}}</h5>
+                    <p class="card-text">BookID: {{book.bookID}}</p>
+                    <p class="card-text">Title:  {{book.title}}</p>
+                    <p class="card-text">Authors: {{book.authors}}</p>
+                    <p class="card-text">Average Rating: {{book.average_rating}}</p>
+                    <p class="card-text">ISBN: {{book.isbn}}</p>
+                    <p class="card-text">Rating: {{book.ratings_count}}</p>
+                    <p class="card-text">Price: {{book.price}}</p>
+                </div>
+                <button class="btn btn-primary" (click)="addToCart(book.bookID)">Add to Cart</button>
+                <div class="card-footer" >
+                  <app-star [rating]='book.average_rating'></app-star>
+                </div>
+              </div>
+          </div>
+          </div>
+      </div>
+</div>
