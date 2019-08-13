@@ -1,0 +1,228 @@
+<!-- udacimak v1.2.2 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Managing environments</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Anaconda</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Instructor.html">01. Instructor</a>
+    </li>
+    <li class="">
+      <a href="02. Introduction.html">02. Introduction</a>
+    </li>
+    <li class="">
+      <a href="03. What is Anaconda.html">03. What is Anaconda?</a>
+    </li>
+    <li class="">
+      <a href="04. Installing Anaconda.html">04. Installing Anaconda</a>
+    </li>
+    <li class="">
+      <a href="05. Managing packages.html">05. Managing packages</a>
+    </li>
+    <li class="">
+      <a href="06. Managing environments.html">06. Managing environments</a>
+    </li>
+    <li class="">
+      <a href="07. More environment actions.html">07. More environment actions</a>
+    </li>
+    <li class="">
+      <a href="08. Best practices.html">08. Best practices</a>
+    </li>
+    <li class="">
+      <a href="09. On Python versions at Udacity.html">09. On Python versions at Udacity</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">06. Managing environments</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h1 id="managing-environments">Managing environments</h1>
+<p>As I mentioned before, conda can be used to create environments to isolate your projects. To create an environment, use <code>conda create -n env_name list of packages</code> in your terminal. Here <code>-n env_name</code> sets the name of your environment (<code>-n</code> for name) and <code>list of packages</code> is the list of packages you want installed in the environment. For example, to create an environment named <code>my_env</code> and install numpy in it, type <code>conda create -n my_env numpy</code>.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/conda-create-env.png" alt="" class="img img-fluid">
+    <figcaption class="figure-caption">
+      
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <p>When creating an environment, you can specify which version of Python to install in the environment. This is useful when you're working with code in both Python 2.x and Python 3.x. To create an environment with a specific Python version, do something like <code>conda create -n py3 python=3</code> or <code>conda create -n py2 python=2</code>. I actually have both of these environments on my personal computer. I use them as general environments not tied to any specific project, but rather for general work with each Python version easily accessible. These commands will install the most recent version of Python 3 and 2, respectively. To install a specific version, use <code>conda create -n py python=3.3</code> for Python 3.3.</p>
+<h2 id="entering-an-environment">Entering an environment</h2>
+<p>Once you have an environment created, use <code>conda activate my_env</code> to enter it.</p>
+<video controls loop autoplay>
+<source src="media/conda_enter.mp4" type="video/mp4">
+</video>
+<p>When you're in the environment, you'll see the environment name in the terminal prompt. Something like <code>(my_env) ~ $</code>. The environment has only a few packages installed by default, plus the ones you installed when creating it. You can check this out with <code>conda list</code>. Installing packages in the environment is the same as before: <code>conda install package_name</code>. Only this time, the specific packages you install will only be available when you're in the environment. To leave the environment, type <code>source deactivate</code> (on OSX/Linux). On Windows, use <code>deactivate</code>.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Create environment quiz</p></h3>
+  <div>
+  <form>
+    <fieldset>
+      <legend><p>What command would you use to create an environment named <code>data</code> installed with Python 3.6, numpy, and pandas?</p></legend>
+    </fieldset>
+
+      <div>
+        <input type="radio" value="a1477602911049" name="199392" id="a1477602911049">
+        <label for="a1477602911049"><p>conda env create -n data python=3.6 numpy pandas</p></label>
+      </div>
+      <div>
+        <input type="radio" value="a1477603599067" name="199392" id="a1477603599067">
+        <label for="a1477603599067"><p>conda create data python=3.6 numpy pandas</p></label>
+      </div>
+      <div>
+        <input type="radio" value="a1477603600155" name="199392" id="a1477603600155">
+        <label for="a1477603600155"><p>conda create -n data python=3.6</p></label>
+      </div>
+      <div>
+        <input type="radio" value="a1477603618435" name="199392" id="a1477603618435">
+        <label for="a1477603618435"><p>conda create -n data python=3.6 numpy pandas</p></label>
+      </div>
+  </form>
+
+  <details>
+    <summary><strong>SOLUTION:</strong></summary>
+    conda create -n data python=3.6 numpy pandas
+  </details>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://github.com/udacimak/udacimak#readme" target="_blank">udacimak v1.2.2</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,14 @@
+{
+  "name": "batch-interrupt",
+  "version": "1.0.0",
+  "description": "",
+  "main": "sendingMsg.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Anurag Yadav",
+  "license": "ISC",
+  "dependencies": {
+    "twilio": "^3.33.3"
+  }
+}

@@ -1,0 +1,422 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.500 --> 00:00:02.990
+Earlier, we talked
+about element-wise matrix
+
+00:00:02.990 --> 00:00:03.730
+operations.
+
+00:00:03.730 --> 00:00:05.480
+And that actually
+covers a lot of the math
+
+00:00:05.480 --> 00:00:06.730
+involved with neural networks.
+
+00:00:06.730 --> 00:00:08.859
+But when it comes
+to multiplication,
+
+00:00:08.859 --> 00:00:11.199
+things can get a little
+more complicated.
+
+00:00:11.199 --> 00:00:15.379
+Here, we're multiplying a matrix
+by itself to square its values.
+
+00:00:15.380 --> 00:00:17.719
+If you look at the answer,
+it's fairly obvious
+
+00:00:17.719 --> 00:00:21.049
+where each value comes
+from, 1 times 1 equals 1,
+
+00:00:21.050 --> 00:00:24.300
+2 times 2 equals 4, 3 times
+3 equals 9, and so on.
+
+00:00:24.300 --> 00:00:27.560
+This element-wise multiplication
+is valid operation.
+
+00:00:27.559 --> 00:00:30.619
+But most of the time when people
+mention matrix multiplication,
+
+00:00:30.620 --> 00:00:32.390
+this isn't what they mean.
+
+00:00:32.390 --> 00:00:34.850
+Instead, they're usually talking
+about a special operation
+
+00:00:34.850 --> 00:00:38.450
+called the matrix product,
+which ends up looking like this.
+
+00:00:38.450 --> 00:00:41.300
+Now when you look at the answer,
+it's probably not so clear
+
+00:00:41.299 --> 00:00:43.289
+where these numbers
+are coming from.
+
+00:00:43.289 --> 00:00:44.449
+Here's another difference.
+
+00:00:44.450 --> 00:00:47.359
+We said element-wise
+matrix math required
+
+00:00:47.359 --> 00:00:49.009
+matrices of the same size.
+
+00:00:49.009 --> 00:00:52.549
+For example, this element-wise
+multiplication works fine.
+
+00:00:52.549 --> 00:00:54.979
+But if you tried to find the
+matrix product of those same
+
+00:00:54.979 --> 00:00:57.140
+matrices, well, you can't.
+
+00:00:57.140 --> 00:00:58.195
+It can be confusing.
+
+00:00:58.195 --> 00:00:59.570
+And you're pretty
+much guaranteed
+
+00:00:59.570 --> 00:01:00.950
+to mess it up at
+least a few times
+
+00:01:00.950 --> 00:01:02.540
+when you start building
+neural networks.
+
+00:01:02.539 --> 00:01:04.829
+But this is actually one of
+the most common operations
+
+00:01:04.829 --> 00:01:07.209
+you'll use, so it's
+important to understand.
+
+00:01:07.209 --> 00:01:09.019
+OK, so how do we
+actually calculate
+
+00:01:09.019 --> 00:01:10.939
+the product of two matrices?
+
+00:01:10.939 --> 00:01:12.620
+Well, before we
+deal with matrices,
+
+00:01:12.620 --> 00:01:15.650
+let's start with just
+two equal length vectors.
+
+00:01:15.650 --> 00:01:17.690
+One operation we can
+perform on these vector
+
+00:01:17.689 --> 00:01:19.466
+is called a dot product.
+
+00:01:19.466 --> 00:01:21.049
+For this class, you
+won't need to know
+
+00:01:21.049 --> 00:01:22.701
+how dot products are used.
+
+00:01:22.701 --> 00:01:25.159
+But there's the link below the
+video, if you're interested.
+
+00:01:25.159 --> 00:01:26.810
+To find the dot
+product, we first
+
+00:01:26.810 --> 00:01:30.060
+multiply the corresponding
+elements of each vector.
+
+00:01:30.060 --> 00:01:34.230
+So the 0 times the 1, the
+2 times the 7, and so on.
+
+00:01:34.230 --> 00:01:37.740
+Then, we add up all those
+results to get a single number,
+
+00:01:37.739 --> 00:01:39.780
+in this case, 180.
+
+00:01:39.780 --> 00:01:43.109
+This operation basically let's us
+take two vectors of any length,
+
+00:01:43.109 --> 00:01:45.329
+as long as they're equal,
+and convert those vectors
+
+00:01:45.329 --> 00:01:46.870
+into a single number.
+
+00:01:46.870 --> 00:01:49.439
+So how does that help us
+multiply two matrices?
+
+00:01:49.439 --> 00:01:52.200
+It turns out, to find the
+product of two matrices,
+
+00:01:52.200 --> 00:01:55.019
+we take a series of
+products between every row
+
+00:01:55.019 --> 00:01:57.719
+in the left matrix and
+every column in the matrix.
+
+00:01:57.719 --> 00:01:59.439
+That's really
+important to remember.
+
+00:01:59.439 --> 00:02:01.590
+Whenever you multiply
+two matrices,
+
+00:02:01.590 --> 00:02:04.290
+you're actually dealing with
+the rows of the first matrix
+
+00:02:04.290 --> 00:02:06.540
+and the columns of
+the second matrix.
+
+00:02:06.540 --> 00:02:09.419
+I'll go into more detail about
+why that's important later.
+
+00:02:09.419 --> 00:02:11.730
+But for now, let's work
+through an example.
+
+00:02:11.729 --> 00:02:14.209
+To find the product
+of these matrices,
+
+00:02:14.210 --> 00:02:15.840
+we'll start by taking
+the dot product
+
+00:02:15.840 --> 00:02:17.819
+of the first row
+of the left matrix
+
+00:02:17.819 --> 00:02:19.909
+and the first column
+of the right matrix.
+
+00:02:19.909 --> 00:02:22.349
+For now, just ignore
+all these other numbers,
+
+00:02:22.349 --> 00:02:24.689
+then we can pretend this
+row and this column are just
+
+00:02:24.689 --> 00:02:26.849
+two equal length vectors.
+
+00:02:26.849 --> 00:02:29.789
+Now, we find their dot product,
+with corresponding elements
+
+00:02:29.789 --> 00:02:33.159
+moving across this row
+and down this column.
+
+00:02:33.159 --> 00:02:35.939
+So just like before, we
+have the 0 times the 1,
+
+00:02:35.939 --> 00:02:38.189
+the 2 times the 7, and so on.
+
+00:02:38.189 --> 00:02:40.229
+The product between
+this row and this column
+
+00:02:40.229 --> 00:02:43.229
+becomes one entry in
+the result matrix.
+
+00:02:43.229 --> 00:02:45.780
+You put it at the same
+row and column and indices
+
+00:02:45.780 --> 00:02:48.300
+as the row and column you
+just used to calculate it.
+
+00:02:48.300 --> 00:02:51.090
+So since we used row 1 in
+the left matrix and column 1
+
+00:02:51.090 --> 00:02:54.810
+in the right, the answer
+goes here in row 1 column 1
+
+00:02:54.810 --> 00:02:56.310
+of the new matrix.
+
+00:02:56.310 --> 00:02:59.189
+If we had instead used row 2
+in the left matrix and column 3
+
+00:02:59.189 --> 00:03:03.270
+in the right, the answer would
+end up here in row 2 column 3.
+
+00:03:03.270 --> 00:03:05.370
+OK, all that work
+was just to find
+
+00:03:05.370 --> 00:03:07.331
+one element in the new matrix.
+
+00:03:07.331 --> 00:03:09.539
+To get the whole result, we
+need to find dot products
+
+00:03:09.539 --> 00:03:11.669
+for every row in
+this matrix combined
+
+00:03:11.669 --> 00:03:13.435
+with every column in this one.
+
+00:03:13.436 --> 00:03:15.310
+There are three columns
+in the second matrix.
+
+00:03:15.310 --> 00:03:17.159
+So that means we need
+three dot products
+
+00:03:17.159 --> 00:03:19.439
+for each row in
+the first matrix.
+
+00:03:19.439 --> 00:03:21.659
+And since there are two
+rows in the first matrix,
+
+00:03:21.659 --> 00:03:23.990
+that means we'll need to
+find a total of six dot
+
+00:03:23.990 --> 00:03:26.670
+products for this one
+matrix multiplication.
+
+00:03:26.669 --> 00:03:27.623
+We have one.
+
+00:03:27.623 --> 00:03:29.039
+So to find the
+other five, we just
+
+00:03:29.039 --> 00:03:31.679
+repeat the process for
+each row column pair.
+
+00:03:31.680 --> 00:03:34.379
+So the product between
+row 1 and column 2
+
+00:03:34.379 --> 00:03:36.659
+becomes the entry
+at row 1 column 2.
+
+00:03:36.659 --> 00:03:38.969
+Then, we finish off this row
+by finding the dot product
+
+00:03:38.969 --> 00:03:40.875
+between row 1 and column 3.
+
+00:03:40.875 --> 00:03:42.750
+We do the same thing
+for the next row finding
+
+00:03:42.750 --> 00:03:47.310
+dot products for row 2 column
+1, row 2 column 2, and row 2
+
+00:03:47.310 --> 00:03:48.162
+column 3.
+
+00:03:48.162 --> 00:03:49.620
+With all that done,
+we finally have
+
+00:03:49.620 --> 00:03:51.245
+the result of the
+matrix multiplication
+
+00:03:51.245 --> 00:03:52.330
+we actually wanted.
+
+00:03:52.330 --> 00:03:53.760
+That was quite a bit of work.
+
+00:03:53.759 --> 00:03:55.679
+The answer matrix only
+has six numbers in it.
+
+00:03:55.680 --> 00:03:57.120
+But to find those
+six numbers, we
+
+00:03:57.120 --> 00:04:00.080
+did 24 multiplications
+and 18 additions.
+
+00:04:00.080 --> 00:04:02.542
+As your matrices grow,
+it gets even worse.
+
+00:04:02.542 --> 00:04:04.750
+I guess that's why we do
+stuff with computers, right?
+
+00:04:04.750 --> 00:04:05.819
+I mentioned earlier
+how there are
+
+00:04:05.819 --> 00:04:08.294
+times when taking the product
+of two matrices won't work.
+
+00:04:08.294 --> 00:04:10.169
+In the next video, I'll
+talk more about that,
+
+00:04:10.169 --> 00:04:13.454
+and give you some important tips
+about matrix multiplication.
+

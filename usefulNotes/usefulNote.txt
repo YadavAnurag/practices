@@ -1,0 +1,4 @@
+click to minimize -
+1. Dconf Editor (Ubuntu Softwares)
+2. gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize'
+

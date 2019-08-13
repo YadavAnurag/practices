@@ -1,0 +1,52 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.170 --> 00:00:03.210
+Before moving onto the main program,
+
+00:00:03.210 --> 00:00:04.650
+you should take some time to set up
+
+00:00:04.650 --> 00:00:08.970
+your development environment and fill in any gaps you might have with Python.
+
+00:00:08.970 --> 00:00:11.470
+We'll be making heavy use of NumPy, matplotlib,
+
+00:00:11.470 --> 00:00:15.560
+and pandas, libraries that are staples of the Python data toolkit.
+
+00:00:15.560 --> 00:00:16.965
+If you haven't worked with these before,
+
+00:00:16.965 --> 00:00:19.950
+I suggest taking our intro to Data Analysis Course.
+
+00:00:19.950 --> 00:00:25.440
+Anaconda is a popular package in environment manager built specifically for data science.
+
+00:00:25.440 --> 00:00:27.540
+It's the easiest way to install and
+
+00:00:27.540 --> 00:00:30.580
+manage all the libraries you'll need for this program.
+
+00:00:30.580 --> 00:00:34.481
+And finally, a lot of the work here will be done using Jupyter notebooks.
+
+00:00:34.481 --> 00:00:37.140
+Notebooks or documents that live in your browser,
+
+00:00:37.140 --> 00:00:38.295
+it combine text, code,
+
+00:00:38.295 --> 00:00:40.590
+and images all in one place.
+
+00:00:40.590 --> 00:00:43.660
+These are by far my favorite tool when working on Data Projects.
+
+00:00:43.660 --> 00:00:47.000
+And you should take time to learn how to use them effectively.
+

@@ -1,0 +1,67 @@
+WEBVTT
+Kind: captions
+Language: pt-BR
+
+00:00:00.932 --> 00:00:03.236
+Antes de ir
+para o programa principal,
+
+00:00:03.270 --> 00:00:05.939
+configure seu ambiente
+de desenvolvimento
+
+00:00:05.972 --> 00:00:08.975
+e preencha qualquer lacuna
+que tenha deixado no seu Python.
+
+00:00:09.009 --> 00:00:12.212
+Usaremos muito NumPy,
+Matplotlib e Pandas,
+
+00:00:12.245 --> 00:00:15.382
+bibliotecas importantes
+das ferramentas do Python.
+
+00:00:15.415 --> 00:00:17.050
+Se nunca trabalhou com elas,
+
+00:00:17.084 --> 00:00:20.187
+sugiro que faça o curso
+de introdução à análise de dados.
+
+00:00:20.220 --> 00:00:23.098
+Anaconda é um pacote popular
+em gerenciamento de ambiente,
+
+00:00:23.132 --> 00:00:25.585
+construído especificamente
+para ciência de dados.
+
+00:00:25.618 --> 00:00:28.929
+É o jeito mais fácil de instalar
+e gerenciar todas as bibliotecas
+
+00:00:28.962 --> 00:00:30.597
+de que precisará
+neste programa.
+
+00:00:30.630 --> 00:00:34.501
+Por último, muito do trabalho
+será feito usando notebooks Jupyter.
+
+00:00:34.534 --> 00:00:36.970
+Notebooks são documentos
+que vivem no navegador
+
+00:00:37.003 --> 00:00:40.607
+e combinam textos, códigos
+e imagens em um só lugar.
+
+00:00:40.640 --> 00:00:43.677
+São minhas ferramentas favoritas
+de projetos com dados.
+
+00:00:43.710 --> 00:00:47.047
+Aprenda a usá-las
+efetivamente.
+

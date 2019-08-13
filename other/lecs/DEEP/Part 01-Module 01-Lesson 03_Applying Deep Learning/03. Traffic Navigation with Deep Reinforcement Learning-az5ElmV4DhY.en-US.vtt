@@ -1,0 +1,292 @@
+WEBVTT
+Kind: captions
+Language: en-US
+
+00:00:00.333 --> 00:00:02.567
+Hey there! My name is Cezanne Camacho. 
+
+00:00:02.567 --> 00:00:04.600
+And I'm an instructor here at Udacity.
+
+00:00:05.100 --> 00:00:07.567
+I've been working on our self driving car course, 
+
+00:00:07.567 --> 00:00:10.001
+which focuses on how a car sees a world
+
+00:00:10.001 --> 00:00:11.767
+through cameras and sensors,
+
+00:00:11.767 --> 00:00:14.600
+and then makes driving decisions based on what it sees.
+
+00:00:14.600 --> 00:00:17.700
+And deep learning is one of the most exciting tools that
+
+00:00:17.700 --> 00:00:20.367
+self driving cars use to navigate the world. 
+
+00:00:20.367 --> 00:00:23.367
+Using deep learning, you can teach a car to drive
+
+00:00:23.367 --> 00:00:26.033
+based on observations about the environment it's in.
+
+00:00:26.033 --> 00:00:29.800
+Like whether the car is surrounded by people or other cars,
+
+00:00:29.800 --> 00:00:32.300
+or if the car is moving quickly down the highway.
+
+00:00:32.300 --> 00:00:36.166
+The car should respond correctly in all kinds of situations.
+
+00:00:36.166 --> 00:00:39.133
+One problem that deep learning can help solve
+
+00:00:39.133 --> 00:00:41.600
+is navigating efficiently through traffic.
+
+00:00:41.600 --> 00:00:44.300
+A problem that's near to my heart living in California.
+
+00:00:44.300 --> 00:00:46.934
+People spend hours stuck in traffic every day.
+
+00:00:46.934 --> 00:00:49.133
+So let's see how deep learning can help.
+
+00:00:49.133 --> 00:00:51.834
+To get you started, we'll be looking at a project
+
+00:00:51.834 --> 00:00:54.633
+developed by MIT called Deep Traffic.
+
+00:00:55.633 --> 00:00:58.767
+Deep traffic is a simulation of highway traffic
+
+00:00:58.767 --> 00:01:02.367
+where the car in red is controlled by a neural network that you can train.
+
+00:01:02.767 --> 00:01:06.200
+And a neural network is just a computer program that's loosely modeled on the way
+
+00:01:06.200 --> 00:01:09.367
+how our brain processes information and learns from it. 
+
+00:01:09.767 --> 00:01:13.400
+And these networks acquaint themselves with the world like humans do, 
+
+00:01:13.400 --> 00:01:15.300
+learning by trial and error.
+
+00:01:15.300 --> 00:01:17.433
+Let's see how this example works.
+
+00:01:17.433 --> 00:01:20.533
+The car starts out not knowing much about its environment.
+
+00:01:20.834 --> 00:01:23.300
+The only thing that's already programmed is safety. 
+
+00:01:23.300 --> 00:01:25.734
+This car won't ever crash into other ones.
+
+00:01:25.734 --> 00:01:29.367
+The rest of its behavior is determined by a neural network.
+
+00:01:29.367 --> 00:01:31.967
+This neural network takes in input data,
+
+00:01:31.967 --> 00:01:34.333
+processes and learns from this input,
+
+00:01:34.333 --> 00:01:38.000
+through hidden or unseen layers, and outputs an action. 
+
+00:01:38.000 --> 00:01:41.200
+The input is data about the car's surroundings, 
+
+00:01:41.200 --> 00:01:45.667
+like where it is in relation to other lanes, cars and empty space.
+
+00:01:45.667 --> 00:01:48.667
+I'll call this data the car's state.
+
+00:01:49.001 --> 00:01:52.700
+And the action the car takes will be to move left or right,
+
+00:01:52.700 --> 00:01:54.233
+or stay in the same place.
+
+00:01:54.233 --> 00:01:56.100
+and to speed up or slow down.
+
+00:01:56.600 --> 00:02:00.900
+New states and actions happen over and over again as time progresses.
+
+00:02:00.900 --> 00:02:03.800
+And at each time step, the network learns more
+
+00:02:03.800 --> 00:02:08.200
+about which states and actions results in the fastest navigation through traffic. 
+
+00:02:08.800 --> 00:02:11.467
+This is a type of deep learning called reinforcement learning. 
+
+00:02:12.166 --> 00:02:14.233
+The car starts out without any knowledge,
+
+00:02:14.233 --> 00:02:18.333
+but learns how to act by favoring or rewarding actions and states
+
+00:02:18.333 --> 00:02:20.433
+that result in faster navigation.
+
+00:02:20.433 --> 00:02:23.001
+This reinforces the best behavior.
+
+00:02:23.001 --> 00:02:27.934
+So, given only well-defined input and a goal: to drive the fastest, 
+
+00:02:27.934 --> 00:02:31.166
+the car can learn for itself how to navigate traffic.
+
+00:02:31.600 --> 00:02:34.867
+It'll be your job to tune the input to the neural network.
+
+00:02:35.133 --> 00:02:38.600
+In code, this is controlled by the variable "lanesSide," 
+
+00:02:38.600 --> 00:02:40.900
+"patchesAhead," and "patchesBehind."
+
+00:02:41.867 --> 00:02:46.400
+This whole simulation is laid out in a grid defined by lanes and patches.
+
+00:02:46.867 --> 00:02:49.533
+Each car is about three or four patches in length,
+
+00:02:49.834 --> 00:02:52.200
+and you can see what the input grid looks like
+
+00:02:52.200 --> 00:02:54.867
+by clicking Road Overlay and Learning Input.
+
+00:02:55.934 --> 00:02:58.600
+Right now, the learning input is just one patch
+
+00:02:58.600 --> 00:03:00.367
+which doesn't provide much information.
+
+00:03:00.367 --> 00:03:02.967
+But if I change patchesAhead to be 6, 
+
+00:03:03.433 --> 00:03:05.400
+and lanesSide to be 1,
+
+00:03:05.400 --> 00:03:09.600
+and I click "Apply Code," I can see a larger learning input area.
+
+00:03:09.600 --> 00:03:12.066
+I'll see 6 patches ahead of the red car
+
+00:03:12.066 --> 00:03:14.633
+and one lane to the left, and and one lane to the right of it. 
+
+00:03:14.633 --> 00:03:16.767
+This gives a little more information, 
+
+00:03:16.767 --> 00:03:18.934
+but you'll probably want to expand this even more. 
+
+00:03:18.934 --> 00:03:22.367
+This area defines the input that the neural network will learn from.
+
+00:03:23.500 --> 00:03:27.000
+Other variables you should change include the number of hidden layers. 
+
+00:03:27.900 --> 00:03:30.400
+And the number of neurons in the neural network.
+
+00:03:31.300 --> 00:03:35.367
+Here, there's a single layer defined for you in the starting code with just one neuron.
+
+00:03:35.867 --> 00:03:38.200
+I'd suggest increasing the number of neurons 
+
+00:03:38.200 --> 00:03:40.533
+and copy and pasting this code to add more layers. 
+
+00:03:40.533 --> 00:03:44.001
+This will improve the network's ability to learn from the incoming data. 
+
+00:03:44.600 --> 00:03:47.200
+You'll learn more about these hidden layers and neurons later on.
+
+00:03:47.800 --> 00:03:52.200
+For now, just know that one layer can recognize a basic pattern in the data,
+
+00:03:52.200 --> 00:03:56.667
+like all the places where an empty grid cell is next to an occupied grid cell.
+
+00:03:57.033 --> 00:03:59.367
+Then each successive layer in the network 
+
+00:03:59.367 --> 00:04:01.533
+looks for a pattern in the previous layer.
+
+00:04:02.000 --> 00:04:05.333
+Eventually these hidden layers produce the outputs we're looking for 
+
+00:04:05.333 --> 00:04:07.900
+that determine the action that the car should take.
+
+00:04:08.500 --> 00:04:10.633
+I know this all seems mysterious for now, 
+
+00:04:10.633 --> 00:04:14.533
+but these layers are just the way that neural networks find patterns in data
+
+00:04:14.533 --> 00:04:16.367
+and learn from those patterns.
+
+00:04:16.367 --> 00:04:19.500
+This example is mainly meant to give you some intuition about
+
+00:04:19.500 --> 00:04:20.567
+how deep learning works 
+
+00:04:20.567 --> 00:04:23.166
+and how quickly a network can be trained
+
+00:04:23.166 --> 00:04:26.333
+to solve a real-world problem like traffic navigation.
+
+00:04:26.667 --> 00:04:30.233
+So, I urge you to play around with the inputs to the neural network,
+
+00:04:30.233 --> 00:04:31.600
+then when you're done,
+
+00:04:31.600 --> 00:04:33.834
+click Apply Code, then Run Training.
+
+00:04:33.834 --> 00:04:37.001
+You should see the behavior of the car change pretty quickly. 
+
+00:04:37.300 --> 00:04:39.567
+Then, to evaluate how well you're doing,
+
+00:04:39.567 --> 00:04:41.400
+click "Start Evaluation Run,"
+
+00:04:41.400 --> 00:04:44.066
+or just take a look at how fast your car is moving 
+
+00:04:44.066 --> 00:04:45.767
+and how many cars it passes. 
+
+00:04:45.767 --> 00:04:50.001
+Try to get it to go faster than 65mph. Good luck! 
+

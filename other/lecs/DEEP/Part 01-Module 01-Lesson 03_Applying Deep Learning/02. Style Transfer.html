@@ -1,0 +1,261 @@
+<!-- udacimak v1.2.2 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Style Transfer</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Applying Deep Learning</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Introduction.html">01. Introduction</a>
+    </li>
+    <li class="">
+      <a href="02. Style Transfer.html">02. Style Transfer</a>
+    </li>
+    <li class="">
+      <a href="03. DeepTraffic.html">03. DeepTraffic</a>
+    </li>
+    <li class="">
+      <a href="04. Flappy Bird.html">04. Flappy Bird</a>
+    </li>
+    <li class="">
+      <a href="05. Books to Read.html">05. Books to Read</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">02. Style Transfer</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h1 id="style-transfer">Style Transfer</h1>
+<p>As an example of the kind of things you'll be building with deep learning models, here is a really fun project, <a href="https://github.com/lengstrom/fast-style-transfer" target="_blank">fast style transfer</a>. Style transfer allows you to take famous paintings, and recreate your own images in their styles! The network learns the underlying techniques of those paintings and figures out how to apply them on its own. This model was trained on the styles of famous paintings and is able to transfer those styles to other images and <a href="https://www.youtube.com/watch?v=xVJwwWQlQ1o" target="_blank">even videos</a>!</p>
+<p>I used it to style my cat Chihiro in the style of <a href="https://en.wikipedia.org/wiki/Hokusai" target="_blank">Hokusai</a>'s  <a href="https://en.wikipedia.org/wiki/The_Great_Wave_off_Kanagawa" target="_blank"><em>The Great Wave Off Kanagawa</em></a>.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/chi-waves.png" alt="" class="img img-fluid">
+    <figcaption class="figure-caption">
+      
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <p>To try it out yourself, you can find the code in the <a href="https://github.com/lengstrom/fast-style-transfer" target="_blank">fast-style-transfer GitHub repo</a>. Either use <code>git</code> to clone the repository, or you can download the whole thing as a Zip archive and extract it.</p>
+<p>The network has been trained on a few different styles (<a href="https://github.com/lengstrom/fast-style-transfer/tree/master/examples/style" target="_blank">here</a>) and saved into <a href="https://drive.google.com/drive/folders/0B9jhaT37ydSyRk9UX0wwX3BpMzQ" target="_blank">checkpoint files</a>. Checkpoint files contain all the information about the trained network to apply styles to new images.</p>
+<h2 id="dependencies">Dependencies</h2>
+<p>The easiest way to install all the packages needed to run this code is with <a href="https://www.continuum.io/downloads" target="_blank">Anaconda</a>. Anaconda comes with Conda, a package and environment manager built specifically for data science. Install the Python 3 version of Anaconda appropriate for your operating system.</p>
+<p>If you haven't used Conda before, please quickly run through the Anaconda lesson first.</p>
+<p>You'll need to install Python 3, Tensorflow, Pillow, and SciPy, and moviepy. The process should be the same whether you're using a Mac, Windows, or Linux.  After installing Anaconda, open your command prompt. In there, enter these commands line by line:</p>
+<pre><code class="bash language-bash">conda create -n style-transfer python=3
+conda activate style-transfer
+conda install tensorflow scipy pillow
+pip install moviepy
+python -c "import imageio; imageio.plugins.ffmpeg.download()"</code></pre>
+<blockquote>
+  <p><strong>Note:</strong> If you get an error on the last command that ends in <code>RuntimeError: imageio.ffmpeg.download() has been deprecated. Use 'pip install imageio-ffmpeg' instead.'</code>  just run the command <code>pip install imageio-ffmpeg</code>. You may need to restart the terminal and reactivate the environment for the command to complete. </p>
+</blockquote>
+<p>Let’s take a quick look at what these commands do. The first line in both sets of instructions, creates a new environment with Python 3. This environment will hold all the packages you need for the style transfer code. The next line enters the environment.  Next, we install TensorFlow, SciPy, Pillow (which is an image processing library), and moviepy. The last line here installs ffmpeg, an application for converting images and videos.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="transferring-styles">Transferring styles</h2>
+<ol>
+<li>Download the Zip archive from the <a href="https://github.com/lengstrom/fast-style-transfer" target="_blank">fast-style-transfer</a> repository and extract it. You can download it by clicking on the bright green button on the right.</li>
+<li>Download the Rain Princess checkpoint from <a href="https://d17h27t6h515a5.cloudfront.net/topher/2017/January/587d1865_rain-princess/rain-princess.ckpt" target="_blank">here</a>. Put it in the fast-style-transfer folder. A checkpoint file is a model that already has tuned parameters. By using this checkpoint file, we won't need to train the model and can get straight to applying it.</li>
+<li>Copy the image you want to style into the fast-style-transfer folder.</li>
+<li>Enter the Conda environment you created above, if you aren't still in it.</li>
+</ol>
+<p>Finally, in your terminal, navigate to the fast-style-transfer folder and enter</p>
+<pre><code class="bash language-bash">python evaluate.py --checkpoint ./rain-princess.ckpt --in-path &lt;path_to_input_file&gt; --out-path ./output_image.jpg</code></pre>
+<blockquote>
+  <p><strong>Note:</strong> Your checkpoint file might be named <code>rain_princess.ckpt</code>, notice the underscore, it's not the dash from above.</p>
+</blockquote>
+<p>You can get more checkpoint files at the bottom of this page. Try them all!</p>
+<p>Feel free to train the network on your own images, you can find instructions in the repository (although it does take some powerful hardware). </p>
+<blockquote>
+  <p><strong>Note:</strong> Be careful with the size of the input image. The style transfer can take quite a while to run on larger images.</p>
+</blockquote>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Style Transfer Checklist</p></h3>
+  <div>
+  <div>
+  </div>
+
+  <form>
+    <fieldset>
+      <legend>Task List:</legend>
+
+      <div>
+        <input type="checkbox" id="58431738-f89a-4d96-8fd4-d279255a21af--0">
+        <label for="58431738-f89a-4d96-8fd4-d279255a21af--0"><p>Apply style transfer to an image of yourself or something personal to you.</p></label>
+      </div>
+      <div>
+        <input type="checkbox" id="58431738-f89a-4d96-8fd4-d279255a21af--1">
+        <label for="58431738-f89a-4d96-8fd4-d279255a21af--1"><p>Share your image on Twitter using the hashtag #MadeWithUdacity</p></label>
+      </div>
+    </fieldset>
+  </form>
+
+  <div>
+    <h4>Task Feedback:</h4>
+
+
+    <p>Congratulations on using Deep Learning with style transfer!</p>
+  </div>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <p>The checkpoints were trained on the following paintings:</p>
+<ul>
+<li>Rain Princesss, by <a href="https://afremov.com/Leonid-Afremov-bio.html" target="_blank">Leonid Afremov</a></li>
+<li>La Muse, by <a href="https://en.wikipedia.org/wiki/Pablo_Picasso" target="_blank">Pablo Picasso</a></li>
+<li>Udnie by <a href="https://en.wikipedia.org/wiki/Francis_Picabia" target="_blank">Francis Picabia</a></li>
+<li>Scream, by <a href="https://en.wikipedia.org/wiki/Edvard_Munch" target="_blank">Edvard Munch</a></li>
+<li>The Great Wave off Kanagawa, by <a href="https://en.wikipedia.org/wiki/Hokusai" target="_blank">Hokusai</a></li>
+<li>The Shipwreck of the Minotaur, by <a href="https://en.wikipedia.org/wiki/J._M._W._Turner" target="_blank">J.M.W. Turner</a></li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://github.com/udacimak/udacimak#readme" target="_blank">udacimak v1.2.2</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+    });
+  </script>
+</body>
+
+</html>

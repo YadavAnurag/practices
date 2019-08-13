@@ -1,0 +1,246 @@
+<!-- udacimak v1.2.2 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Element-wise Operations in NumPy</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Matrix Math and NumPy Refresher</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Introduction.html">01. Introduction</a>
+    </li>
+    <li class="">
+      <a href="02. Data Dimensions.html">02. Data Dimensions</a>
+    </li>
+    <li class="">
+      <a href="03. Data in NumPy.html">03. Data in NumPy</a>
+    </li>
+    <li class="">
+      <a href="04. Element-wise Matrix Operations.html">04. Element-wise Matrix Operations</a>
+    </li>
+    <li class="">
+      <a href="05. Element-wise Operations in NumPy.html">05. Element-wise Operations in NumPy</a>
+    </li>
+    <li class="">
+      <a href="06. Matrix Multiplication Part 1.html">06. Matrix Multiplication: Part 1</a>
+    </li>
+    <li class="">
+      <a href="07. Matrix Multiplication Part 2.html">07. Matrix Multiplication: Part 2</a>
+    </li>
+    <li class="">
+      <a href="08. NumPy Matrix Multiplication.html">08. NumPy Matrix Multiplication</a>
+    </li>
+    <li class="">
+      <a href="09. Matrix Transposes.html">09. Matrix Transposes</a>
+    </li>
+    <li class="">
+      <a href="10. Transposes in NumPy.html">10. Transposes in NumPy</a>
+    </li>
+    <li class="">
+      <a href="11. NumPy Quiz.html">11. NumPy Quiz</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">05. Element-wise Operations in NumPy</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h1 id="element-wise-operations">Element-wise operations</h1>
+<h3 id="the-python-way">The Python way</h3>
+<p>Suppose you had a list of numbers, and you wanted to add <code>5</code> to every item in the list. Without NumPy, you might do something like this:</p>
+<pre><code>values = [1,2,3,4,5]
+for i in range(len(values)):
+    values[i] += 5
+
+# now values holds [6,7,8,9,10]</code></pre>
+<p>That makes sense, but it's a lot of code to write and it runs slowly because it's pure Python. </p>
+<p><strong>Note:</strong> Just in case you aren't used to using operators like <code>+=</code>, that just means "add these two items and then store the result in the left item." It is a more succinct way of writing <code>values[i] = values[i] + 5</code>. The code you see in these examples makes use of such operators whenever possible.</p>
+<h3 id="the-numpy-way">The NumPy way</h3>
+<p>In NumPy, we could do the following:</p>
+<pre><code>values = [1,2,3,4,5]
+values = np.array(values) + 5
+
+# now values is an ndarray that holds [6,7,8,9,10]</code></pre>
+<p>Creating that array may seem odd, but normally you'll be storing your data in <code>ndarray</code>s anyway. So if you already had an <code>ndarray</code> named <code>values</code>, you could have just done:</p>
+<pre><code>values += 5</code></pre>
+<p>We should point out, NumPy actually has functions for things like adding, multiplying, etc. But it also supports using the standard math operators. So the following two lines are equivalent:</p>
+<pre><code>x = np.multiply(some_array, 5)
+x = some_array * 5</code></pre>
+<p><br />
+We will usually use the operators instead of the functions because they are more convenient to type and easier to read, but it's really just personal preference.</p>
+<p>One more example of operating with scalars and <code>ndarrays</code>. Let's say you have a matrix <code>m</code> and you want to reuse it, but first you need to set all its values to zero. Easy, just multiply by zero and assign the result back to the matrix, like this:</p>
+<pre><code>m *= 0
+
+# now every element in m is zero, no matter how many dimensions it has</code></pre>
+<h3 id="element-wise-matrix-operations">Element-wise Matrix Operations</h3>
+<p>The same functions and operators that work with scalars and matrices also work with other dimensions. You just need to make sure that the items you perform the operation on have compatible shapes. </p>
+<p>Let's say you want to get the squared values of a matrix. That's simply <code>x = m * m</code> (or if you want to assign the value back to <code>m</code>, it's just <code>m *= m</code></p>
+<p>This works because it's an element-wise multiplication between two identically-shaped matrices. (In this case, they are shaped the same because they are actually the same object.)</p>
+<p>Here's the example from the video:</p>
+<pre><code>a = np.array([[1,3],[5,7]])
+a
+# displays the following result:
+# array([[1, 3],
+#        [5, 7]])
+
+b = np.array([[2,4],[6,8]])
+b
+# displays the following result:
+# array([[2, 4],
+#        [6, 8]])
+
+a + b
+# displays the following result
+#      array([[ 3,  7],
+#             [11, 15]])</code></pre>
+<p>And if you try working with incompatible shapes, like the other example from the video, you'd get an error:</p>
+<pre><code>a = np.array([[1,3],[5,7]])
+a
+# displays the following result:
+# array([[1, 3],
+#        [5, 7]])
+c = np.array([[2,3,6],[4,5,9],[1,8,7]])
+c
+# displays the following result:
+# array([[2, 3, 6],
+#        [4, 5, 9],
+#        [1, 8, 7]])
+
+a.shape
+# displays the following result:
+#  (2, 2)
+
+c.shape
+# displays the following result:
+#  (3, 3)
+
+a + c
+# displays the following error:
+# ValueError: operands could not be broadcast together with shapes (2,2) (3,3) </code></pre>
+<p>You'll learn more about what that "could not be broadcast together" means in a later lesson, but for now, just notice that the two shapes are different so we can't perform the element-wise operation.</p>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://github.com/udacimak/udacimak#readme" target="_blank">udacimak v1.2.2</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+    });
+  </script>
+</body>
+
+</html>

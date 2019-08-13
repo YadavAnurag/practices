@@ -1,0 +1,476 @@
+WEBVTT
+Kind: captions
+Language: pt-BR
+
+00:00:00.667 --> 00:00:03.467
+Redes neurais fazem muitas contas
+com muitos dados.
+
+00:00:03.501 --> 00:00:05.934
+Mas, antes de criar
+essas redes sozinhos
+
+00:00:05.968 --> 00:00:08.434
+e garantir que a parte matemática
+seja feita corretamente,
+
+00:00:08.467 --> 00:00:12.300
+primeiro temos que entender
+como representamos esses dados.
+
+00:00:12.467 --> 00:00:13.501
+Especificamente,
+
+00:00:13.534 --> 00:00:16.300
+precisamos pensar nas formas
+que os dados podem ter.
+
+00:00:16.334 --> 00:00:18.567
+Por exemplo,
+podemos ter um número
+
+00:00:18.601 --> 00:00:21.001
+representando a altura
+de uma pessoa em centímetros.
+
+00:00:21.033 --> 00:00:22.367
+Ou uma série de números
+representando
+
+00:00:22.400 --> 00:00:24.067
+várias características
+dessa pessoa,
+
+00:00:24.100 --> 00:00:26.367
+como altura, peso e idade.
+
+00:00:26.667 --> 00:00:28.734
+Ou talvez
+uma imagem dessa pessoa
+
+00:00:28.767 --> 00:00:30.200
+representada como uma grade,
+
+00:00:30.234 --> 00:00:32.467
+com linhas e colunas
+de pixels individuais.
+
+00:00:32.834 --> 00:00:36.634
+Uma forma possível de representar
+um pixel nessa imagem
+
+00:00:36.667 --> 00:00:38.200
+pode usar 3 números,
+
+00:00:38.234 --> 00:00:41.400
+um para cada um dos canais de cor,
+vermelho, azul e verde.
+
+00:00:41.434 --> 00:00:43.133
+Descrevemos estas diferentes
+formas de dados
+
+00:00:43.167 --> 00:00:45.334
+de acordo
+com seu número de dimensões.
+
+00:00:45.367 --> 00:00:47.701
+Primeiro, temos a menor
+e mais simples forma,
+
+00:00:47.734 --> 00:00:53.133
+um valor único,
+como 1, 2,4 ou -0,3.
+
+00:00:53.167 --> 00:00:55.434
+São chamados de escalares.
+
+00:00:55.467 --> 00:00:57.901
+Escalares têm
+zero dimensões.
+
+00:00:57.934 --> 00:01:00.267
+É impossível visualizar
+zero dimensões,
+
+00:01:00.300 --> 00:01:01.567
+mas acredite em mim.
+
+00:01:01.601 --> 00:01:03.701
+É assim que os escalares
+são definidos.
+
+00:01:03.734 --> 00:01:05.100
+A partir
+dos exemplos anteriores,
+
+00:01:05.133 --> 00:01:06.667
+a altura de uma pessoa
+seria um escalar
+
+00:01:06.701 --> 00:01:08.834
+e teria uma forma
+zero-dimensional.
+
+00:01:08.868 --> 00:01:11.634
+E há uma série de valores
+chamados vetores.
+
+00:01:11.667 --> 00:01:12.734
+Há dois tipos:
+
+00:01:12.767 --> 00:01:14.701
+vetores de linha
+e vetores de coluna.
+
+00:01:14.734 --> 00:01:16.000
+Eles podem acomodar
+as mesmas coisas,
+
+00:01:16.033 --> 00:01:18.968
+mas conceitualmente
+um vetor de linha seria assim,
+
+00:01:19.000 --> 00:01:22.801
+1, 2, 3 ordenados horizontalmente
+da esquerda para a direita,
+
+00:01:22.834 --> 00:01:24.601
+e um vetor de coluna
+seria assim,
+
+00:01:24.634 --> 00:01:27.701
+1, 2, 3 ordenados verticalmente
+de cima para baixo.
+
+00:01:27.734 --> 00:01:29.801
+A razão para usar um
+ou outro tipo de vetor
+
+00:01:29.834 --> 00:01:31.667
+é às vezes
+uma questão de preferência,
+
+00:01:31.701 --> 00:01:34.934
+mas em outros momentos a forma
+afeta a conta que podemos fazer.
+
+00:01:34.968 --> 00:01:37.934
+De toda forma,
+um vetor tem uma dimensão,
+
+00:01:37.968 --> 00:01:39.601
+que chamamos de comprimento.
+
+00:01:39.634 --> 00:01:42.067
+Assim, cada um dos vetores
+tem um comprimento 3.
+
+00:01:42.100 --> 00:01:45.300
+A lista de antes com a altura,
+peso e idade da pessoa
+
+00:01:45.334 --> 00:01:47.033
+poderia ser registrada
+como um vetor.
+
+00:01:47.067 --> 00:01:49.000
+Em seguida,
+temos as matrizes.
+
+00:01:49.033 --> 00:01:52.200
+Uma matriz é
+uma grade bidimensional de valores.
+
+00:01:52.234 --> 00:01:53.834
+Descrevemos
+a forma de uma matriz
+
+00:01:53.868 --> 00:01:56.734
+de acordo com seu número
+de linhas e colunas.
+
+00:01:56.767 --> 00:01:58.868
+Então, se tivéssemos
+duas linhas de dados,
+
+00:01:58.901 --> 00:02:01.033
+1, 2, 3 e 4, 5, 6,
+
+00:02:01.067 --> 00:02:03.667
+teríamos 2 linhas
+e 3 colunas.
+
+00:02:03.701 --> 00:02:05.901
+Diríamos então
+que é uma matriz 2 por 3.
+
+00:02:05.934 --> 00:02:08.701
+Se tivéssemos um número
+para cada pixel de uma imagem,
+
+00:02:08.734 --> 00:02:11.901
+poderíamos acomodar
+os valores de pixel na matriz.
+
+00:02:11.934 --> 00:02:14.868
+Finalmente, há os tensores.
+
+00:02:14.901 --> 00:02:16.534
+Você ouvirá bastante
+o termo neste curso,
+
+00:02:16.567 --> 00:02:18.033
+porque você passará
+um bom tempo
+
+00:02:18.067 --> 00:02:20.234
+usando uma biblioteca de software
+chamada TensorFlow,
+
+00:02:20.267 --> 00:02:23.234
+que lida com todos os dados
+na forma de tensores.
+
+00:02:23.267 --> 00:02:24.434
+O termo tensor
+pode se referir
+
+00:02:24.467 --> 00:02:27.234
+a qualquer conjunto
+de valores n-dimensionais.
+
+00:02:27.267 --> 00:02:29.868
+Um escalar é
+um tensor zero-dimensional,
+
+00:02:29.901 --> 00:02:32.300
+um vetor é
+um tensor unidimensional,
+
+00:02:32.334 --> 00:02:35.234
+uma matriz é
+um tensor bidimensional,
+
+00:02:35.267 --> 00:02:37.067
+e qualquer coisa
+com mais de duas dimensões
+
+00:02:37.100 --> 00:02:38.834
+chamaremos apenas de tensor.
+
+00:02:38.868 --> 00:02:40.634
+O problema é que dados
+com dimensões mais altas
+
+00:02:40.667 --> 00:02:42.567
+podem ser difíceis
+de visualizar.
+
+00:02:42.601 --> 00:02:45.767
+Para 3 dimensões,
+pensamos em uma pilha de matrizes,
+
+00:02:45.801 --> 00:02:48.234
+mas podemos pensar também
+em uma lista de matrizes
+
+00:02:49.033 --> 00:02:51.167
+ou uma matriz de vetores.
+
+00:02:51.200 --> 00:02:53.767
+E, para 4 dimensões,
+pensamos em uma matriz
+
+00:02:53.801 --> 00:02:56.868
+em que cada uma das entradas
+é uma matriz,
+
+00:02:56.901 --> 00:03:00.000
+ou talvez uma lista,
+ou uma pilha de pilhas de matrizes,
+
+00:03:00.033 --> 00:03:01.501
+ou talvez outra coisa.
+
+00:03:01.534 --> 00:03:02.934
+E vai ficando
+cada vez mais complicado
+
+00:03:02.968 --> 00:03:04.801
+à medida que o número
+de dimensões aumenta.
+
+00:03:04.834 --> 00:03:07.834
+O importante é lembrar
+que, mesmo que não consiga imaginar
+
+00:03:07.868 --> 00:03:09.000
+como os dados
+estão ordenados,
+
+00:03:09.033 --> 00:03:10.734
+você ainda consegue fazer
+a conta dar certo.
+
+00:03:11.033 --> 00:03:12.834
+De volta
+aos exemplos anteriores,
+
+00:03:12.868 --> 00:03:14.767
+se tivermos um valor separado
+para cada canal de cor
+
+00:03:14.801 --> 00:03:16.534
+de cada pixel de uma imagem,
+
+00:03:16.567 --> 00:03:19.001
+poderíamos acomodá-los
+em um tensor tridimensional
+
+00:03:19.033 --> 00:03:22.167
+com planos separados para os valores
+vermelho, verde e azul.
+
+00:03:22.200 --> 00:03:26.601
+Nestas aulas, falaremos muito
+em termos de escalares e matrizes.
+
+00:03:26.634 --> 00:03:27.868
+Ao usarmos vetores,
+
+00:03:27.901 --> 00:03:29.501
+pensaremos neles
+como matrizes também,
+
+00:03:29.534 --> 00:03:32.200
+em que uma de suas dimensões
+terá tamanho 1.
+
+00:03:32.234 --> 00:03:35.667
+Por exemplo, ao considerarmos
+estes 3 vetores de comprimento,
+
+00:03:35.701 --> 00:03:39.367
+dizemos que este vetor de linha
+é uma matriz de 1 por 3.
+
+00:03:39.400 --> 00:03:42.534
+E este vetor de coluna é
+uma matriz de 3 por 1.
+
+00:03:42.567 --> 00:03:44.133
+Às vezes precisaremos
+nos referir
+
+00:03:44.167 --> 00:03:47.267
+a elementos individuais
+dentro da matriz.
+
+00:03:47.300 --> 00:03:51.400
+Fazemos isso usando seu índice,
+que é sua linha e sua coluna.
+
+00:03:51.434 --> 00:03:54.000
+Se esta matriz
+fosse chamada de A,
+
+00:03:54.033 --> 00:03:56.434
+seus valores estariam localizados
+nestes índices.
+
+00:03:56.467 --> 00:03:59.467
+Os índices das localizações
+na primeira linha são
+
+00:03:59.501 --> 00:04:03.167
+a11, a12 e a13.
+
+00:04:03.200 --> 00:04:05.434
+A localização na segunda linha
+são os índices
+
+00:04:05.467 --> 00:04:09.501
+a21, a22 e a23,
+e assim por diante.
+
+00:04:09.734 --> 00:04:12.701
+Dizemos então
+que o valor a32 é 8.
+
+00:04:12.734 --> 00:04:14.033
+Uma última coisa
+que devo dizer.
+
+00:04:14.067 --> 00:04:15.968
+Nos livros de matemática,
+no que você lê online
+
+00:04:16.001 --> 00:04:18.367
+e até no que ler nesta aula,
+
+00:04:18.400 --> 00:04:21.133
+os índices começam no 1,
+como mostrei aqui.
+
+00:04:21.167 --> 00:04:22.934
+Vê como a primeira linha
+é a linha 1,
+
+00:04:22.968 --> 00:04:25.067
+e a primeira coluna
+é a coluna 1?
+
+00:04:25.100 --> 00:04:26.801
+Contar a partir de 1
+faz todo o sentido,
+
+00:04:26.834 --> 00:04:28.667
+mas em linguagens
+de programação
+
+00:04:28.701 --> 00:04:31.100
+é mais comum
+que os índices comecem no 0,
+
+00:04:31.133 --> 00:04:32.534
+o que ficaria assim.
+
+00:04:32.567 --> 00:04:35.534
+Todos os índices são menores
+do que esperaríamos.
+
+00:04:35.567 --> 00:04:39.167
+Em código, em vez do 8
+estar no índice a32,
+
+00:04:39.200 --> 00:04:41.501
+dizemos que está
+no índice a21.
+
+00:04:41.534 --> 00:04:43.267
+Se tem experiência
+em programar softwares,
+
+00:04:43.300 --> 00:04:44.868
+já deve estar acostumado
+com isso,
+
+00:04:44.901 --> 00:04:46.534
+então lembre-se de que a maior parte
+dos materiais escritos
+
+00:04:46.567 --> 00:04:47.801
+está indexada a partir do 1.
+
+00:04:47.834 --> 00:04:49.334
+Mas, se você é novo
+em programação,
+
+00:04:49.367 --> 00:04:51.467
+é quase certo que vai
+demorar a se acostumar
+
+00:04:51.501 --> 00:04:52.901
+a contar a partir do 0.
+

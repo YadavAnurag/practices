@@ -1,0 +1,176 @@
+WEBVTT
+Kind: captions
+Language: pt-BR
+
+00:00:00.267 --> 00:00:04.367
+Muitos projetos requerem
+diferentes versões de biblioteca
+
+00:00:04.400 --> 00:00:07.801
+ou até mesmo do Python.
+
+00:00:07.834 --> 00:00:10.400
+Na minha experiência
+e na de muita gente,
+
+00:00:10.434 --> 00:00:15.367
+é muito difícil fazer as versões
+funcionarem bem em um computador.
+
+00:00:15.400 --> 00:00:17.734
+Para isso, nós utilizamos
+ambientes virtuais
+
+00:00:17.767 --> 00:00:20.734
+gerenciados por bibliotecas
+como o Virtuallenv.
+
+00:00:20.767 --> 00:00:23.701
+Ambientes virtuais permitem
+separar as bibliotecas
+
+00:00:23.734 --> 00:00:25.000
+de diferentes projetos,
+
+00:00:25.033 --> 00:00:27.000
+assim você evita
+os conflitos.
+
+00:00:27.901 --> 00:00:31.534
+Se você trabalha com dados,
+Anaconda é a melhor escolha.
+
+00:00:31.567 --> 00:00:34.701
+Ela é uma distribuição
+de bibliotecas e programas
+
+00:00:34.734 --> 00:00:37.100
+construídas especificamente
+para dados.
+
+00:00:38.400 --> 00:00:41.501
+Ela vem com o Conda,
+um pacote e gerenciador de pacote
+
+00:00:41.534 --> 00:00:44.234
+que facilitará muito
+a sua vida.
+
+00:00:44.267 --> 00:00:47.133
+Eu vou mostrar
+como utilizar o Conda.
+
+00:00:47.167 --> 00:00:51.033
+Eu crio um novo ambiente
+para cada projeto iniciado,
+
+00:00:51.067 --> 00:00:54.734
+assim eu posso separar
+as versões de pacote.
+
+00:00:54.767 --> 00:00:57.934
+Por exemplo, se eu quiser
+criar um projeto no Python 3,
+
+00:00:57.968 --> 00:01:00.334
+que você deve utilizar
+para seus novos projetos,
+
+00:01:00.367 --> 00:01:02.701
+eu posso criar
+um ambiente para ele.
+
+00:01:02.734 --> 00:01:06.501
+Digitando "conda create"...
+
+00:01:06.534 --> 00:01:09.701
+Eu o nomeio
+como "tea_facts".
+
+00:01:12.234 --> 00:01:14.901
+Ele posta fatos sobre chá
+no Twitter.
+
+00:01:14.934 --> 00:01:17.801
+Uso a versão Python 3.
+
+00:01:19.334 --> 00:01:20.534
+Dou enter.
+
+00:01:25.934 --> 00:01:27.834
+Isso criará o ambiente
+para mim.
+
+00:01:27.868 --> 00:01:30.400
+Eu posso entrar
+o ambiente assim:
+
+00:01:30.434 --> 00:01:34.868
+"source activate tea_facts".
+
+00:01:37.567 --> 00:01:39.667
+Este é o comando
+no Mac e no Linux,
+
+00:01:39.701 --> 00:01:42.133
+e no Windows
+é só "activate".
+
+00:01:42.167 --> 00:01:46.000
+Agora eu estou no ambiente.
+Você vê o nome no prompt.
+
+00:01:46.033 --> 00:01:48.968
+Você vê os pacotes
+instalados.
+
+00:01:49.000 --> 00:01:51.033
+Estes são pacotes padrões.
+
+00:01:51.067 --> 00:01:54.367
+Agora eu posso instalar
+o que quero para o projeto.
+
+00:01:55.167 --> 00:01:58.734
+Vamos instalar o numpy pandas
+para lidar com dados sobre chá
+
+00:01:58.767 --> 00:02:01.968
+e o matplotlib
+para as visualizações.
+
+00:02:16.000 --> 00:02:18.133
+Agora eu instalo
+o jupyter notebook,
+
+00:02:18.167 --> 00:02:20.334
+que uso
+para desenvolver códigos.
+
+00:02:39.634 --> 00:02:42.601
+Novamente, observando
+os pacotes instalados,
+
+00:02:42.634 --> 00:02:45.834
+está tudo pronto
+para o meu projeto.
+
+00:02:45.868 --> 00:02:48.267
+Isto está separado
+dos outros ambientes,
+
+00:02:48.300 --> 00:02:51.968
+assim eu não terei nenhum
+problema de conflito de versões.
+
+00:02:52.000 --> 00:02:55.801
+Agora é a sua vez de aprender
+a utilizar Conda em seus projetos.
+
+00:02:55.834 --> 00:02:59.267
+Esta lição vai demorar
+de 30min a uma hora.
+
+00:02:59.300 --> 00:03:00.501
+Divirta-se.
+

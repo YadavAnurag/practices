@@ -1,0 +1,313 @@
+<!-- udacimak v1.2.2 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>NumPy Quiz</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Matrix Math and NumPy Refresher</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Introduction.html">01. Introduction</a>
+    </li>
+    <li class="">
+      <a href="02. Data Dimensions.html">02. Data Dimensions</a>
+    </li>
+    <li class="">
+      <a href="03. Data in NumPy.html">03. Data in NumPy</a>
+    </li>
+    <li class="">
+      <a href="04. Element-wise Matrix Operations.html">04. Element-wise Matrix Operations</a>
+    </li>
+    <li class="">
+      <a href="05. Element-wise Operations in NumPy.html">05. Element-wise Operations in NumPy</a>
+    </li>
+    <li class="">
+      <a href="06. Matrix Multiplication Part 1.html">06. Matrix Multiplication: Part 1</a>
+    </li>
+    <li class="">
+      <a href="07. Matrix Multiplication Part 2.html">07. Matrix Multiplication: Part 2</a>
+    </li>
+    <li class="">
+      <a href="08. NumPy Matrix Multiplication.html">08. NumPy Matrix Multiplication</a>
+    </li>
+    <li class="">
+      <a href="09. Matrix Transposes.html">09. Matrix Transposes</a>
+    </li>
+    <li class="">
+      <a href="10. Transposes in NumPy.html">10. Transposes in NumPy</a>
+    </li>
+    <li class="">
+      <a href="11. NumPy Quiz.html">11. NumPy Quiz</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">11. NumPy Quiz</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h1 id="numpy-exam">NumPy Exam</h1>
+<p>This is just a short programming quiz that asks you use a few NumPy features. It is meant to give you a little practice if you don't have NumPy experience.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+
+  <h4>Start Quiz:</h4>
+  <div>
+  <div class="nav nav-tabs nav-fill" role="tablist" id="question-tabs">
+    <a href="#287367-numpy_fun-py" class="nav-item nav-link  active show" id="tab-287367-numpy_fun-py" data-toggle="tab" role="tab"
+      aria-controls="287367-numpy_fun-py" aria-selected="true">numpy_fun.py</a>
+    <a href="#287367-solution-py" class="nav-item nav-link " id="tab-287367-solution-py" data-toggle="tab" role="tab"
+      aria-controls="287367-solution-py" aria-selected="false">solution.py</a>
+  </div>
+
+  <div class="tab-content" style="padding: 20px 0;" id="question-tab-contents">
+    <div class="tab-pane  active show" id="287367-numpy_fun-py" aria-labelledby="tab-287367-numpy_fun-py" role="tabpanel">
+      <pre><code></code># Use the numpy library
+import numpy as np
+
+
+def prepare_inputs(inputs):
+    # TODO: create a 2-dimensional ndarray from the given 1-dimensional list;
+    #       assign it to input_array
+    input_array &#x3D; None
+    
+    # TODO: find the minimum value in input_array and subtract that
+    #       value from all the elements of input_array. Store the
+    #       result in inputs_minus_min
+    inputs_minus_min &#x3D; None
+
+    # TODO: find the maximum value in inputs_minus_min and divide
+    #       all of the values in inputs_minus_min by the maximum value.
+    #       Store the results in inputs_div_max.
+    inputs_div_max &#x3D; None
+
+    # return the three arrays we&#x27;ve created
+    return input_array, inputs_minus_min, inputs_div_max
+    
+
+def multiply_inputs(m1, m2):
+    # TODO: Check the shapes of the matrices m1 and m2. 
+    #       m1 and m2 will be ndarray objects.
+    #
+    #       Return False if the shapes cannot be used for matrix
+    #       multiplication. You may not use a transpose
+    pass
+
+
+    # TODO: If you have not returned False, then calculate the matrix product
+    #       of m1 and m2 and return it. Do not use a transpose,
+    #       but you swap their order if necessary
+    pass
+    
+
+def find_mean(values):
+    # TODO: Return the average of the values in the given Python list
+    pass
+
+
+input_array, inputs_minus_min, inputs_div_max &#x3D; prepare_inputs([-1,2,7])
+print(&quot;Input as Array: {}&quot;.format(input_array))
+print(&quot;Input minus min: {}&quot;.format(inputs_minus_min))
+print(&quot;Input  Array: {}&quot;.format(inputs_div_max))
+
+print(&quot;Multiply 1:\n{}&quot;.format(multiply_inputs(np.array([[1,2,3],[4,5,6]]), np.array([[1],[2],[3],[4]]))))
+print(&quot;Multiply 2:\n{}&quot;.format(multiply_inputs(np.array([[1,2,3],[4,5,6]]), np.array([[1],[2],[3]]))))
+print(&quot;Multiply 3:\n{}&quot;.format(multiply_inputs(np.array([[1,2,3],[4,5,6]]), np.array([[1,2]]))))
+
+print(&quot;Mean &#x3D;&#x3D; {}&quot;.format(find_mean([1,3,4])))</code></pre>
+    </div>
+    <div class="tab-pane " id="287367-solution-py" aria-labelledby="tab-287367-solution-py" role="tabpanel">
+      <pre><code></code># Use the numpy library
+import numpy as np
+
+
+######################################################
+#
+#      MESSAGE TO STUDENTS:
+#
+#  This file contains a solution to the coding quiz. Feel free
+#  to look at it when you are stuck, but try to solve the
+#   problem on your own first.
+#
+######################################################
+
+
+def prepare_inputs(inputs):
+    # TODO: create a 2-dimensional ndarray from the given 1-dimensional list;
+    #       assign it to input_array
+    input_array &#x3D; np.array([inputs])
+    
+    # TODO: find the minimum value in input_array and subtract that
+    #       value from all the elements of input_array. Store the
+    #       result in inputs_minus_min
+    # We can use NumPy&#x27;s min function and element-wise division
+    inputs_minus_min &#x3D; input_array - np.min(input_array)
+
+    # TODO: find the maximum value in inputs_minus_min and divide
+    #       all of the values in inputs_minus_min by the maximum value.
+    #       Store the results in inputs_div_max.
+    # We can use NumPy&#x27;s max function and element-wise division
+    inputs_div_max &#x3D; inputs_minus_min / np.max(inputs_minus_min)
+
+    return input_array, inputs_minus_min, inputs_div_max
+    
+
+def multiply_inputs(m1, m2):
+    # Check the shapes of the matrices m1 and m2. 
+    # m1 and m2 will be ndarray objects.
+    #
+    # Return False if the shapes cannot be used for matrix
+    # multiplication. You may not use a transpose
+    if m1.shape[0] !&#x3D; m2.shape[1] and m1.shape[1] !&#x3D; m2.shape[0]:     
+        return False
+
+    # Have not returned False, so calculate the matrix product
+    # of m1 and m2 and return it. Do not use a transpose,
+    #       but you swap their order if necessary
+    if m1.shape[1] &#x3D;&#x3D; m2.shape[0]:
+        return np.matmul(m1, m2)        
+    else:
+        return np.matmul(m2, m1)        
+
+
+def find_mean(values):
+    # Return the average of the values in the given Python list
+    # NumPy has a lot of helpful methods like this.
+    return np.mean(values)
+</code></pre>
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+
+</div>
+<div class="divider"></div>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://github.com/udacimak/udacimak#readme" target="_blank">udacimak v1.2.2</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+    });
+  </script>
+</body>
+
+</html>

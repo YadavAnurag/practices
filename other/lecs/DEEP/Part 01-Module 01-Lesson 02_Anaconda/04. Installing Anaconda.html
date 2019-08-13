@@ -1,0 +1,193 @@
+<!-- udacimak v1.2.2 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Installing Anaconda</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Anaconda</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Instructor.html">01. Instructor</a>
+    </li>
+    <li class="">
+      <a href="02. Introduction.html">02. Introduction</a>
+    </li>
+    <li class="">
+      <a href="03. What is Anaconda.html">03. What is Anaconda?</a>
+    </li>
+    <li class="">
+      <a href="04. Installing Anaconda.html">04. Installing Anaconda</a>
+    </li>
+    <li class="">
+      <a href="05. Managing packages.html">05. Managing packages</a>
+    </li>
+    <li class="">
+      <a href="06. Managing environments.html">06. Managing environments</a>
+    </li>
+    <li class="">
+      <a href="07. More environment actions.html">07. More environment actions</a>
+    </li>
+    <li class="">
+      <a href="08. Best practices.html">08. Best practices</a>
+    </li>
+    <li class="">
+      <a href="09. On Python versions at Udacity.html">09. On Python versions at Udacity</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">04. Installing Anaconda</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3><p>Installation instructions</p></h3>
+  <div>
+  <h1 id="installing-anaconda">Installing Anaconda</h1>
+<p>Anaconda is available for Windows, Mac OS X, and Linux. You can find the installers and installation instructions at <a href="https://www.anaconda.com/download/" target="_blank">https://www.anaconda.com/download/</a>. </p>
+<p>If you already have Python installed on your computer, this won't break anything. Instead, the default Python used by your scripts and programs will be the one that comes with Anaconda.</p>
+<p>Choose the Python 3.6 version, you can install Python 2 versions later. Also, choose the 64-bit installer if you have a 64-bit operating system, otherwise go with the 32-bit installer. Go ahead and choose the appropriate version, then install it. Continue on afterwards!</p>
+<p>After installation, you’re automatically in the default conda environment with all packages installed which you can see below. You can check out your own install by entering <code>conda list</code> into your terminal.</p>
+<video loop autoplay>
+  <source src="media/conda_default_install.mp4" type="video/mp4">
+</video>
+<h2 id="on-windows">On Windows</h2>
+<p>A bunch of applications are installed along with Anaconda:</p>
+<ul>
+<li><strong>Anaconda Navigator</strong>, a GUI for managing your environments and packages</li>
+<li><strong>Anaconda Prompt</strong>, a terminal where you can use the command line interface to manage your environments and packages</li>
+<li><strong>Spyder</strong>, an IDE geared toward scientific development</li>
+</ul>
+<p>To avoid errors later, it's best to update all the packages in the default environment. Open the <strong>Anaconda Prompt</strong> application. In the prompt, run the following commands:</p>
+<pre><code>conda upgrade conda
+conda upgrade --all</code></pre>
+<p>and answer yes when asked if you want to install the packages. The packages that come with the initial install tend to be out of date, so updating them now will prevent future errors from out of date software.</p>
+<p><strong>Note:</strong> In the previous step, running <code>conda upgrade conda</code> should not be necessary because <code>--all</code> includes the conda package itself, but some users have encountered errors without it.</p>
+<p>In the rest of this lesson, I'll be asking you to use commands in your terminal. I highly suggest you start working with Anaconda this way, then later use the GUI if you'd like. </p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<p>If you are seeing the following "conda command not found" and are using ZShell, you have to do the following:</p>
+<ul>
+<li>Add <code>export PATH="/Users/username/anaconda/bin:$PATH"</code> to your .zsh_config file.</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://github.com/udacimak/udacimak#readme" target="_blank">udacimak v1.2.2</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+    });
+  </script>
+</body>
+
+</html>

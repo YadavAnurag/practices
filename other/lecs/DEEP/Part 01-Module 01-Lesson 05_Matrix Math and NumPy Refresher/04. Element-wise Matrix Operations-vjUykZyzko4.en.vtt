@@ -1,0 +1,223 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.800 --> 00:00:03.500
+I'm sure you're already
+familiar with scalar math.
+
+00:00:03.500 --> 00:00:06.365
+It's the normal addition,
+multiplication, and so on that
+
+00:00:06.365 --> 00:00:08.560
+you've probably been doing
+for most of your life.
+
+00:00:08.560 --> 00:00:10.400
+But sometimes, like
+with neural networks,
+
+00:00:10.400 --> 00:00:12.650
+you might need to perform
+those sorts of operations
+
+00:00:12.650 --> 00:00:15.470
+on a lot of numbers,
+maybe hundreds, thousands,
+
+00:00:15.470 --> 00:00:16.609
+even millions of them.
+
+00:00:16.609 --> 00:00:19.699
+Maybe you need to double them,
+square them, or divide them
+
+00:00:19.699 --> 00:00:20.839
+all by the same number.
+
+00:00:20.839 --> 00:00:22.326
+If you were writing
+a program, you
+
+00:00:22.326 --> 00:00:24.199
+might decide to make a
+loop where you iterate
+
+00:00:24.199 --> 00:00:27.109
+over every value and perform
+the same operation on each one
+
+00:00:27.109 --> 00:00:30.259
+over and over, but matrices
+offer a better alternative.
+
+00:00:30.260 --> 00:00:32.509
+If you have all of those
+numbers stored in a matrix,
+
+00:00:32.509 --> 00:00:35.084
+you can perform element-wise
+operations on them.
+
+00:00:35.084 --> 00:00:37.250
+That just means you'll treat
+the items in the matrix
+
+00:00:37.250 --> 00:00:40.280
+individually and perform the
+same operation on each one.
+
+00:00:40.280 --> 00:00:42.230
+By the way, I say
+matrix, but this notion
+
+00:00:42.229 --> 00:00:43.939
+of element-wise
+math applies to data
+
+00:00:43.939 --> 00:00:45.710
+with any number of dimensions.
+
+00:00:45.710 --> 00:00:49.070
+To add two scalars, it's
+easy, like 2 plus 3 equals 5.
+
+00:00:49.070 --> 00:00:50.869
+To add a scalar
+and a matrix, it's
+
+00:00:50.869 --> 00:00:52.669
+practically the same thing.
+
+00:00:52.670 --> 00:00:55.850
+Just add the scalar to each
+of the items in the matrix.
+
+00:00:55.850 --> 00:01:01.760
+So 2 plus the matrix 1, 2, 3,
+4 equals the matrix 3, 4, 5, 6.
+
+00:01:01.759 --> 00:01:04.640
+You can do the same thing with
+other math operators, too.
+
+00:01:04.640 --> 00:01:06.560
+Here's a real world example.
+
+00:01:06.560 --> 00:01:08.060
+Let's say we have
+a matrix of values
+
+00:01:08.060 --> 00:01:11.180
+that represents the red
+color channel of an image.
+
+00:01:11.180 --> 00:01:13.340
+Assuming we're using
+our RGB colors,
+
+00:01:13.340 --> 00:01:17.210
+each value will be a single
+byte ranging from 0 to 255.
+
+00:01:17.209 --> 00:01:19.189
+But let's say we want to
+normalize these values
+
+00:01:19.189 --> 00:01:21.079
+and convert them all to
+floating point values
+
+00:01:21.079 --> 00:01:23.019
+in the range from 0 to 1.
+
+00:01:23.019 --> 00:01:23.659
+Easy.
+
+00:01:23.659 --> 00:01:27.109
+We just divide the matrix
+element-wise by 255.
+
+00:01:27.109 --> 00:01:28.700
+By the way don't
+worry if you don't
+
+00:01:28.700 --> 00:01:30.290
+know what normalizing
+means you'll
+
+00:01:30.290 --> 00:01:32.550
+learn more about that
+later in the course.
+
+00:01:32.549 --> 00:01:35.269
+And this doesn't just work
+with scalars in matrices.
+
+00:01:35.269 --> 00:01:36.899
+You can also do
+element-wise math
+
+00:01:36.900 --> 00:01:39.890
+between all of the elements
+within two different matrices.
+
+00:01:39.890 --> 00:01:43.219
+For this to work, the matrices
+have to be the same shape.
+
+00:01:43.219 --> 00:01:46.849
+For example, here we have a
+pair of two-by-two matrices.
+
+00:01:46.849 --> 00:01:48.679
+To add them
+together, we just add
+
+00:01:48.680 --> 00:01:52.415
+pairs of numbers that are at
+the same indices in each matrix,
+
+00:01:52.415 --> 00:01:55.040
+and then we store the result at
+the same location in the answer
+
+00:01:55.040 --> 00:01:56.330
+matrix.
+
+00:01:56.329 --> 00:01:58.789
+So at index 1,1,
+we'd have the result
+
+00:01:58.790 --> 00:02:01.720
+of adding the 1 plus
+the 2, which is 3.
+
+00:02:01.719 --> 00:02:03.679
+And at index 1,2,
+we'd have the result
+
+00:02:03.680 --> 00:02:07.590
+of adding the 3 plus the
+4, which is 7, and so on.
+
+00:02:07.590 --> 00:02:10.159
+Now just like before, how I
+said you can do any normal math
+
+00:02:10.159 --> 00:02:13.490
+operations element-wise
+between scalars and matrices,
+
+00:02:13.490 --> 00:02:15.680
+you could also perform
+any of those operations
+
+00:02:15.680 --> 00:02:17.569
+between corresponding
+elements of two
+
+00:02:17.569 --> 00:02:19.769
+identically shaped matrices.
+
