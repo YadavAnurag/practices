@@ -16,3 +16,4 @@ for i in range(int(input())):
 		print('ALICE')
 	else:
 		print('BOB')
+

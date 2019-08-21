@@ -2,3 +2,11 @@ click to minimize -
 1. Dconf Editor (Ubuntu Softwares)
 2. gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize'
 
+
+
+js DEBUG
+SET DEBUG=recorder:* & npm start
+
+
+Allow access to file transcript--- (from powershell)
+get-process chrome | stop-process; start-process chrome --allow-file-access-from-files
