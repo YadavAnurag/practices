@@ -1,0 +1,27 @@
+1. Ground level terms
+
+1. Label - True answer
+2. Input - predictor variable(s), what you can you to predict the label
+3. Example - Input + coresspoding label(s)
+4. Model - Mathematical function that take input and create approximation to label
+5. Traning - Adjusting model to minimize the error
+6. Prediction - Using model on unlabeled data
+
+
+
+2. Classes of the ML Models-
+
+1. Supervised(input with labels)-
+    1. Regression - Prediction of value
+    2. Classification - prediction of class
+2. Unsupervised(unlabeled examples) - looking at the raw data, and seeing if it naturally falls into groups.
+    1. Clustering - predictino of structure of data
+    2. Anomaly Detection - any abnormal in data
+
+3. 
+1. Structured Data -  row and columnwise(sql data)
+2. Unstructured Data - audio, video, sound, text
+
+4. 
+a. A neural n/w with no hidden layers is a linear model
+b. Models on structured data are few layers deep but whereas image classification DNNs can have hundreds of layers.

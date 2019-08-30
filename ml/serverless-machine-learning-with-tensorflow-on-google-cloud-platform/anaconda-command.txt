@@ -1,0 +1,12 @@
+To remove package
+> conda remove pakckage_name
+
+To list packages installed
+> conda list
+
+TO list env
+> conda list env
+
+To remove env with named
+> conda env remove -n ENV_NAME
+
