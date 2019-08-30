@@ -1,0 +1,18 @@
+0. Time complexity
+https://www.topcoder.com/community/competitive-programming/tutorials/computational-complexity-section-1/
+
+1. How can I be good at graph theory based programming problems in competitive programming?
+
+https://www.quora.com/How-can-I-be-good-at-graph-theory-based-programming-problems-in-competitive-programming/answer/Sameer-Gulati-3?ch=10&share=fed73688&srid=oeMh
+
+
+2. How do I get good at math for competitive programming?
+https://www.quora.com/How-do-I-get-good-at-math-for-competitive-programming/answer/Sameer-Gulati-3?ch=10&share=e1c30b08&srid=oeMh
+
+3. How should one prepare for the problems on trees in competitive programming?
+https://www.quora.com/How-should-one-prepare-for-the-problems-on-trees-in-competitive-programming/answer/Sameer-Gulati-3?ch=10&share=1fad3ce2&srid=oeMh
+
+4. Some Special Contests
+Gooogle CodeZam
+Facebook HackerCup
+ACM ICPC
