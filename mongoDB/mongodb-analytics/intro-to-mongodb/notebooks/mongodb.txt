@@ -1,0 +1,274 @@
+Three diff str that values in mongodb can take on---
+1. scalar -- int, float, string, dates
+2. array
+3. document 
+
+
+# This assumes your mongodb-analytics folder is stored in your home directory
+cd D:\practices\mongodb-analytics\intro-to-mongodb
+activate intro-to-mongodb # on Windows
+pip install pymongo dnspython
+
+
+
+
+# To connect --- 
+1.
+mongo "mongodb+srv://mflix-qx6wr.mongodb.net/test" --username yadavanurag
+2.
+mongoimport --type csv --headerline --db mflix --collection movies_initial --host "<CLUSTER>/<SEED_LIST>" --authenticationDatabase admin --ssl --username yadavanurag --password Anurag@123 --file movies_initial.csv
+
+mongoimport --type csv --headerline --db mflix --collection movies_initial --host "mflix-shard-0/mflix-shard-00-00-qx6wr.mongodb.net:27017,mflix-shard-00-01-qx6wr.mongodb.net:27017,mflix-shard-00-02-qx6wr.mongodb.net:27017" --authenticationDatabase admin --ssl --username yadavanurag --password Anurag@123 --file movies_initial.csv
+
+client = pymongo.MongoClient('mongodb://analytics-student:analytics-password@cluster0-shard-00-00-jxeqq.mongodb.net:27017,cluster0-shard-00-01-jxeqq.mongodb.net:27017,cluster0-shard-00-02-jxeqq.mongodb.net:27017/?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin')
+
+
+
+
+
+
+mongoexport --uri "mongodb://cluster0-shard-00-00-jxeqq.mongodb.net:27017/video"  --collection movies  --out events.json 
+mongoexport -h mongodb://cluster0-shard-00-00-jxeqq.mongodb.net:27017/?replicaSet=Cluster0-shard-0 -u m001-student -p m001-mongodb-basics -d video -c movies -o mybackup.json
+
+
+
+############ MongoDB University-
+mongo "mongodb://cluster0-shard-00-00-jxeqq.mongodb.net:27017,cluster0-shard-00-01-jxeqq.mongodb.net:27017,cluster0-shard-00-02-jxeqq.mongodb.net:27017/test?replicaSet=Cluster0-shard-0" --authenticationDatabase admin --ssl --username m001-student --password m001-mongodb-basics
+
+
+### mongoUniversity Outlook
+mongo "mongodb://cluster0-shard-00-00-jxeqq.mongodb.net:27017,cluster0-shard-00-01-jxeqq.mongodb.net:27017,cluster0-shard-00-02-jxeqq.mongodb.net:27017/test?replicaSet=Cluster0-shard-0" --authenticationDatabase admin --ssl --username m001-student --password m001-mongodb-basics
+
+mongo "mongodb://cluster0-shard-00-00-soxi.mongodb.net:27017,cluster0-shard-00-01-soxi.mongodb.net:27017,cluster0-shard-00-02-soxi.mongodb.net:27017/test?replicaSet=Cluster0-shard-0" --authenticationDatabase admin --ssl --username yadavanurag --password yadavanurag
+
+
+##### Atlas passwords
+anuragyadav13481@gmail.com
+yadavanurag
+
+
+
+
+anuragyadav13481@outlook.com
+Aanurag@123
+
+1. databse access---  yadavanurag yadavanurag
+2. mongo "mongodb+srv://mongodb-university-cluster-0soxi.mongodb.net/test" --username yadavanurag
+use---- --password yadavanurag
+3. using compass ------
+mongodb+srv://yadavanurag:yadavanurag@mongodb-university-cluster-0soxi.mongodb.net/test
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+db.myMovies.insertMany(
+  [
+    {
+      "_id" : "tt0084726",
+      "title" : "Star Trek II: The Wrath of Khan",
+      "year" : 1982,
+      "type" : "movie"
+    },
+    {
+      "_id" : "tt0796366",
+      "title" : "Star Trek",
+      "year" : 2009,
+      "type" : "movie"
+    },
+    {
+      "_id" : "tt0084726",
+      "title" : "Star Trek II: The Wrath of Khan",
+      "year" : 1982,
+      "type" : "movie"
+    },
+    {
+      "_id" : "tt1408101",
+      "title" : "Star Trek Into Darkness",
+      "year" : 2013,
+      "type" : "movie"
+    },
+    {
+      "_id" : "tt0117731",
+      "title" : "Star Trek: First Contact",
+      "year" : 1996,
+      "type" : "movie"
+    }
+  ],
+  {
+    ordered: false
+  }
+);
+
+
+db.myMovies.updateOne({
+		"title": "The Martian"
+	},
+	{
+		$set: {
+			poster: "http://mmmut.ac.in"
+		}
+	}
+)
+
+### projection
+1.
+db.movieDetails.find({"runtime": {$gt: 90}}, {_id: 0, title: 1, runtime: 1})
+
+2. $ne
+db.movieDetails.find({"rated": {$ne: "UNRATED"}}, {"_id":0, title: 1, director: 1}, {"ordered": true}).count()
+
+3. $in
+db.movieDetails.find({"rated": {$in: ['G', "PG", 'PG-13']}}, {_id: 0, title: 1, rated:1})
+db.movies.find({"cast": {$in: ["Jack Nicholson", "John Huston"]}, "viewerRating": {$gt:7}, "mpaaRating": "R"})
+
+4. $nin
+db.movieDetails.find({"rated": {$nin: ['G', "PG", 'PG-13']}}, {_id: 0, title: 1, rated:1})
+
+Ex--
+db.movieDetails.find({"writers": {$in: ["Ethan Coen", "Joel Coen"]}}).count()
+db.movieDetails.find({runtime: {$gt: 90}})
+db.movieDetails.find({runtime: {$gt: 90}}, {_id: 0, title: 1, runtime: 1})
+db.movieDetails.find({runtime: {$gt: 90, $lt: 120}}, {_id: 0, title: 1, runtime: 1})
+db.movieDetails.find({runtime: {$gte: 90, $lte: 120}}, {_id: 0, title: 1, runtime: 1})
+db.movieDetails.find({runtime: {$gte: 180}, "tomato.meter": 100}, {_id: 0, title: 1, runtime: 1})
+db.movieDetails.find({rated: {$ne: "UNRATED"}}, {_id: 0, title: 1, rated: 1})
+db.movieDetails.find({rated: {$in: ["G", "PG"]}}, {_id: 0, title: 1, rated: 1})
+db.movieDetails.find({rated: {$in: ["G", "PG", "PG-13"]}}, {_id: 0, title: 1, rated: 1}).pretty()
+db.movieDetails.find({rated: {$in: ["R", "PG-13"]}}, {_id: 0, title: 1, rated: 1}).pretty()
+
+####### Element Query Operator
+1. $exists
+2. $type
+
+A. $exists
+1. matches both the documents having tomato.consensus--null and the documents not having tomato field at all
+db.movieDetails.find({"tomato.consensus": null}).pretty().count()
+2. do not match both-
+db.movieDetails.find({"tomato.consensus": {$exists: true}}).count()
+db.trips.find({"tripduration": {$exists: true, $in: [null]}})
+db.trips.find({"tripduration": {$exists: true, $eq: null}})
+
+B. $type
+db.movies.find({"viewerRating": {$type: "int"}}).pretty().count()
+
+
+######## Logical Operator---
+1. $and -- matches both
+2. $or -- matches either
+db.movieDetails.find({$or: [{'tomato.meter': {$gt: 95}},
+							{'metacritic': {$gt: 88}}]},
+					{_id: 0, title: 1}).count()
+
+ex- 
+db.shipwrecks.find({$or: [{"watlev": "always dry"},
+							{"depth": 0}]}
+					).count()
+
+2. $and -- is used where we want to match multiple criteria on same field
+(for simple filter if keys filter keys are same for more than one..........last one used to match docs)
+db.movieDetails.find({$and: [{'tomato.meter': {$gt: 95}},
+							{'metacritic': {$gt: 88}}]},
+					{_id: 0, title: 1}).count()
+
+db.movieDetails.find({$and: [{'metacritic': {$ne: null}},
+							{'metacritic': {$exists: true}}]},
+					{_id: 0, title: 1}).count()
+
+
+
+Ex --
+db.movieDetails.find({$or: [{"tomato.meter": {$gt: 95}},                               
+                            {"metacritic": {$gt: 88}}]},
+                     {_id: 0, title: 1, "tomato.meter": 1, "metacritic": 1})
+db.movieDetails.find({$and: [{"tomato.meter": {$gt: 95}},                               
+                            {"metacritic": {$gt: 88}}]},
+                     {_id: 0, title: 1, "tomato.meter": 1, "metacritic": 1})
+db.movieDetails.find({"tomato.meter": {$gt: 95},                               
+                      "metacritic": {$gt: 88}},
+                     {_id: 0, title: 1, "tomato.meter": 1, "metacritic": 1})
+db.movieDetails.find({$and: [{"metacritic": {$ne: null}},
+                             {"metacritic": {$exists: true}}]},
+                          {_id: 0, title: 1, "metacritic": 1})
+db.movieDetails.find({$and: [{"metacritic": null},
+                             {"metacritic": {$exists: true}}]},
+                     {_id: 0, title: 1, "metacritic": 1})
+
+
+
+
+########### Array Operator
+1. $all --- unorderd match for all array items, matched docs should have all array elements
+db.movieDetails.find({"genres": {$all: ["Comedy", "Crime", "Drama"]}},
+						{_id: 1, title: 1, genres:1})
+db.movieDetails.find({"genres": {$all: ["Comedy", "Crime"]}},
+						{_id: 1, title: 1, genres:1})
+db.data.find({"sections": {$all: [ "AG1", "MD1", "OA1"]}}).count()
+
+2. $elemMatch
+db.movieDetails.find({"boxOffie": {$elemMatch: {"country": "Germany", "revenue": {$gt: 17}}}})
+boxOffice: [ { "country": "USA", "revenue": 228.4 },
+             { "country": "Australia", "revenue": 19.6 },
+             { "country": "UK", "revenue": 33.9 },
+             { "country": "Germany", "revenue": 16.2 },
+             { "country": "France", "revenue": 19.8 } ]
+
+db.movieDetails.find({"boxOffice.country": "Germany", "boxOffice.revenue": {$gt: 17}})
+db.movieDetails.find({"boxOffice.country": "Germany", "boxOffice.revenue": {$gt: 228}})
+
+use video
+martian = db.movieDetails.findOne({title: "The Martian"})
+martian
+delete martian._id;
+martian
+martian.boxOffice = [
+    {"country": "USA", "revenue": 228.4},
+    {"country": "Australia", "revenue": 19.6},
+    {"country": "UK", "revenue": 33.9},
+    {"country": "Germany", "revenue": 16.2},
+    {"country": "France", "revenue": 19.8}
+]
+db.movieDetails.insertOne(martian);
+db.movieDetails.find({boxOffice: {$elemMatch: {"country": "Germany", "revenue": {$gt: 17}}}})
+db.movieDetails.find({boxOffice: {$elemMatch: {"country": "Germany", "revenue": {$gt: 16}}}})
+
+ex-
+db.surveys.find({"results": {$elemMatch: {"product": "abc", "score":7}}}).count()
+
+3. $size -- matches array field size or length
+db.movieDetails.find({"countries": {$size: 1}})
+ex-
+db.data.find({"sections": {$size: 2}}).count()
+
+
+####### query operator
+1. $mod
+2. $regex
+db.movieDetails.find({"awards.text": {$regex: /^Won .*/}})
+db.movieDetails.find({}, {_id: 0, "title": 1, "awards.text": 1}).pretty()
+db.movieDetails.find({"awards.text": {$regex: /^Won.* /}}, {_id: 0, title: 1, "awards.text": 1}).pretty()
+
+3. $text
+4. $where
+
+
+
+db.scores.find({"results": {$size: {$gte:1}}})
+
+
+mongoexport --uri "mongodb://mongodb0.example.com:27017/reporting"  --collection events  --out events.json [additional options]
