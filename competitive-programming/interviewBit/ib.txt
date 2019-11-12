@@ -16,3 +16,8 @@
 * Web series and movie Dialogue repeat
 * Learn 'tell me something' about in interview
 * Algo DS: karumanchi , interview bit(GFG too many questions).
+
+
+
+11-5-2019 Array and Math
+kshitij@interviewbit.com
