@@ -1,0 +1,272 @@
+1. Where do you see yourself in 5 years?
+I look forward to learn new skills and improve my knowledge to advance my career, I am determined to achieve mine as well as company's goal.
+I see myself as a knowledgeable professional having in-depth knowledge of the company and industry.
+
+
+
+2. Inheritance
+Inheritance is a mechanism in which one class is to allow to inherit the features of another class.
+
+Super Class, Parent Class, Base Class
+Child Class, Sub Class, Extended Class, Derived Class
+#Reusability- If we want to craete a class, and there is already a class having some features, so we can reuse that features by inheritance and write fetures only that are not in Super class.
+
+
+Types of Inheritance - 
+1. Single Inheritance
+2. Multilevel Inheritance
+	A class can not directly access the granparent's members
+3. Hierarchical Inheritance
+4. Multiple Inheritance
+	Using interfaces
+5. Hybrid Inheritance
+	Using interfaces
+	It is mix of two or more of above inheritances
+
+#Default SuperClass- Object supers implicitly inerited by all classses
+#Only one superclass
+#Constructor can be inherited using super()
+#Private Member Inheritance - 
+	child class can access only public and protected(using getters and setter of base class)
+
+Reallife use - 
+1. code reusability
+2. Vehicles Car, Motorbike, truck all using Vehicle Class
+
+
+
+
+3. Polymorphsim
+	Having many forms
+	Polymorpshim allow us to perform a task in different ways
+
+Static polymorpshism - method overloadig
+Dynamic polymorphism - method overriding
+
+
+Types - 
+a. Compile time polymorphism (Static polymrophism) - fun or operator overloading
+b. Runtime polymorpshim (Dynamic Polymorphism) - Dynamic method dispatch
+
+a. Method Overloading - 
+	overloading with diff return type is not allowed
+	changing either the number of arguments or the types of arguments
+b. Operator Overloading - in java only '+' operator can be overloaded.
+
+Reallife use -
+1.
+Saving contact with 1 number and 2 numbers both
+createContact(num) and createContact(num1, num2)
+
+
+
+
+4. C and C++
+Procedural and OOP
+char as int in C
+char as char in C++
+printf and scanf but cin and cout
+print(sizeof(1==1)) and cout<<sizeof(1==1)
+exception handling as if else but in C++ at lang level
+
+Java and C++
+1. java has garbage collection but in c++ it has destructor which are automatically called after destroy of any object
+2. java has thread support using Thread class but in c++ there is not builtin support for thread
+3. no goto in java
+4. java does not support pointers, union, op overloading, structures
+5. java does not suuport multiple inheritance but c++ does
+6. java is interpreted and platform independent
+
+
+4. Reference and Pointer
+a. once reference crated for and object it can not be assigned for any other object
+b. reference less powerfull
+c. reference must be intialized at declaration
+d. easy to use reference no need to dereference
+
+5. delete this
+can be done only for those objects that are created using new operator
+once an object deleted its member functions can not accessed
+
+6. VPTR AND VTABLE
+VTABLE - table of function pointer
+VPTR - pointer to VTABLE
+
+7. Access specifiers - 
+	Used to define how members can be accessed outside of the class
+	Private, Protected, Public
+
+8. diff btw structure and classes in c++
+a. structure member are public by default but in class private by default
+
+8. Malloc 	New
+malloc is fun but new is op
+malloc returns void * but new returns exact datatype
+new calls constructors but malloc does not
+eg.
+int *p = new int(10);
+str = (char*)malloc(15);
+
+9. Free and delete
+free is used for resource allocated by malloc and calloc
+delete is used for resources allocated by new operator
+
+10. Inline Functions
+a. used to reduce function call overhead
+b. inline function get expanded in line when it is called
+c. when inline function is called whole function code of inline function get subsituted at the line of fun call
+d. substitution is preformed by c++ at the compile time
+e. inline fun may increase efficiency if small
+
+Eg. inline return_type function_name(params){
+	
+}
+
+11. Friend Class and fun in c++
+Friend Class - this is used to access the private and protected members of other class in which it is declarad as a friend.
+It sometime usefull to allow any other class to use its private member to get access
+for eg. linkedlist class may be allow to access the private members of node class
+
+Friend Fun - is the fun which is used to access private member of any other fun in which it is declared as friend
+it can be - method of another class or global fun
+
+Violation of Encapsulation - it should be used for limited purpose
+Friendship is not mutual - if class A is friend of B then not vice -versa
+Java - no friend cocept
+
+Friend Class --
+class Node { 
+private: 
+    int key; 
+    Node* next; 
+    /* Other members of Node Class */
+  
+    // Now class  LinkedList can 
+    // access private members of Node 
+    friend class LinkedList; 
+}; 
+
+Friend fun --
+class Node { 
+private: 
+    int key; 
+    Node* next; 
+  
+    /* Other members of Node Class */
+    friend int LinkedList::search(); 
+    // Only search() of linkedList 
+    // can access internal members 
+}; 
+
+12. Copy constructor
+a . it is member fun of class that is used to intialize object using another object of the same class
+b . can be made private
+
+class Point{
+Point(int x1, int y1) { x = x1; y = y1; }
+// Copy constructor
+Point(const Point &p2) {x = p2.x; y = p2.y; }
+}
+
+
+13. Static Member
+a. Static element are allocated sotrage at only once at creation time, at static storage area for lifetime of the program.
+b. Scope till the program lifetime.
+c. Static member function do not have this pointer.
+d. static member fun can not be virtual
+
+14. Why pre-processors do not require semi-colon?
+; is required by compiler, but pre-processros are the programs that process our source code before compilation, means there is not use of pre-processor compilation time so it is not required
+
+15. diff btw <> and "" for header file
+if <> then header file is searched in built-in included path, is "" is used then first it searches in the current director then in the built-in include path
+
+16. Heap and Stack area
+Heap - used for objects allocated dynamically
+Stack - used of local var and agrs of method and lasts till the particular method
+
+17. diff btw #inlcude and import
+a. #include is a statement but import is keyword
+b. #include processed by pre-processor s/w but import processed by compiler
+c. #include increases the code size but import not
+is we use import java.lang.*, then it only means that it gives permissions to access java.langs classes 
+
+
+18. ++*p, *++p and *p++ ?
+a. prefix ++ and * has same precedence
+b. postfix ++ has higher precedence than ++ and *
+
+so ++*p => ++(*p), arr[0] =10, arr[1] = 11
+then ++*p = > ++(*p) = 10+1
+
+
+arr[0] = 10, arr[1]  =20
+*++p=> *(++p)=> 20
+
+*p++ = > *(p++)=> 20
+
+
+19. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+NCR Corporation - (Product based)
+CEO - Navroze Dastur, Managing director
+Previously known - 
+1. National Cash Register
+2. AT & T global information solutions
+
+History- 
+Founded in 1884 and acquired by AT&T then AT&T re-stablished it as a separate company in 1997
+
+Offices - total 14 offices
+New Delhi
+Hyderabad - 6
+Gurgaon
+Chennai
+Bangalore
+Mumbai
+
+Services - 
+Provide solutions for
+a. Banking
+	Digital Services
+	ATMs and self services
+	Digital Banking
+b. Restaurents
+	guest and table management
+	kitchen production
+	payment processing
+c. Retails - 
+	Grocery store and supermarket
+d. Others- 
+	Telecome sector 
+	AirLine sector
+
+
+
+
+
+
+
+
+
+
+
