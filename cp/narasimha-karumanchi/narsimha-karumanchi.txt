@@ -1,0 +1,23 @@
+Searching - 
+1. unordered linear search
+2. ordered linear search
+3. binary search
+4. symbol tables and hashing
+5. string searching algorithms
+	tries, ternary search, suffix trees
+
+
+Searching Duplicates
+1. n*n
+	if brute force
+2. n*logn
+	if arr can be sort
+	then simple linear search
+3. n 
+	if using hash -> this is best
+	but cost space of n
+4. n -> using negation technique
+	if arr is mutable
+	if all elems are +ve
+	if elems are 0 to n-1(but really 1 to n-1)
+

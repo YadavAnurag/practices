@@ -1,0 +1,29 @@
+1. How does your system ensure that 2 URLs never map to the same shortened URL?
+Ans - 
+	No 2 URLs never get map to the same shortend URL, we will store all big URLs to noSQL database and we will hash the objectID provided by database for each object, because this objectID will alwasy unique, then this problem will never arise.
+
+2. How will you ensure the system is very low latency?
+Ans - 
+	Assuming, we'll have 500M new URL shortening per month, so,
+
+	500 million / (30*24*3600 seconds) = ~200 URLs/second
+
+	so we will use system that can perform more than this capacity of redirection which system can perform well.
+
+3. What will happen if the machine storing the URL mapping dies? (Power outage / Hard Disk gone bad)?
+Ans - 
+	To come over this solution, We will make replicas of the database so if any Hard disk failure problem get occurrs, we will use replicas, also we will use more than one server to listen and respond so if any server will go down, others will work.
+
+4. How do you make sure your system is consistent? 
+Ans - 
+	Bijective Mapping,that is the answer. Because, for any unique string, a hash map will return unique hash, that will be stored in the database so, for any unique hash database will return same big URL not any other url.
+
+5. How do you make sure that your service never goes down? 
+Ans - 
+	We will use different options to prevent it -
+	
+	1. Using caching
+	2. Minimizing plugins
+	3. Equally dividing users to servers, not more users to a single server that it can bear.
+	4. Using faster SSD.
+	5. Light Code

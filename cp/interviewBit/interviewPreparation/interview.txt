@@ -1,0 +1,18 @@
+1. 
+https://www.geeksforgeeks.org/commonly-asked-c-interview-questions-set-1/
+https://www.geeksforgeeks.org/commonly-asked-c-interview-questions-set-2/
+https://www.geeksforgeeks.org/commonly-asked-oop-interview-questions/
+
+
+4.
+array sorted or not
+negative allowed or not
+if condition not occrus then what to return
+
+brute force approach
+then 
+optimize approach
+if stuck  - then tell approach
+
+
+3. tell me about yourself
