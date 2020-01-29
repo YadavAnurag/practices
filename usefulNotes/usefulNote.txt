@@ -10,3 +10,5 @@ SET DEBUG=recorder:* & npm start
 
 Allow access to file transcript--- (from powershell)
 get-process chrome | stop-process; start-process chrome --allow-file-access-from-files
+
+
