@@ -1,0 +1,16 @@
+1. go to firebase console
+2. add project
+3. go to cmd
+4. install firebase tools -> npm install firebase-tools -g
+5. go to project folder
+6. firebase login
+7. login to firebase
+8. go to cmd
+9. npm run build
+10. firebase init
+11. choose hosting
+12. use public directory? type build
+13. do not overwrite choose no
+14. addon-> can add firebase id
+
+15. firebase use firebase_project_id_find_it_in_setting__firebase_console

@@ -1,1 +1,0 @@
-npm install body-parser lodash cors express express-jwt mongoose morgan nodemon http-errors jade request serve-favicon moment node-cron nodemailer oauth2 cookie-parser debug babel-cli jshint babel-core babel-loader open readline hbs handlebars jquery simplewebrtc pug bootstrap

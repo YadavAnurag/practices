@@ -1,0 +1,22 @@
+About BlogVault company-
+
+BlogVault dedicated to making website backups and security easy and efficient;
+helps to mitigate the risk associated with website crashes, as well as the damage caused by malware and hacks.
+
+Now, BlogVault goes beyond this, by providing backup, restore, staging & website management solutions for WordPress sites. It provides real-time, daily or on-demand backups, and any one can ensure that their site is backed up on every time.
+
+Talking about backup-
+Using an incremental technology, BlogVault ensures any changes made to the site and copied to BlogVault's own servers and secure AmazonS3 servers thus never affecting the performance of the live website.
+
+Talking about recovery-
+BlogVault recover any site by restoring the backup in just one-click in case of any crash, data corruption or discontinuation of hosting service.
+Any one can also test backups or any changes on staging site, and only when satisfied, merge all or selected changes to the live website.
+
+It also help to migrate the website from one host or domain to another with zero downtime.
+
+And last, it also provide the centralized dashboard & 1-click automatic report creation.
+
+
+######################
+Mission
+We are on a mission to enable site owners, developers & web agencies to maximize the value from a WordPress website.

@@ -1,0 +1,48 @@
+Personal Projects
+
+1. Job-Scrapper
+Web-app, to finding job in smart way, a web scrapper to collect and parse out job information and then showing it based on the user location by default, also added feature for location-based job searching.
+Technology- ReactJS, JavaScript, Bootstrap
+URL- https://whispering-plains-96688.herokuapp.com
+
+
+
+2. Chatter
+Web-app for sending and receiving messages at real-time using Node.JS and JavaScript, leverage the functionality of the WebSocket.
+Technology- NodeJS, JavaScript, Bootstrap
+URL- https://evening-eyrie-96769.herokuapp.com
+
+
+3. Expensify
+Web-app where you can put your expenses easily and no need to remember any expenses just put here, you can see all your expenses add/remove/edit/sort expenses. It shows your total expense on weekly/monthly basis. Leveraged the browser local storage as a storage for expenses.
+Technology- ReactJS, Redux, SCSS, Routing
+
+
+4. Quiz-App(on-going)
+Web-app where anyone can host any quiz contest just login and upload all quizzes and their questions, automatically start and end contest using CronJobs, leveraged browser local storage to save user answers locally and after quiz submit answers will be sent to Quiz Backend-API(REST API) users can see their progress easily move between questions.
+Technology- ReactJS, Redux, NodeJS, REST API, JavaScript, SCSS, Routing
+GitHub- https://github.com/YadavAnurag/react-quiz-app
+
+
+5. Coder Ladder(on-going)
+Web-app where any programmer can make their multiple ladders of programming problems based on rating, so that they can easily use and share the ladders of questions (of Codechef, Codeforces, Hackerrank etc.) with others which help others to get precise questions which will help them to score more. Lot of functionality available add/remove/edit/sort ladders and add/remove/edit/sort questions of ladders.
+Technology- ReactJS, Redux, NodeJS, REST API, JavaScript, SCSS, Routing
+GitHub- https://github.com/YadavAnurag/react-coder-ladder-app
+
+
+6. Real-time Object Tracker (DRDO intern project)
+A web-app which simulates the real-time movement of any object and pre-path visualization using UDP socket to get location and Chart.js to plot path at every 200ms.
+Technology- NodeJS, Express.js, Chart.js, Bootstrap.
+
+
+7. Hacker-News
+A web-app, which fetches news based on searched string developed using React and web-API fetching also associated links to that news article.
+Technology- ReactJS, JavaScript, Bootstrap
+URL- https://obscure-earth-86270.herokuapp.com
+
+
+8. E-Restaurant
+A web app which simplifies and make table booking and food ordering automation, support online restaurant table management pre booking with different features also user can give feedback and can see the list of menus of different orders and they will get email whenever they make any booking, there is a fully featured admin section from which an admin can manage table bookings.
+Technology- PHP, Bootstrap, JavaScript, MySQL
+URL- https://anuragyadav13481.000webhostapp.com
+GitHub- https://github.com/YadavAnurag/ecafe

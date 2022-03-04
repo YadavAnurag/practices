@@ -1,0 +1,90 @@
+Component LifeCycle - Creation(number are in order of creation of Component)
+
+
+
+1. Constructor -> constructor(props)
+is not a life-cycle method its default ES6 class feature
+
+Do-
+call super(props)
+setup state
+
+Don't - (causes unnecessary re-render cycle)
+never make HTTP class
+never make file access
+never send any analytics e.g. send analytics to Google analytics
+
+
+2. getDerivedStateFromProps -> getDerivedStateFromProps(props, state)
+when your props change, you can sync state with them
+if you want to change internal state of the component if props change
+
+Don't -
+never make HTTP request
+
+3. render -> render()
+prepare and structure your JSX code
+
+Don't -
+never make HTTP request
+never set any setTimeout
+
+4. render child component
+render all child component
+
+5. componentDidMount -> componentDidMount()
+
+Do -
+make HTTP request
+
+Don't -
+don't call setState synchronously
+don't update state -> causing re-render
+
+
+
+########################### Component Life Cycle - Update ###########################
+
+1. getDerivedStateFromProps -> getDerivedStateFromProps(props, state)
+this is static method
+you would use it, to initialize the state of a component that updates based on props you are getting (based on external properties)
+
+Do-
+sync your local state inside of the component (sync state to props)
+
+Don't -
+don't make HTTP request
+
+
+2. shouldComponentUpdate -> shouldComponentUpdate(nextProps, nextState)
+may cancel updating process
+You can decide whether or not React should continue evaluating and re-rendering the component
+
+Use wisely-> you may block any update incorrectly
+
+3. render -> render()
+
+4. update child component
+
+5. getSnaphostBeforeUpdate -> getSnapshotBeforeUpdate(prevProps, prevState)
+
+can use for last minute DOM operations
+like getting the current scrolling position of the user
+
+6. component did update -> componentDidUpdate()
+signals that you have done with updating
+
+Don't -
+never make HTTP request
+
+
+
+
+########################### Component Life Cycle - for Functional component ###########################
+
+1. useState -> combine getDerivedStateFromProps
+2. useEffect -> combine both componentDidMount and  componentDidUpdate
+
+pass in array argument to check whether changes in passed arguments in array-> useEffect will run if there is changes in those objects
+If you pass empty array to useEffect, this useEffect will run only for firstTime component mount not for any update
+If you return a function from useEffect it will run last time as componentWillUnmount -> this also depends on the pass arguments in array argument

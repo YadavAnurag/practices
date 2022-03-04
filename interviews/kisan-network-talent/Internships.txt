@@ -1,0 +1,22 @@
+Internships
+
+
+Software Engineering Intern May-19 to Jul-19
+Defense Research and Development Organization, Odisha---------
+Accomplishment- Developed a real-time object tracker and pre-path visualization WebApp using UDP Socket.
+Technology- Node.js, Chart.js, Express.js, Bootstrap
+
+Backend Engineering Intern Aug-18 to Oct-18
+Neonex Technology-----------
+Accomplishment- Developed a backend service to upload and manage their paperwork in the form of digital documents, saving data in the database.
+Technology- Node.js, Express.js, Bootstrap
+
+Backend Engineering Intern Aug-18 to Sep-18
+Navigatio----------------
+Accomplishment- Developed backend with CodeIgniter for clients, which manages the data pushing and fetching from and to the MySQL database.
+Technology- CodeIgniter, PHP, Ajax, MySQL.
+
+Full-Stack Engineering Intern May-18 to Jul-18
+Health Ok Smart Healthzone Pvt. Ltd.-------------
+Accomplishment- Created a fully functioned web-app which shows all the activities held by the organization after fetching data from the REST API and also, posting data to the REST API using AngularJS, also added function to REST API for fetching and posting data, and worked MySQL database.
+Technology- Java, AngularJS, REST-API, MySQL, Bootstrap

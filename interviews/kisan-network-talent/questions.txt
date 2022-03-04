@@ -1,0 +1,65 @@
+Questions-
+
+[⬆] Cors- 
+cross origin resource sharing to share resource on diff domains
+
+[⬆] React- 16.13.0
+React is a front-end JavaScript library developed by Facebook in 2011.
+It follows the component based approach which helps in building reusable UI components.
+It is used for developing complex and interactive web and mobile UI.
+package contains only the functioality necessary to define react component. typically used together with React renderer like react-dom for web and react native for mobile platform.
+Key Features-
+    virtual DOM
+    Server Side rendering
+    unidirectional data binding
+    client side routing
+
+⬆] NoSQL:
+referring to non SQL or non relational is a database that provides a mechanism for storage and retrieval of data. This data is modeled in documents other than the tabular relations used in relational databases. 
+
+Types of NoSQL databases?
+Document Stores (MongoDB, Couchbase)
+Key-Value Stores (Redis, Volgemort)
+Column Stores (Cassandra)
+Graph Stores (Neo4j, Giraph)
+Problem----
+    transaction
+    large document size
+
+[⬆] ACID-
+Atomicity - entire transaction takes place at once or does not happen at all
+Consistency - database must be consistent before and after transaction
+Isolation - multiple transaction occur independently without interference
+Durability - the changes of a successfull transaction occurs even if the system failure occurs
+
+[⬆] Scalability:
+Horizontal and vertical scaling.
+How to scale database? (Data partitioning, sharding(vertical/horizontal), replication(master-slave, master-master)).
+
+[⬆] CAP Theorem-
+The theorem specifies some kind of an upper limit when designing distributed systems.
+"You can have at most two of these properties for any shared-data system."
+
+Consistency - consistent view of data in distributed system
+Availability - demands the system to eventually answer every request even in case of failure
+Partition Tolerance -  This property describes the fact that the system is resilient to message losses between nodes. A partition is an arbitrary split between nodes of a system, resulting in complete message loss in between. 
+
+[⬆] Cache:
+What is write-through and write-behind caching? (write-through (synchronous), write-behind (asynchronous))
+
+
+[⬆] Life Cycle-
+Mounting
+    constructor
+    getDerivedStateFromProps
+    render
+    componentDidMount
+Updating
+    getDerivedStateFromProps
+    shouldComponentUpdate
+    render
+    getSnapshotBeforeUpdate
+    componentDidUpdate
+Unmouting
+    componentWillUnmount
+

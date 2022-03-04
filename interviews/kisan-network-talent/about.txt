@@ -1,0 +1,34 @@
+Tell me about yourself-
+
+
+First of all I would like to thank you.
+Good evening sir, My name is Anurag Yadav, I belong from Gorakhpur.
+I am purusing my graduation in B.Tech in the stream of Computer Science from MMMUT, Gorakhpur. I did my intermediate from state board with an aggrigate of  82% and high school with 84%.
+
+
+###############currently i am learning jest for testing apps
+
+Skills-
+my skills are Python,c++,JS,ReactJs, Nodejs mongodb and mysql.
+
+
+Coming to my Internship-
+I have done 4 internships-> from HealthOk Pvt. Ltd., Navigatio and Neonex Technology
+
+and 1 industrial training at DRDO in my 3rd year.
+
+############# if aksed-> In, the training i developed a real-time missile path tracker web-app which plots path of that missile using UDP socket at every 200ms and used chart.js library to plot path on web to visualize it.
+######Tech-> I used Node.js for JavaScript runtime environment, Express.js to develop the UDP and TCP server and bind socket to it, used Chart.js to plot graphs to visualize it and also used Bootstrap to design the web pages.
+
+Coming to my extra curricular activities-
+Currently, I am student coordinator at Training and Placement Cell, in my college, and Executive member and Technical head at the Computer Engineering Society in my college.
+
+My indoor hobby is, in free time I love to learn new technologies and develop apps using these technologies and my outdoor hobby is playing badminton.
+
+Thank you
+
+
+Goal
+My short term goal is to get job in company which help me to make my future strong.
+My long term goal is to become more responsible and knowledgeable personality and on respectable position in any company.
+
